@@ -24,8 +24,8 @@ def displayMenu():
 def readFile():
     fullList=[]
     listeliste=[]
-    print("what is the name of the gff file")
-    name=input()
+    print("reading the gff file...")
+    name='Marouch_3.1_braker214_PruarM.gff3'
     with open(name, 'r') as fil: 
         lines = fil.readlines()
         for line in lines:
