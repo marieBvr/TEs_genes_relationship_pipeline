@@ -21,12 +21,10 @@ def displayMenu():
     print("4- Exit")
     print("++++++++++++++++++++++++++++++++++")
 
-def readFile():
+def readFile(file):
     fullList=[]
     listeliste=[]
-    print("reading the gff file...")
-    name='Marouch_3.1_braker214_PruarM.gff3'
-    with open(name, 'r') as fil: 
+    with open(file, 'r') as fil: 
         lines = fil.readlines()
         for line in lines:
             l= line.split() 
@@ -35,7 +33,7 @@ def readFile():
 
         for i in range (len(fullList)):
             #select line that doesn't start with # to delet de comment of the gff file
-            if "#" not in fullList[i][0]:
+            if ("#" and " " not in fullList[i][0]):
                 listeliste.append(fullList[i])
         return listeliste 
 
@@ -108,7 +106,7 @@ while(True):
     displayMenu()
     ans=int(input())
     if ans ==1 :
-        listOflist=readFile()
+        listOflist=readFile('Marouch_3.1_braker214_PruarM.gff3')
         fullDico=putDico(listOflist)
         print(fullDico)
 
