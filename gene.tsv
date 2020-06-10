@@ -1,0 +1,8 @@
+chr1	transdecoder	gene1	100     250     .	+	.	infogene1
+chr1	transdecoder	gene2	600     900	    .	+	.	infogene2
+chr1	transdecoder	gene3	1200    1600	.	+	0	infogene3
+chr1	transdecoder	gene4	1800    3000	.	+	0	infogene4
+chr1	transdecoder	gene5	4000    5000	.	+	0	infogene5
+chr1	transdecoder	gene6	5500    6500	.	+	1	infogene6
+chr1	transdecoder	gene7	7500    9000	.	+	.	infogene7
+chr1	transdecoder	gene8	9500    11000	.	+	0	infogene8
