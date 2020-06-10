@@ -10,7 +10,7 @@ import sys
 import csv
 ListOfTE=[]
 ListOfGene=[]
-
+# https://www.w3schools.com/python/python_classes.asp
 #==============================================================================
 #                            functions
 #==============================================================================

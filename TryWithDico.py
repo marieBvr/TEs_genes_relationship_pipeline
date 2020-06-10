@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Ayse Ergun 
+# Ayse Ergun
 # Script For TE project
 
 #==============================================================================
@@ -35,9 +35,9 @@ def GeneDico(list):
     ListOfDicoGene=[]
     for element in list:
             dico_gene = {
-            'seqname':element[0],
+            'chromosome':element[0],
             'source':element[1],
-            'feature':element[2],
+            'name':element[2],
             'start':element[3],
             'end':element[4],
             'score':element[5],
@@ -46,24 +46,44 @@ def GeneDico(list):
             'attribute':element[8]
             }
             ListOfDicoGene.append(dico_gene)
+    print(ListOfDicoGene)
     return ListOfDicoGene
 
 def TEDico(list):
     ListOfDicoTE=[]
     for element in list:
             dico_TE = {
-            'seqname':element[0],
+            'chromosome':element[0],
             'source':element[1],
-            'feature':element[2],
-            'start':element[3],
-            'end':element[4],
-            'score':element[5],
-            'strand':element[6],
-            'frame':element[7],
-            'attribute':element[8]
+            'length_chromo':element[2],
+            'name':element[3],
+            'match':element[4],
+            'start':element[5],
+            'end':element[6],
+            'Length':element[7],
+            'Score':element[8],
+            'Strand':element[9]
             }
             ListOfDicoTE.append(dico_TE)
+    print(ListOfDicoTE)
     return ListOfDicoTE
+
+def check_if_a_TE_in_gene(te,gene):#easiest version 
+    return 
+
+def check_if_a_TE_before_gene(te,gene):
+    return
+
+def check_if_a_TE_after_gene(te,gene):
+    return
+
+
+def writeDataOnFile(list):
+    print("Please enter a file name .csv ")
+    name=input()
+    with open(name, 'w') as fil:
+        print()
+    fil.close()
 
 
 
@@ -75,3 +95,12 @@ def TEDico(list):
 #                                MAIN PROGRAM
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #==============================================================================
+
+gene=Extract_data('Exemple_file/gene.tsv')
+te=Extract_data('Exemple_file/te.tsv')
+
+list_gene = GeneDico(gene)
+list_te = TEDico(te)
+
+print("liste gene ", list_gene)
+print("liste te ", list_te)
