@@ -8,9 +8,6 @@
 #==============================================================================
 import sys
 import csv
-ListOfTE=[]
-ListOfGene=[]
-
 #==============================================================================
 #                            functions
 #==============================================================================
@@ -25,7 +22,7 @@ def Extract_data(file):
             #put the element of a line in a  list
             listForLine.append(element)
 
-        for i in range (len(listForLine)):
+        for i in range (1,len(listForLine)):
             #select line that doesn't start with # or space to delet de comment of the gff/tsv file
             if ("#" and " " not in listForLine[i][0]):
                  wholeListes.append(listForLine[i])
@@ -46,7 +43,7 @@ def GeneDico(list):
             'attribute':element[8]
             }
             ListOfDicoGene.append(dico_gene)
-    print(ListOfDicoGene)
+    #print(ListOfDicoGene)
     return ListOfDicoGene
 
 def TEDico(list):
@@ -54,21 +51,27 @@ def TEDico(list):
     for element in list:
             dico_TE = {
             'chromosome':element[0],
-            'source':element[1],
-            'length_chromo':element[2],
-            'name':element[3],
-            'match':element[4],
-            'start':element[5],
-            'end':element[6],
-            'Length':element[7],
-            'Score':element[8],
-            'Strand':element[9]
+            'length_chromo':element[1],
+            'name':element[2],
+            'match':element[3],
+            'start':element[4],
+            'end':element[5],
+            'length':element[6],
+            'score':element[7],
+            'strand':element[8]
             }
             ListOfDicoTE.append(dico_TE)
-    print(ListOfDicoTE)
+    #print(ListOfDicoTE)
     return ListOfDicoTE
 
-def check_if_a_TE_in_gene(te,gene):#easiest version 
+def check_if_a_TE_in_gene(te,gene):
+    for i in range(len(te)):
+        for j in range(len(gene)):
+            if(te[i]['start'] > gene[j]['start'] and te[i]['end']<gene[j]['end']):
+                print(te[i]['name'] + ' is in the '+gene[j]['name']+' gene ! ')
+    return 
+
+def check_if_a_gene_in_TE(te,gene):
     return 
 
 def check_if_a_TE_before_gene(te,gene):
@@ -76,6 +79,9 @@ def check_if_a_TE_before_gene(te,gene):
 
 def check_if_a_TE_after_gene(te,gene):
     return
+
+def calcul_distance():
+    print('function calcul distance')
 
 
 def writeDataOnFile(list):
@@ -104,3 +110,5 @@ list_te = TEDico(te)
 
 print("liste gene ", list_gene)
 print("liste te ", list_te)
+
+check_if_a_TE_in_gene(list_te, list_gene)
