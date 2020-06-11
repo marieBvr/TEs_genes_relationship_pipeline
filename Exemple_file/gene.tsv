@@ -1,3 +1,4 @@
+Chromosome  Source      Name    Start   End Length   Frame  Score   Info      
 chr1	transdecoder	gene1	100     250     .	+	.	infogene1
 chr1	transdecoder	gene2	600     900	    .	+	.	infogene2
 chr1	transdecoder	gene3	1200    1600	.	+	.	infogene3
