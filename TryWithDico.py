@@ -67,12 +67,12 @@ def TEDico(list):
 
 def check_superset_subset_genes(te,gene):
     for i in range(len(te)):
-
+        #add a new column in the dictionnary 
         te[i]['superset_start'] = np.NAN
         te[i]['superset_end'] = np.NAN
         te[i]['subset_start'] = np.NAN
         te[i]['subset_end'] = np.NAN
-        
+
         # loop to compare all the genes to the TE
         for j in range(len(gene)): 
 
@@ -90,8 +90,6 @@ def check_superset_subset_genes(te,gene):
                 te[i]['subset_start'] = gene[j]['start']
                 te[i]['subset_end'] = gene[j]['end']
     return 
-
-
 
 def check_downstream_genes(te,gene):
     distance = 1000000 
