@@ -8,6 +8,7 @@
 #==============================================================================
 import sys
 import csv
+import numpy as np
 #==============================================================================
 #                            functions
 #==============================================================================
@@ -35,8 +36,8 @@ def GeneDico(list):
             'chromosome':element[0],
             'source':element[1],
             'name':element[2],
-            'start':element[3],
-            'end':element[4],
+            'start': int(element[3]),
+            'end': int(element[4]),
             'score':element[5],
             'strand':element[6],
             'frame':element[7],
@@ -54,8 +55,8 @@ def TEDico(list):
             'length_chromo':element[1],
             'name':element[2],
             'match':element[3],
-            'start':element[4],
-            'end':element[5],
+            'start': int(element[4]),
+            'end': int(element[5]),
             'length':element[6],
             'score':element[7],
             'strand':element[8]
@@ -64,32 +65,141 @@ def TEDico(list):
     #print(ListOfDicoTE)
     return ListOfDicoTE
 
-def check_if_a_TE_in_gene(te,gene):
+def check_superset_subset_genes(te,gene):
     for i in range(len(te)):
-        for j in range(len(gene)):
+
+        te[i]['superset_start'] = np.NAN
+        te[i]['superset_end'] = np.NAN
+        te[i]['subset_start'] = np.NAN
+        te[i]['subset_end'] = np.NAN
+        
+        # loop to compare all the genes to the TE
+        for j in range(len(gene)): 
+
+            #check if the TE is inside the gene
             if(te[i]['start'] > gene[j]['start'] and te[i]['end']<gene[j]['end']):
-                print(te[i]['name'] + ' is in the '+gene[j]['name']+' gene ! ')
+                print(te[i]['name'], "is in", gene[j]['name'])
+                te[i]['superset_start'] = gene[j]['start']
+                te[i]['superset_end'] = gene[j]['end']
+                te[i]['superset_end'] = gene[j]['end']
+                
+            
+            #check if the TE is over the gene
+            if (te[i]['start'] < gene[j]['start'] and te[i]['end'] > gene[j]['end']):
+                print(te[i]['name'], "is over", gene[j]['name'])
+                te[i]['subset_start'] = gene[j]['start']
+                te[i]['subset_end'] = gene[j]['end']
     return 
 
-def check_if_a_gene_in_TE(te,gene):
-    return 
 
-def check_if_a_TE_before_gene(te,gene):
-    return
 
-def check_if_a_TE_after_gene(te,gene):
-    return
+def check_downstream_genes(te,gene):
+    distance = 1000000 
+    closest_gene = 0
+    closest_gene_index = 0
+    closest_gene_start = 0
+    closest_gene_end = 0
+
+    for i in range(len(te)):
+        t_end = te[i]['end'] # End of the TE
+
+        for j in range(len(gene)): # loop to compare all the genes to the TE
+            g_end = gene[j]['end'] # End of the gene 
+            
+            #find genes that end after the end of the TE, and doesn't start before the start of the TE
+            if(t_end < g_end and te[i]['start'] < gene[j]['start']): 
+
+                #calculate the distance between gene and TE and stock the current gene if it is closer
+                if g_end - t_end < distance: 
+                    distance = g_end - t_end
+                    #print(distance)
+                    closest_gene_index = j #index of the new closest gene
+                    closest_gene = gene[j]['name'] # id of the new closest gene
+                    closest_gene_start = gene[j]['start'] #start of the new closest gene
+                    closest_gene_end = gene[j]['end'] #end of the new closest gene
+
+        #make sure that if the TE is followed by another TE there is no downstream gene
+        for k in range(len(te)):
+            start_value = te[k]['start']
+            if(start_value > te[i]['end'] and start_value < gene[closest_gene_index]['start']):
+                closest_gene = np.NAN
+                closest_gene_start = np.NAN
+                closest_gene_end = np.NAN
+
+        distance = 100000
+
+        te[i]['after_start'] = closest_gene_start
+        te[i]['after_end'] = closest_gene_end
+        print(closest_gene, "is downstream from ",te[i]['name'], closest_gene_start, closest_gene_end) # id du gène le plus proche du transposon d'intérêt
+
+    return closest_gene_start, closest_gene_end
+
+def check_upstream_genes(te,gene):
+    distance = 1000000 
+    closest_gene = 0
+    closest_gene_index = 0
+    closest_gene_start = 0
+    closest_gene_end = 0
+
+    for i in range(len(te)):
+        t_start = te[i]['start'] # Start of the TE
+
+        for j in range(len(gene)): # loop to compare all the genes to the TE
+            g_start = gene[j]['start'] # start of the gene 
+            
+            #find genes that start before the start of the TE, and doesn't end after the end of the TE
+            if(t_start > g_start and te[i]['end'] > gene[j]['end']): 
+
+                #calculate the distance between gene and TE and stock the current gene if it is closer
+                if t_start - g_start < distance: 
+                    distance = t_start - g_start 
+                    closest_gene_index = j #index of the new closest gene
+                    closest_gene = gene[j]['name'] # id of the new closest gene
+                    closest_gene_start = gene[j]['start'] #start of the new closest gene
+                    closest_gene_end = gene[j]['end'] #end of the new closest gene
+    
+        #make sure that if the TE is preceded by another TE there is no upstream gene
+        for k in range(len(te)):
+            end_value = te[k]['end']
+            if(end_value < te[i]['start'] and end_value > gene[closest_gene_index]['end']):
+                closest_gene = np.NAN
+                closest_gene_start = np.NAN
+                closest_gene_end = np.NAN
+
+        distance = 100000
+
+        te[i]['before_start'] = closest_gene_start
+        te[i]['before_end'] = closest_gene_end
+        print(closest_gene, "is upstream from ",te[i]['name'], closest_gene_start, closest_gene_end) # id du gène le plus proche du transposon d'intérêt
+
+    return closest_gene_start, closest_gene_end
 
 def calcul_distance():
     print('function calcul distance')
 
 
-def writeDataOnFile(list):
-    print("Please enter a file name .csv ")
-    name=input()
-    with open(name, 'w') as fil:
-        print()
-    fil.close()
+def writeDataOnFile(list_te):
+    csv_content = []
+    column_names = ["Start","End","before_start","before_end","after_start","after_end",
+    "superset_start","superset_end","subset_start","subset_end"]
+    for n in range(len(list_te)):
+        csv_content.append([])
+        csv_content[n].append(list_te[n]['start'])
+        csv_content[n].append(list_te[n]['end'])
+        csv_content[n].append(list_te[n]['before_start'])
+        csv_content[n].append(list_te[n]['before_end'])
+        csv_content[n].append(list_te[n]['after_start'])
+        csv_content[n].append(list_te[n]['after_end'])
+        csv_content[n].append(list_te[n]['superset_start'])
+        csv_content[n].append(list_te[n]['superset_end'])
+        csv_content[n].append(list_te[n]['subset_start'])
+        csv_content[n].append(list_te[n]['subset_end'])
+    with open('ResultFile.csv', 'w') as csvfile:
+        filewriter = csv.writer(csvfile, delimiter='\t')
+        filewriter.writerow(column_names)
+        for i in range(len(csv_content)):
+            filewriter.writerow(csv_content[i])
+    csvfile.close()
 
 
 
@@ -111,6 +221,7 @@ list_te = TEDico(te)
 print("liste gene ", list_gene)
 print("liste te ", list_te)
 
-check_if_a_TE_in_gene(list_te, list_gene)
-
-#test_push
+check_superset_subset_genes(list_te, list_gene)
+check_downstream_genes(list_te, list_gene)
+check_upstream_genes(list_te, list_gene)
+writeDataOnFile(list_te)
