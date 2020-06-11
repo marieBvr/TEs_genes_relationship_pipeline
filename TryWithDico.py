@@ -112,3 +112,5 @@ print("liste gene ", list_gene)
 print("liste te ", list_te)
 
 check_if_a_TE_in_gene(list_te, list_gene)
+
+#test_push
