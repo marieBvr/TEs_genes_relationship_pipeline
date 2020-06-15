@@ -192,7 +192,7 @@ def writeDataOnFile(list_te):
         csv_content[n].append(list_te[n]['superset_end'])
         csv_content[n].append(list_te[n]['subset_start'])
         csv_content[n].append(list_te[n]['subset_end'])
-    with open('ResultFile.csv', 'w') as csvfile:
+    with open('ResultFile.tsv', 'w') as csvfile:
         filewriter = csv.writer(csvfile, delimiter='\t')
         filewriter.writerow(column_names)
         for i in range(len(csv_content)):
