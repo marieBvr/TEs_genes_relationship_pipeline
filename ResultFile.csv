@@ -1,7 +1,0 @@
-Start	End	before_start	before_end	after_start	after_end	superset_start	superset_end	subset_start	subset_end
-300	400	100	250	600	900	nan	nan	nan	nan
-800	1000	600	900	nan	nan	nan	nan	nan	nan
-1100	1400	nan	nan	1200	1600	nan	nan	nan	nan
-1900	2000	1200	1600	nan	nan	1800	3000	nan	nan
-2200	2400	nan	nan	4000	5000	1800	3000	nan	nan
-5200	7300	4000	5000	7500	9000	nan	nan	5500	6500
