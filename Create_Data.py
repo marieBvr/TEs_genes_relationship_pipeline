@@ -53,7 +53,7 @@ def TEDico(list):
     for element in list:
             dico_TE = {
             'chromosome':element[0],
-            'length_chromo':element[1],
+            'length_chromo':int(element[1]),
             'name':element[2],
             'match':element[3],
             'start': int(element[4]),
@@ -92,8 +92,24 @@ def check_superset_subset_genes(te,gene):
                 te[i]['subset_end'] = gene[j]['end']
     return 
 
+def find_overlap_upstream(te,gene):
+    overlap = np.NAN
+    
+    #check if the TE starts before the gene ends
+    if(te['start'] < gene['end']):
+        overlap = abs(te['start'] - gene['end']) 
+    return overlap
+    
+def find_overlap_downstream(te,gene):
+    overlap = np.NAN
+    
+    #check if the TE ends before the gene starts
+    if(te['end'] > gene['start']):
+        overlap = abs(gene['start'] - te['end'])
+    return overlap
+
 def check_downstream_genes(te,gene):
-    distance = 1000000 
+    distance = te[0]['length_chromo'] 
     closest_gene = 0
     closest_gene_index = 0
     closest_gene_start = 0
@@ -116,6 +132,7 @@ def check_downstream_genes(te,gene):
                     closest_gene = gene[j]['name'] # id of the new closest gene
                     closest_gene_start = gene[j]['start'] #start of the new closest gene
                     closest_gene_end = gene[j]['end'] #end of the new closest gene
+                    overlap = find_overlap_downstream(te[i], gene[j])
 
         #make sure that if the TE is followed by another TE there is no downstream gene
         for k in range(len(te)):
@@ -125,16 +142,17 @@ def check_downstream_genes(te,gene):
                 closest_gene_start = np.NAN
                 closest_gene_end = np.NAN
 
-        distance = 100000
+        distance = te[0]['length_chromo'] 
 
         te[i]['after_start'] = closest_gene_start
         te[i]['after_end'] = closest_gene_end
+        te[i]['downstream_overlap'] = overlap
         print(closest_gene, "is downstream from ",te[i]['name'], closest_gene_start, closest_gene_end) # id du gène le plus proche du transposon d'intérêt
 
     return closest_gene_start, closest_gene_end
 
 def check_upstream_genes(te,gene):
-    distance = 1000000 
+    distance = te[0]['length_chromo'] 
     closest_gene = 0
     closest_gene_index = 0
     closest_gene_start = 0
@@ -156,6 +174,7 @@ def check_upstream_genes(te,gene):
                     closest_gene = gene[j]['name'] # id of the new closest gene
                     closest_gene_start = gene[j]['start'] #start of the new closest gene
                     closest_gene_end = gene[j]['end'] #end of the new closest gene
+                    overlap = find_overlap_upstream(te[i], gene[j])
     
         #make sure that if the TE is preceded by another TE there is no upstream gene
         for k in range(len(te)):
@@ -165,10 +184,11 @@ def check_upstream_genes(te,gene):
                 closest_gene_start = np.NAN
                 closest_gene_end = np.NAN
 
-        distance = 100000
+        distance = te[0]['length_chromo'] 
 
         te[i]['before_start'] = closest_gene_start
         te[i]['before_end'] = closest_gene_end
+        te[i]['upstream_overlap'] = overlap
         print(closest_gene, "is upstream from ",te[i]['name'], closest_gene_start, closest_gene_end) # id du gène le plus proche du transposon d'intérêt
 
     return closest_gene_start, closest_gene_end
@@ -180,7 +200,7 @@ def calcul_distance():
 def writeDataOnFile(list_te):
     csv_content = []
     column_names = ["Start","End","before_start","before_end","after_start","after_end",
-    "superset_start","superset_end","subset_start","subset_end"]
+    "superset_start","superset_end","subset_start","subset_end","upstream_overlap","downstream_overlap"]
     for n in range(len(list_te)):
         csv_content.append([])
         csv_content[n].append(list_te[n]['start'])
@@ -193,6 +213,8 @@ def writeDataOnFile(list_te):
         csv_content[n].append(list_te[n]['superset_end'])
         csv_content[n].append(list_te[n]['subset_start'])
         csv_content[n].append(list_te[n]['subset_end'])
+        csv_content[n].append(list_te[n]['upstream_overlap'])
+        csv_content[n].append(list_te[n]['downstream_overlap'])
     with open('ResultFile.tsv', 'w') as csvfile:
         filewriter = csv.writer(csvfile, delimiter='\t')
         filewriter.writerow(column_names)
