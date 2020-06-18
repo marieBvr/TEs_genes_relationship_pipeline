@@ -76,9 +76,10 @@ def check_superset_subset_genes(te,gene):
 
         # loop to compare all the genes to the TE
         for j in range(len(gene)): 
+            distances = calcul_distance(te[i],gene[j])
 
             #check if the TE is inside the gene
-            if(te[i]['start'] > gene[j]['start'] and te[i]['end']<gene[j]['end']):
+            if(distances[0] < 0 and distances[1] < 0 and distances[2] > 0 and distances[3] < 0):
                 print(te[i]['name'], "is in", gene[j]['name'])
                 te[i]['superset_start'] = gene[j]['start']
                 te[i]['superset_end'] = gene[j]['end']
@@ -86,115 +87,86 @@ def check_superset_subset_genes(te,gene):
                 
             
             #check if the TE is over the gene
-            if (te[i]['start'] < gene[j]['start'] and te[i]['end'] > gene[j]['end']):
+            if(distances[0] < 0 and distances[1] < 0 and distances[2] < 0 and distances[3] > 0):
                 print(te[i]['name'], "is over", gene[j]['name'])
                 te[i]['subset_start'] = gene[j]['start']
                 te[i]['subset_end'] = gene[j]['end']
-    return 
 
-def find_overlap_upstream(te,gene):
-    overlap = np.NAN
-    
-    #check if the TE starts before the gene ends
-    if(te['start'] < gene['end']):
-        overlap = abs(te['start'] - gene['end']) 
-    return overlap
-    
-def find_overlap_downstream(te,gene):
-    overlap = np.NAN
-    
-    #check if the TE ends before the gene starts
-    if(te['end'] > gene['start']):
-        overlap = abs(gene['start'] - te['end'])
-    return overlap
 
 def check_downstream_genes(te,gene):
-    distance = te[0]['length_chromo'] 
-    closest_gene = 0
-    closest_gene_index = 0
-    closest_gene_start = 0
-    closest_gene_end = 0
+    closest_gene = None
 
     for i in range(len(te)):
-        t_end = te[i]['end'] # End of the TE
+        te[i]['after_start'] = np.NAN
+        te[i]['after_end'] = np.NAN
+        te[i]['downstream_overlap'] = np.NAN
+
 
         for j in range(len(gene)): # loop to compare all the genes to the TE
-            g_end = gene[j]['end'] # End of the gene 
-            
-            #find genes that end after the end of the TE, and doesn't start before the start of the TE
-            if(t_end < g_end and te[i]['start'] < gene[j]['start']): 
+            distances = calcul_distance(te[i],gene[j])
 
-                #calculate the distance between gene and TE and stock the current gene if it is closer
-                if g_end - t_end < distance: 
-                    distance = g_end - t_end
-                    #print(distance)
-                    closest_gene_index = j #index of the new closest gene
-                    closest_gene = gene[j]['name'] # id of the new closest gene
-                    closest_gene_start = gene[j]['start'] #start of the new closest gene
-                    closest_gene_end = gene[j]['end'] #end of the new closest gene
-                    overlap = find_overlap_downstream(te[i], gene[j])
+            #find downstream genes with overlap
+            if(distances[0] < 0 and distances[1] < 0 and distances[2] > 0 and distances[3] > 0): 
+                closest_gene = gene[j]
+                te[i]['after_start'] = gene[j]['start']
+                te[i]['after_end'] = gene[j]['end']
+                te[i]['downstream_overlap'] = abs(distances[1])
+                break
+
+            #find genes downstream
+            if(distances[0] < 0 and distances[1] > 0 and distances[2] > 0 and distances[3] > 0):
+                closest_gene = gene[j]
+                te[i]['after_start'] = gene[j]['start']
+                te[i]['after_end'] = gene[j]['end']
+                break
 
         #make sure that if the TE is followed by another TE there is no downstream gene
         for k in range(len(te)):
             start_value = te[k]['start']
-            if(start_value > te[i]['end'] and start_value < gene[closest_gene_index]['start']):
-                closest_gene = np.NAN
-                closest_gene_start = np.NAN
-                closest_gene_end = np.NAN
-
-        distance = te[0]['length_chromo'] 
-
-        te[i]['after_start'] = closest_gene_start
-        te[i]['after_end'] = closest_gene_end
-        te[i]['downstream_overlap'] = overlap
-        print(closest_gene, "is downstream from ",te[i]['name'], closest_gene_start, closest_gene_end) # id du gène le plus proche du transposon d'intérêt
-
-    return closest_gene_start, closest_gene_end
+            if(start_value > te[i]['end'] and start_value < closest_gene['start']):
+                te[i]['after_start'] = np.NAN
+                te[i]['after_end'] = np.NAN
 
 def check_upstream_genes(te,gene):
-    distance = te[0]['length_chromo'] 
-    closest_gene = 0
-    closest_gene_index = 0
-    closest_gene_start = 0
-    closest_gene_end = 0
+    closest_gene = None
+    gene = gene[::-1]
 
     for i in range(len(te)):
-        t_start = te[i]['start'] # Start of the TE
+        te[i]['before_start'] = np.NAN
+        te[i]['before_end'] = np.NAN
+        te[i]['upstream_overlap'] = np.NAN
 
         for j in range(len(gene)): # loop to compare all the genes to the TE
-            g_start = gene[j]['start'] # start of the gene 
+            distances = calcul_distance(te[i],gene[j])
             
-            #find genes that start before the start of the TE, and doesn't end after the end of the TE
-            if(t_start > g_start and te[i]['end'] > gene[j]['end']): 
+            #find overlap with gene upstream 
+            if(distances[0] < 0 and distances[1] < 0 and distances[2] < 0 and distances[3] < 0): 
+                closest_gene = gene[j]
+                te[i]['before_start'] = gene[j]['start']
+                te[i]['before_end'] = gene[j]['end']
+                te[i]['upstream_overlap'] = abs(distances[0])
+                break
 
-                #calculate the distance between gene and TE and stock the current gene if it is closer
-                if t_start - g_start < distance: 
-                    distance = t_start - g_start 
-                    closest_gene_index = j #index of the new closest gene
-                    closest_gene = gene[j]['name'] # id of the new closest gene
-                    closest_gene_start = gene[j]['start'] #start of the new closest gene
-                    closest_gene_end = gene[j]['end'] #end of the new closest gene
-                    overlap = find_overlap_upstream(te[i], gene[j])
+            #find genes upstream
+            if(distances[0] > 0 and distances[1] < 0 and distances[2] < 0 and distances[3] < 0):
+                closest_gene = gene[j]
+                te[i]['before_start'] = gene[j]['start']
+                te[i]['before_end'] = gene[j]['end']
+                break
     
         #make sure that if the TE is preceded by another TE there is no upstream gene
         for k in range(len(te)):
-            end_value = te[k]['end']
-            if(end_value < te[i]['start'] and end_value > gene[closest_gene_index]['end']):
-                closest_gene = np.NAN
-                closest_gene_start = np.NAN
-                closest_gene_end = np.NAN
+            if(te[i]['start'] > te[k]['end'] and closest_gene['end'] < te[k]['end']):
+                te[i]['before_start'] = np.NAN
+                te[i]['before_end'] = np.NAN
 
-        distance = te[0]['length_chromo'] 
-
-        te[i]['before_start'] = closest_gene_start
-        te[i]['before_end'] = closest_gene_end
-        te[i]['upstream_overlap'] = overlap
-        print(closest_gene, "is upstream from ",te[i]['name'], closest_gene_start, closest_gene_end) # id du gène le plus proche du transposon d'intérêt
-
-    return closest_gene_start, closest_gene_end
-
-def calcul_distance():
-    print('function calcul distance')
+def calcul_distance(te,gene):
+    distance1 = te['start'] - gene['end']
+    distance2 = gene['start'] - te['end']
+    distance3 = gene['end'] - te['end']
+    distance4 = gene['start'] - te['start']
+    
+    return [distance1, distance2, distance3, distance4]
 
 
 def writeDataOnFile(list_te):
