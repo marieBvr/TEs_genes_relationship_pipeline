@@ -80,7 +80,7 @@ def check_superset_subset_genes(te,gene):
 
             #check if the TE is inside the gene
             if(distances[0] < 0 and distances[1] < 0 and distances[2] > 0 and distances[3] < 0):
-                print(te[i]['name'], "is in", gene[j]['name'])
+                #print(te[i]['name'], "is in", gene[j]['name'])
                 te[i]['superset_start'] = gene[j]['start']
                 te[i]['superset_end'] = gene[j]['end']
                 te[i]['superset_end'] = gene[j]['end']
@@ -88,7 +88,7 @@ def check_superset_subset_genes(te,gene):
             
             #check if the TE is over the gene
             if(distances[0] < 0 and distances[1] < 0 and distances[2] < 0 and distances[3] > 0):
-                print(te[i]['name'], "is over", gene[j]['name'])
+                #print(te[i]['name'], "is over", gene[j]['name'])
                 te[i]['subset_start'] = gene[j]['start']
                 te[i]['subset_end'] = gene[j]['end']
 
@@ -104,7 +104,10 @@ def check_downstream_genes(te,gene):
 
         for j in range(len(gene)): # loop to compare all the genes to the TE
             distances = calcul_distance(te[i],gene[j])
-
+            te[i]['Down_TEstart-Geneend'] = distances[0] ######################################################## pour ajouter sur la distance sur le fichier
+            te[i]['Down_Genestart-TEend'] = distances[1] ######################################################## pour ajouter sur la distance sur le fichier
+            te[i]['Down_Geneend-TEend'] = distances[2] ######################################################## pour ajouter sur la distance sur le fichier
+            te[i]['Down_Genestart-TEstart'] = distances[3] ######################################################## pour ajouter sur la distance sur le fichier
             #find downstream genes with overlap
             if(distances[0] < 0 and distances[1] < 0 and distances[2] > 0 and distances[3] > 0): 
                 closest_gene = gene[j]
@@ -138,7 +141,11 @@ def check_upstream_genes(te,gene):
 
         for j in range(len(gene)): # loop to compare all the genes to the TE
             distances = calcul_distance(te[i],gene[j])
-            
+            te[i]['Up_TEstart-Geneend'] = distances[0] ######################################################## pour ajouter sur la distance sur le fichier
+            te[i]['Up_Genestart-TEend'] = distances[1] ######################################################## pour ajouter sur la distance sur le fichier
+            te[i]['Up_Geneend-TEend'] = distances[2] ######################################################## pour ajouter sur la distance sur le fichier
+            te[i]['Up_Genestart-TEstart'] = distances[3] ######################################################## pour ajouter sur la distance sur le fichier
+            #print(te)
             #find overlap with gene upstream 
             if(distances[0] < 0 and distances[1] < 0 and distances[2] < 0 and distances[3] < 0): 
                 closest_gene = gene[j]
@@ -170,10 +177,14 @@ def calcul_distance(te,gene):
 
 
 def writeDataOnFile(list_te):
+    print(list_te)
     csv_content = []
-    column_names = ["Start","End","before_start","before_end","after_start","after_end",
-    "superset_start","superset_end","subset_start","subset_end","upstream_overlap","downstream_overlap"]
+    column_names = ["start","end","before_start","before_end","after_start","after_end",
+    "superset_start","superset_end","subset_start","subset_end","upstream_overlap","downstream_overlap",
+    "Down_TEstart-Geneend","Down_Genestart-TEend","Down_Geneend-TEend","Down_Genestart-TEstart",
+    "Up_TEstart-Geneend","Up_Genestart-TEend","Up_Geneend-TEend","Up_Genestart-TEstart"]
     for n in range(len(list_te)):
+
         csv_content.append([])
         csv_content[n].append(list_te[n]['start'])
         csv_content[n].append(list_te[n]['end'])
@@ -187,6 +198,16 @@ def writeDataOnFile(list_te):
         csv_content[n].append(list_te[n]['subset_end'])
         csv_content[n].append(list_te[n]['upstream_overlap'])
         csv_content[n].append(list_te[n]['downstream_overlap'])
+
+        csv_content[n].append(list_te[n]['Down_TEstart-Geneend'])
+        csv_content[n].append(list_te[n]['Down_Genestart-TEend'])
+        csv_content[n].append(list_te[n]['Down_Geneend-TEend'])
+        csv_content[n].append(list_te[n]['Down_Genestart-TEstart'])
+
+        csv_content[n].append(list_te[n]['Up_TEstart-Geneend'])
+        csv_content[n].append(list_te[n]['Up_Genestart-TEend'])
+        csv_content[n].append(list_te[n]['Up_Geneend-TEend'])
+        csv_content[n].append(list_te[n]['Up_Genestart-TEstart'])
     with open('ResultFile.tsv', 'w') as csvfile:
         filewriter = csv.writer(csvfile, delimiter='\t')
         filewriter.writerow(column_names)
@@ -211,8 +232,8 @@ te=Extract_data('Exemple_file/te.tsv')
 list_gene = GeneDico(gene)
 list_te = TEDico(te)
 
-print("liste gene ", list_gene)
-print("liste te ", list_te)
+#print("liste gene ", list_gene)
+#print("liste te ", list_te)
 
 check_superset_subset_genes(list_te, list_gene)
 check_downstream_genes(list_te, list_gene)

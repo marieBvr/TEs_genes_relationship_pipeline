@@ -1,7 +1,7 @@
-Start	End	before_start	before_end	after_start	after_end	superset_start	superset_end	subset_start	subset_end	upstream_overlap	downstream_overlap
-300	400	100	250	600	900	nan	nan	nan	nan	nan	nan
-800	1000	600	900	nan	nan	nan	nan	nan	nan	100	nan
-1100	1400	nan	nan	1200	1600	nan	nan	nan	nan	nan	200
-1900	2000	1200	1600	nan	nan	1800	3000	nan	nan	nan	nan
-2200	2400	nan	nan	4000	5000	1800	3000	nan	nan	nan	nan
-5200	7300	4000	5000	7500	9000	nan	nan	5500	6500	nan	nan
+start	end	before_start	before_end	after_start	after_end	superset_start	superset_end	subset_start	subset_end	upstream_overlap	downstream_overlap	Down_TEstart-Geneend	Down_Genestart-TEend	Down_Geneend-TEend	Down_Genestart-TEstart	Up_TEstart-Geneend	Up_Genestart-TEend	Up_Geneend-TEend	Up_Genestart-TEstart
+300	400	100	250	600	900	nan	nan	nan	nan	nan	nan	-600	200	500	300	50	-300	-150	-200
+800	1000	600	900	nan	nan	nan	nan	nan	nan	100	nan	-800	200	600	400	-100	-400	-100	-200
+1100	1400	nan	nan	1200	1600	nan	nan	nan	nan	nan	200	-500	-200	200	100	200	-800	-500	-500
+1900	2000	1200	1600	nan	nan	1800	3000	nan	nan	nan	nan	-3100	2000	3000	2100	300	-800	-400	-700
+2200	2400	nan	nan	4000	5000	1800	3000	nan	nan	nan	nan	-2800	1600	2600	1800	600	-1200	-800	-1000
+5200	7300	4000	5000	7500	9000	nan	nan	5500	6500	nan	nan	-3800	200	1700	2300	200	-3300	-2300	-1200
