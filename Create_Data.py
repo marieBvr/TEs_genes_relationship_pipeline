@@ -27,7 +27,7 @@ def Extract_data(file):
 
         for i in range (1,len(listForLine)):
             #select line that doesn't start with # or space to delet de comment of the gff/tsv file
-            if ("#" and " " not in listForLine[i][0]):
+            if ("#" or " " not in listForLine[i][0]):
                  wholeListes.append(listForLine[i])
         return  wholeListes 
 
@@ -61,23 +61,26 @@ def TEDico(list):
     ListOfDicoTE=[]
     for element in list:
         #make a new list for each chromosome
-        if(chr_ != element[7]):
-            chr_ = element[7]
+        if(chr_ != element[0]):
+            chr_ = element[0]
             ListOfDicoTE.append([])
             i = i + 1
         dico_TE = {
-        'chromosome':element[0],
+        'chr':element[0],
         'length_chromo':int(element[1]),
-        'name':element[2],
+        'type':element[2],
         'match':element[3],
         'start': int(element[4]),
         'end': int(element[5]),
         'length':element[6],
         'score':element[7],
         'strand':element[8],
-        'phase':element[9],
-        'ID':element[10],
-        'attribute':element[11]
+        'frame':element[9],
+        'attribute':element[10],
+        'code':element[11],
+        'class':element[12],
+        'TE_name':element[13],
+        'TE_status':element[14]
         }
         ListOfDicoTE.append(dico_TE)
     #print(ListOfDicoTE)
@@ -133,6 +136,7 @@ def check_superset_subset_genes(te,gene):
                 te[ch][i]['subset_id'] = np.NAN
                 te[ch][i]['subset_strand'] = np.NAN
                 te[ch][i]['subset_feature'] = np.NAN
+    return te
 
 
 
@@ -205,6 +209,7 @@ def check_downstream_genes(te,gene):
                     te[ch][i]['after_id'] = np.NAN
                     te[ch][i]['after_start'] = np.NAN
                     te[ch][i]['after_end'] = np.NAN
+    return te
 
 def check_upstream_genes(te,gene):
     closest_gene = None
@@ -281,6 +286,7 @@ def check_upstream_genes(te,gene):
                     te[ch][i]['before_id'] = np.NaN
 
     print(te)
+    return te
 
 def calcul_distance(te,gene):
     distance1 = te['start'] - gene['end']
@@ -293,7 +299,7 @@ def calcul_distance(te,gene):
 
 def writeDataOnFile(list_te):
     print(list_te)
-    csv_content = []
+    '''csv_content = []
     column_names = ["start","end","before_start","before_end","after_start","after_end",
     "superset_start","superset_end","subset_start","subset_end","upstream_overlap","downstream_overlap",
     "Down_TEstart-Geneend","Down_Genestart-TEend","Down_Geneend-TEend","Down_Genestart-TEstart",
@@ -322,14 +328,16 @@ def writeDataOnFile(list_te):
         csv_content[n].append(list_te[n]['Up_TEstart-Geneend'])
         csv_content[n].append(list_te[n]['Up_Genestart-TEend'])
         csv_content[n].append(list_te[n]['Up_Geneend-TEend'])
-        csv_content[n].append(list_te[n]['Up_Genestart-TEstart'])
+        csv_content[n].append(list_te[n]['Up_Genestart-TEstart'])'''
 
 
     with open('ResultFile_TE.tsv', 'w') as csvfile:
         filewriter = csv.writer(csvfile, delimiter='\t')
-        filewriter.writerow(column_names)
-        for i in range(len(csv_content)):
-            filewriter.writerow(csv_content[i])
+        #filewriter.writerow(column_names)
+        #for i in range(len(csv_content)):
+        #    filewriter.writerow(csv_content[i])
+        for i in range(len(list_te)):
+            filewriter.writerow(list_te[i])
     csvfile.close()
 
 
@@ -344,15 +352,15 @@ def writeDataOnFile(list_te):
 #==============================================================================
 
 gene=Extract_data('real_gene_data.tsv')
-te=Extract_data('real_TE_data/te.tsv')
-
+te=Extract_data('real_TE_data.tsv')
+print(te)
 list_gene = GeneDico(gene)
 list_te = TEDico(te)
 
 #print("liste gene ", list_gene)
 #print("liste te ", list_te)
 
-check_superset_subset_genes(list_te, list_gene)
-check_downstream_genes(list_te, list_gene)
-check_upstream_genes(list_te, list_gene)
-writeDataOnFile(list_te)
+liste_te1= check_superset_subset_genes(list_te, list_gene)
+liste_te2=check_downstream_genes(liste_te1, list_gene)
+liste_te3=check_upstream_genes(liste_te2, list_gene)
+writeDataOnFile(liste_te3)
