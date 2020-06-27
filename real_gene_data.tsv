@@ -1,0 +1,334 @@
+chromosome	source	feature	start	end	score	strand	phase	ID	Attributes	
+chr1	transdecoder	gene	1	536	.	-	.	ID=Pruma.1G000100	Name=Pruma.1G000100%20type%3A3prime_partial%20len%3A179%20%28%2B%29%2Cscore%3D35.94	
+chr1	transdecoder	mRNA	1	536	.	-	.	ID=Pruma.1G000100.t1.p1	Parent=Pruma.1G000100	Name=Pruma.1G000100%20type%3A3prime_partial%20len%3A179%20%28%2B%29%2Cscore%3D35.94
+chr1	transdecoder	exon	1	536	.	-	.	ID=Pruma.1G000100.t1.p1.exon1	Parent=Pruma.1G000100.t1.p1	
+chr1	transdecoder	CDS	3	536	.	-	0	ID=cds.Pruma.1G000100.t1.p1	Parent=Pruma.1G000100.t1.p1	
+chr1	transdecoder	gene	5351	6535	.	-	.	ID=Pruma.1G000200	Name=Pruma.1G000200%20type%3Acomplete%20len%3A334%20%28%2B%29%2Cscore%3D59.56	
+chr1	transdecoder	mRNA	5351	6535	.	-	.	ID=Pruma.1G000200.t1.p1	Parent=Pruma.1G000200	Name=Pruma.1G000200%20type%3Acomplete%20len%3A334%20%28%2B%29%2Cscore%3D59.56
+chr1	transdecoder	exon	5351	6004	.	-	.	ID=Pruma.1G000200.t1.p1.exon3	Parent=Pruma.1G000200.t1.p1	
+chr1	transdecoder	CDS	5351	6004	.	-	0	ID=cds.Pruma.1G000200.t1.p1	Parent=Pruma.1G000200.t1.p1	
+chr1	transdecoder	CDS	6087	6192	.	-	1	ID=cds.Pruma.1G000200.t1.p1	Parent=Pruma.1G000200.t1.p1	
+chr1	transdecoder	exon	6087	6192	.	-	.	ID=Pruma.1G000200.t1.p1.exon2	Parent=Pruma.1G000200.t1.p1	
+chr1	transdecoder	exon	6294	6535	.	-	.	ID=Pruma.1G000200.t1.p1.exon1	Parent=Pruma.1G000200.t1.p1	
+chr1	transdecoder	CDS	6294	6535	.	-	0	ID=cds.Pruma.1G000200.t1.p1	Parent=Pruma.1G000200.t1.p1	
+chr1	transdecoder	gene	6969	7682	.	-	.	ID=Pruma.1G000300	Name=Pruma.1G000300%20type%3Acomplete%20len%3A238%20%28%2B%29%2Cscore%3D51.32	
+chr1	transdecoder	mRNA	6969	7682	.	-	.	ID=Pruma.1G000300.t1.p1	Parent=Pruma.1G000300	Name=Pruma.1G000300%20type%3Acomplete%20len%3A238%20%28%2B%29%2Cscore%3D51.32
+chr1	transdecoder	CDS	6969	7682	.	-	0	ID=cds.Pruma.1G000300.t1.p1	Parent=Pruma.1G000300.t1.p1	
+chr1	transdecoder	exon	6969	7682	.	-	.	ID=Pruma.1G000300.t1.p1.exon1	Parent=Pruma.1G000300.t1.p1	
+chr1	transdecoder	gene	12445	13735	.	+	.	ID=Pruma.1G000400	Name=Pruma.1G000400%20type%3Acomplete%20len%3A224%20%28%2B%29%2Cscore%3D42.65	
+chr1	transdecoder	mRNA	12445	13735	.	+	.	ID=Pruma.1G000400.t1.p1	Parent=Pruma.1G000400	Name=Pruma.1G000400%20type%3Acomplete%20len%3A224%20%28%2B%29%2Cscore%3D42.65
+chr1	transdecoder	CDS	12445	12864	.	+	0	ID=cds.Pruma.1G000400.t1.p1	Parent=Pruma.1G000400.t1.p1	
+chr1	transdecoder	exon	12445	12864	.	+	.	ID=Pruma.1G000400.t1.p1.exon1	Parent=Pruma.1G000400.t1.p1	
+chr1	transdecoder	CDS	13484	13735	.	+	0	ID=cds.Pruma.1G000400.t1.p1	Parent=Pruma.1G000400.t1.p1	
+chr1	transdecoder	exon	13484	13735	.	+	.	ID=Pruma.1G000400.t1.p1.exon2	Parent=Pruma.1G000400.t1.p1	
+chr1	transdecoder	gene	14458	16275	.	+	.	ID=Pruma.1G000500	Name=Pruma.1G000500%20type%3Acomplete%20len%3A188%20%28%2B%29%2Cscore%3D57.08	
+chr1	transdecoder	mRNA	14458	16275	.	+	.	ID=Pruma.1G000500.t1.p1	Parent=Pruma.1G000500	Name=Pruma.1G000500%20type%3Acomplete%20len%3A188%20%28%2B%29%2Cscore%3D57.08
+chr1	transdecoder	exon	14458	14571	.	+	.	ID=Pruma.1G000500.t1.p1.exon1	Parent=Pruma.1G000500.t1.p1	
+chr1	transdecoder	CDS	14458	14571	.	+	0	ID=cds.Pruma.1G000500.t1.p1	Parent=Pruma.1G000500.t1.p1	
+chr1	transdecoder	CDS	14818	15030	.	+	0	ID=cds.Pruma.1G000500.t1.p1	Parent=Pruma.1G000500.t1.p1	
+chr1	transdecoder	exon	14818	15030	.	+	.	ID=Pruma.1G000500.t1.p1.exon2	Parent=Pruma.1G000500.t1.p1	
+chr1	transdecoder	exon	15866	16006	.	+	.	ID=Pruma.1G000500.t1.p1.exon3	Parent=Pruma.1G000500.t1.p1	
+chr1	transdecoder	CDS	15866	16006	.	+	0	ID=cds.Pruma.1G000500.t1.p1	Parent=Pruma.1G000500.t1.p1	
+chr1	transdecoder	exon	16180	16275	.	+	.	ID=Pruma.1G000500.t1.p1.exon4	Parent=Pruma.1G000500.t1.p1	
+chr1	transdecoder	CDS	16180	16275	.	+	0	ID=cds.Pruma.1G000500.t1.p1	Parent=Pruma.1G000500.t1.p1	
+chr1	transdecoder	gene	18952	22062	.	+	.	ID=Pruma.1G000600	Name=Pruma.1G000600%20type%3Acomplete%20len%3A663%20%28%2B%29%2Cscore%3D130.26	
+chr1	transdecoder	mRNA	18952	22062	.	+	.	ID=Pruma.1G000600.t1.p1	Parent=Pruma.1G000600	Name=Pruma.1G000600%20type%3Acomplete%20len%3A663%20%28%2B%29%2Cscore%3D130.26
+chr1	transdecoder	CDS	18952	19054	.	+	0	ID=cds.Pruma.1G000600.t1.p1	Parent=Pruma.1G000600.t1.p1	
+chr1	transdecoder	exon	18952	19054	.	+	.	ID=Pruma.1G000600.t1.p1.exon1	Parent=Pruma.1G000600.t1.p1	
+chr1	transdecoder	CDS	19260	19738	.	+	2	ID=cds.Pruma.1G000600.t1.p1	Parent=Pruma.1G000600.t1.p1	
+chr1	transdecoder	exon	19260	19738	.	+	.	ID=Pruma.1G000600.t1.p1.exon2	Parent=Pruma.1G000600.t1.p1	
+chr1	transdecoder	exon	19829	20296	.	+	.	ID=Pruma.1G000600.t1.p1.exon3	Parent=Pruma.1G000600.t1.p1	
+chr1	transdecoder	CDS	19829	20296	.	+	0	ID=cds.Pruma.1G000600.t1.p1	Parent=Pruma.1G000600.t1.p1	
+chr1	transdecoder	exon	20678	20877	.	+	.	ID=Pruma.1G000600.t1.p1.exon4	Parent=Pruma.1G000600.t1.p1	
+chr1	transdecoder	CDS	20678	20877	.	+	0	ID=cds.Pruma.1G000600.t1.p1	Parent=Pruma.1G000600.t1.p1	
+chr1	transdecoder	CDS	20978	21121	.	+	1	ID=cds.Pruma.1G000600.t1.p1	Parent=Pruma.1G000600.t1.p1	
+chr1	transdecoder	exon	20978	21121	.	+	.	ID=Pruma.1G000600.t1.p1.exon5	Parent=Pruma.1G000600.t1.p1	
+chr1	transdecoder	CDS	21223	21327	.	+	1	ID=cds.Pruma.1G000600.t1.p1	Parent=Pruma.1G000600.t1.p1	
+chr1	transdecoder	exon	21223	21327	.	+	.	ID=Pruma.1G000600.t1.p1.exon6	Parent=Pruma.1G000600.t1.p1	
+chr1	transdecoder	CDS	21507	21868	.	+	1	ID=cds.Pruma.1G000600.t1.p1	Parent=Pruma.1G000600.t1.p1	
+chr1	transdecoder	exon	21507	21868	.	+	.	ID=Pruma.1G000600.t1.p1.exon7	Parent=Pruma.1G000600.t1.p1	
+chr1	transdecoder	exon	21935	22062	.	+	.	ID=Pruma.1G000600.t1.p1.exon8	Parent=Pruma.1G000600.t1.p1	
+chr1	transdecoder	CDS	21935	22062	.	+	2	ID=cds.Pruma.1G000600.t1.p1	Parent=Pruma.1G000600.t1.p1	
+chr1	transdecoder	gene	23379	23900	.	-	.	ID=Pruma.1G000700	Name=Pruma.1G000700%20type%3Acomplete%20len%3A174%20%28%2B%29%2Cscore%3D38.56	
+chr1	transdecoder	mRNA	23379	23900	.	-	.	ID=Pruma.1G000700.t1.p1	Parent=Pruma.1G000700	Name=Pruma.1G000700%20type%3Acomplete%20len%3A174%20%28%2B%29%2Cscore%3D38.56
+chr1	transdecoder	exon	23379	23900	.	-	.	ID=Pruma.1G000700.t1.p1.exon1	Parent=Pruma.1G000700.t1.p1	
+chr1	transdecoder	CDS	23379	23900	.	-	0	ID=cds.Pruma.1G000700.t1.p1	Parent=Pruma.1G000700.t1.p1	
+chr1	transdecoder	gene	26598	27561	.	-	.	ID=Pruma.1G000800	Name=Pruma.1G000800%20type%3Acomplete%20len%3A155%20%28%2B%29%2Cscore%3D23.80	
+chr1	transdecoder	mRNA	26598	27561	.	-	.	ID=Pruma.1G000800.t1.p1	Parent=Pruma.1G000800	Name=Pruma.1G000800%20type%3Acomplete%20len%3A155%20%28%2B%29%2Cscore%3D23.80
+chr1	transdecoder	exon	26598	26693	.	-	.	ID=Pruma.1G000800.t1.p1.exon3	Parent=Pruma.1G000800.t1.p1	
+chr1	transdecoder	CDS	26598	26693	.	-	0	ID=cds.Pruma.1G000800.t1.p1	Parent=Pruma.1G000800.t1.p1	
+chr1	transdecoder	exon	26867	27146	.	-	.	ID=Pruma.1G000800.t1.p1.exon2	Parent=Pruma.1G000800.t1.p1	
+chr1	transdecoder	CDS	26867	27146	.	-	1	ID=cds.Pruma.1G000800.t1.p1	Parent=Pruma.1G000800.t1.p1	
+chr1	transdecoder	CDS	27473	27561	.	-	0	ID=cds.Pruma.1G000800.t1.p1	Parent=Pruma.1G000800.t1.p1	
+chr1	transdecoder	exon	27473	27561	.	-	.	ID=Pruma.1G000800.t1.p1.exon1	Parent=Pruma.1G000800.t1.p1	
+chr1	transdecoder	gene	29361	30068	.	-	.	ID=Pruma.1G000900	Name=Pruma.1G000900%20type%3Acomplete%20len%3A236%20%28%2B%29%2Cscore%3D48.91	
+chr1	transdecoder	mRNA	29361	30068	.	-	.	ID=Pruma.1G000900.t1.p1	Parent=Pruma.1G000900	Name=Pruma.1G000900%20type%3Acomplete%20len%3A236%20%28%2B%29%2Cscore%3D48.91
+chr1	transdecoder	exon	29361	30068	.	-	.	ID=Pruma.1G000900.t1.p1.exon1	Parent=Pruma.1G000900.t1.p1	
+chr1	transdecoder	CDS	29361	30068	.	-	0	ID=cds.Pruma.1G000900.t1.p1	Parent=Pruma.1G000900.t1.p1	
+chr1	transdecoder	gene	31056	33523	.	-	.	ID=Pruma.1G001000	Name=Pruma.1G001000%20type%3Acomplete%20len%3A794%20%28%2B%29%2Cscore%3D148.23	
+chr1	transdecoder	mRNA	31056	33523	.	-	.	ID=Pruma.1G001000.t1.p1	Parent=Pruma.1G001000	Name=Pruma.1G001000%20type%3Acomplete%20len%3A794%20%28%2B%29%2Cscore%3D148.23
+chr1	transdecoder	exon	31056	32759	.	-	.	ID=Pruma.1G001000.t1.p1.exon2	Parent=Pruma.1G001000.t1.p1	
+chr1	transdecoder	CDS	31056	32759	.	-	0	ID=cds.Pruma.1G001000.t1.p1	Parent=Pruma.1G001000.t1.p1	
+chr1	transdecoder	CDS	32846	33523	.	-	0	ID=cds.Pruma.1G001000.t1.p1	Parent=Pruma.1G001000.t1.p1	
+chr1	transdecoder	exon	32846	33523	.	-	.	ID=Pruma.1G001000.t1.p1.exon1	Parent=Pruma.1G001000.t1.p1	
+chr1	transdecoder	gene	33564	35279	.	-	.	ID=Pruma.1G001100	Name=Pruma.1G001100%20type%3Acomplete%20len%3A539%20%28%2B%29%2Cscore%3D139.06	
+chr1	transdecoder	mRNA	33564	35279	.	-	.	ID=Pruma.1G001100.t1.p1	Parent=Pruma.1G001100	Name=Pruma.1G001100%20type%3Acomplete%20len%3A539%20%28%2B%29%2Cscore%3D139.06
+chr1	transdecoder	exon	33564	34913	.	-	.	ID=Pruma.1G001100.t1.p1.exon2	Parent=Pruma.1G001100.t1.p1	
+chr1	transdecoder	CDS	33564	34913	.	-	0	ID=cds.Pruma.1G001100.t1.p1	Parent=Pruma.1G001100.t1.p1	
+chr1	transdecoder	exon	35013	35279	.	-	.	ID=Pruma.1G001100.t1.p1.exon1	Parent=Pruma.1G001100.t1.p1	
+chr1	transdecoder	CDS	35013	35279	.	-	0	ID=cds.Pruma.1G001100.t1.p1	Parent=Pruma.1G001100.t1.p1	
+chr1	transdecoder	gene	36087	37691	.	+	.	ID=Pruma.1G001200	Name=Pruma.1G001200%20type%3Acomplete%20len%3A473%20%28%2B%29%2Cscore%3D49.98	
+chr1	transdecoder	mRNA	36087	37691	.	+	.	ID=Pruma.1G001200.t1.p1	Parent=Pruma.1G001200	Name=Pruma.1G001200%20type%3Acomplete%20len%3A473%20%28%2B%29%2Cscore%3D49.98
+chr1	transdecoder	exon	36087	36596	.	+	.	ID=Pruma.1G001200.t1.p1.exon1	Parent=Pruma.1G001200.t1.p1	
+chr1	transdecoder	CDS	36087	36596	.	+	0	ID=cds.Pruma.1G001200.t1.p1	Parent=Pruma.1G001200.t1.p1	
+chr1	transdecoder	exon	36783	37691	.	+	.	ID=Pruma.1G001200.t1.p1.exon2	Parent=Pruma.1G001200.t1.p1	
+chr1	transdecoder	CDS	36783	37691	.	+	0	ID=cds.Pruma.1G001200.t1.p1	Parent=Pruma.1G001200.t1.p1	
+chr1	transdecoder	gene	39095	39811	.	-	.	ID=Pruma.1G001300	Name=Pruma.1G001300%20type%3Acomplete%20len%3A239%20%28%2B%29%2Cscore%3D43.81	
+chr1	transdecoder	mRNA	39095	39811	.	-	.	ID=Pruma.1G001300.t1.p1	Parent=Pruma.1G001300	Name=Pruma.1G001300%20type%3Acomplete%20len%3A239%20%28%2B%29%2Cscore%3D43.81
+chr1	transdecoder	exon	39095	39811	.	-	.	ID=Pruma.1G001300.t1.p1.exon1	Parent=Pruma.1G001300.t1.p1	
+chr1	transdecoder	CDS	39095	39811	.	-	0	ID=cds.Pruma.1G001300.t1.p1	Parent=Pruma.1G001300.t1.p1	
+chr1	transdecoder	gene	41671	44000	.	+	.	ID=Pruma.1G001400	Name=Pruma.1G001400%20type%3Acomplete%20len%3A633%20%28%2B%29%2Cscore%3D79.63	
+chr1	transdecoder	mRNA	41671	44000	.	+	.	ID=Pruma.1G001400.t1.p1	Parent=Pruma.1G001400	Name=Pruma.1G001400%20type%3Acomplete%20len%3A633%20%28%2B%29%2Cscore%3D79.63
+chr1	transdecoder	CDS	41671	42502	.	+	0	ID=cds.Pruma.1G001400.t1.p1	Parent=Pruma.1G001400.t1.p1	
+chr1	transdecoder	exon	41671	42502	.	+	.	ID=Pruma.1G001400.t1.p1.exon1	Parent=Pruma.1G001400.t1.p1	
+chr1	transdecoder	exon	42653	42703	.	+	.	ID=Pruma.1G001400.t1.p1.exon2	Parent=Pruma.1G001400.t1.p1	
+chr1	transdecoder	CDS	42653	42703	.	+	2	ID=cds.Pruma.1G001400.t1.p1	Parent=Pruma.1G001400.t1.p1	
+chr1	transdecoder	exon	42985	44000	.	+	.	ID=Pruma.1G001400.t1.p1.exon3	Parent=Pruma.1G001400.t1.p1	
+chr1	transdecoder	CDS	42985	44000	.	+	2	ID=cds.Pruma.1G001400.t1.p1	Parent=Pruma.1G001400.t1.p1	
+chr1	transdecoder	gene	47768	51933	.	-	.	ID=Pruma.1G001500	Name=Pruma.1G001500%20type%3Acomplete%20len%3A748%20%28%2B%29%2Cscore%3D186.01	
+chr1	transdecoder	mRNA	47768	51933	.	-	.	ID=Pruma.1G001500.t1.p1	Parent=Pruma.1G001500	Name=Pruma.1G001500%20type%3Acomplete%20len%3A748%20%28%2B%29%2Cscore%3D186.01
+chr1	transdecoder	CDS	47768	48316	.	-	0	ID=cds.Pruma.1G001500.t1.p1	Parent=Pruma.1G001500.t1.p1	
+chr1	transdecoder	exon	47768	48316	.	-	.	ID=Pruma.1G001500.t1.p1.exon4	Parent=Pruma.1G001500.t1.p1	
+chr1	transdecoder	exon	49079	49213	.	-	.	ID=Pruma.1G001500.t1.p1.exon3	Parent=Pruma.1G001500.t1.p1	
+chr1	transdecoder	CDS	49079	49213	.	-	0	ID=cds.Pruma.1G001500.t1.p1	Parent=Pruma.1G001500.t1.p1	
+chr1	transdecoder	CDS	49307	49677	.	-	2	ID=cds.Pruma.1G001500.t1.p1	Parent=Pruma.1G001500.t1.p1	
+chr1	transdecoder	exon	49307	49677	.	-	.	ID=Pruma.1G001500.t1.p1.exon2	Parent=Pruma.1G001500.t1.p1	
+chr1	transdecoder	CDS	50745	51933	.	-	0	ID=cds.Pruma.1G001500.t1.p1	Parent=Pruma.1G001500.t1.p1	
+chr1	transdecoder	exon	50745	51933	.	-	.	ID=Pruma.1G001500.t1.p1.exon1	Parent=Pruma.1G001500.t1.p1	
+chr1	transdecoder	gene	52002	53133	.	+	.	ID=Pruma.1G001600	Name=Pruma.1G001600%20type%3Acomplete%20len%3A119%20%28%2B%29%2Cscore%3D16.80	
+chr1	transdecoder	mRNA	52002	53133	.	+	.	ID=Pruma.1G001600.t1.p1	Parent=Pruma.1G001600	Name=Pruma.1G001600%20type%3Acomplete%20len%3A119%20%28%2B%29%2Cscore%3D16.80
+chr1	transdecoder	exon	52002	52155	.	+	.	ID=Pruma.1G001600.t1.p1.exon1	Parent=Pruma.1G001600.t1.p1	
+chr1	transdecoder	CDS	52002	52155	.	+	0	ID=cds.Pruma.1G001600.t1.p1	Parent=Pruma.1G001600.t1.p1	
+chr1	transdecoder	exon	52931	53133	.	+	.	ID=Pruma.1G001600.t1.p1.exon2	Parent=Pruma.1G001600.t1.p1	
+chr1	transdecoder	CDS	52931	53133	.	+	2	ID=cds.Pruma.1G001600.t1.p1	Parent=Pruma.1G001600.t1.p1	
+chr1	transdecoder	gene	55961	58017	.	-	.	ID=Pruma.1G001700	Name=Pruma.1G001700%20type%3Acomplete%20len%3A388%20%28%2B%29%2Cscore%3D90.33	
+chr1	transdecoder	mRNA	55961	58017	.	-	.	ID=Pruma.1G001700.t1.p1	Parent=Pruma.1G001700	Name=Pruma.1G001700%20type%3Acomplete%20len%3A388%20%28%2B%29%2Cscore%3D90.33
+chr1	transdecoder	exon	55961	56059	.	-	.	ID=Pruma.1G001700.t1.p1.exon7	Parent=Pruma.1G001700.t1.p1	
+chr1	transdecoder	CDS	55961	56059	.	-	0	ID=cds.Pruma.1G001700.t1.p1	Parent=Pruma.1G001700.t1.p1	
+chr1	transdecoder	exon	56175	56237	.	-	.	ID=Pruma.1G001700.t1.p1.exon6	Parent=Pruma.1G001700.t1.p1	
+chr1	transdecoder	CDS	56175	56237	.	-	0	ID=cds.Pruma.1G001700.t1.p1	Parent=Pruma.1G001700.t1.p1	
+chr1	transdecoder	CDS	56340	56402	.	-	0	ID=cds.Pruma.1G001700.t1.p1	Parent=Pruma.1G001700.t1.p1	
+chr1	transdecoder	exon	56340	56402	.	-	.	ID=Pruma.1G001700.t1.p1.exon5	Parent=Pruma.1G001700.t1.p1	
+chr1	transdecoder	exon	56790	56852	.	-	.	ID=Pruma.1G001700.t1.p1.exon4	Parent=Pruma.1G001700.t1.p1	
+chr1	transdecoder	CDS	56790	56852	.	-	0	ID=cds.Pruma.1G001700.t1.p1	Parent=Pruma.1G001700.t1.p1	
+chr1	transdecoder	CDS	56931	57065	.	-	0	ID=cds.Pruma.1G001700.t1.p1	Parent=Pruma.1G001700.t1.p1	
+chr1	transdecoder	exon	56931	57065	.	-	.	ID=Pruma.1G001700.t1.p1.exon3	Parent=Pruma.1G001700.t1.p1	
+chr1	transdecoder	exon	57202	57750	.	-	.	ID=Pruma.1G001700.t1.p1.exon2	Parent=Pruma.1G001700.t1.p1	
+chr1	transdecoder	CDS	57202	57750	.	-	0	ID=cds.Pruma.1G001700.t1.p1	Parent=Pruma.1G001700.t1.p1	
+chr1	transdecoder	exon	57826	58017	.	-	.	ID=Pruma.1G001700.t1.p1.exon1	Parent=Pruma.1G001700.t1.p1	
+chr1	transdecoder	CDS	57826	58017	.	-	0	ID=cds.Pruma.1G001700.t1.p1	Parent=Pruma.1G001700.t1.p1	
+chr1	transdecoder	gene	58830	61016	.	+	.	ID=Pruma.1G001800	Name=Pruma.1G001800%20type%3Acomplete%20len%3A113%20%28%2B%29%2Cscore%3D25.60	
+chr1	transdecoder	mRNA	58830	61016	.	+	.	ID=Pruma.1G001800.t1.p1	Parent=Pruma.1G001800	Name=Pruma.1G001800%20type%3Acomplete%20len%3A113%20%28%2B%29%2Cscore%3D25.60
+chr1	transdecoder	CDS	58830	58941	.	+	0	ID=cds.Pruma.1G001800.t1.p1	Parent=Pruma.1G001800.t1.p1	
+chr1	transdecoder	exon	58830	58941	.	+	.	ID=Pruma.1G001800.t1.p1.exon1	Parent=Pruma.1G001800.t1.p1	
+chr1	transdecoder	CDS	60790	61016	.	+	2	ID=cds.Pruma.1G001800.t1.p1	Parent=Pruma.1G001800.t1.p1	
+chr1	transdecoder	exon	60790	61016	.	+	.	ID=Pruma.1G001800.t1.p1.exon2	Parent=Pruma.1G001800.t1.p1	
+chr1	transdecoder	gene	61054	61736	.	+	.	ID=Pruma.1G001900	Name=Pruma.1G001900%20type%3Acomplete%20len%3A163%20%28%2B%29%2Cscore%3D24.16	
+chr1	transdecoder	mRNA	61054	61736	.	+	.	ID=Pruma.1G001900.t1.p1	Parent=Pruma.1G001900	Name=Pruma.1G001900%20type%3Acomplete%20len%3A163%20%28%2B%29%2Cscore%3D24.16
+chr1	transdecoder	CDS	61054	61246	.	+	0	ID=cds.Pruma.1G001900.t1.p1	Parent=Pruma.1G001900.t1.p1	
+chr1	transdecoder	exon	61054	61246	.	+	.	ID=Pruma.1G001900.t1.p1.exon1	Parent=Pruma.1G001900.t1.p1	
+chr1	transdecoder	CDS	61333	61451	.	+	2	ID=cds.Pruma.1G001900.t1.p1	Parent=Pruma.1G001900.t1.p1	
+chr1	transdecoder	exon	61333	61451	.	+	.	ID=Pruma.1G001900.t1.p1.exon2	Parent=Pruma.1G001900.t1.p1	
+chr1	transdecoder	exon	61560	61736	.	+	.	ID=Pruma.1G001900.t1.p1.exon3	Parent=Pruma.1G001900.t1.p1	
+chr1	transdecoder	CDS	61560	61736	.	+	0	ID=cds.Pruma.1G001900.t1.p1	Parent=Pruma.1G001900.t1.p1	
+chr1	transdecoder	gene	63896	64841	.	-	.	ID=Pruma.1G002000	Name=Pruma.1G002000%20type%3Acomplete%20len%3A197%20%28%2B%29%2Cscore%3D18.87	
+chr1	transdecoder	mRNA	63896	64841	.	-	.	ID=Pruma.1G002000.t1.p1	Parent=Pruma.1G002000	Name=Pruma.1G002000%20type%3Acomplete%20len%3A197%20%28%2B%29%2Cscore%3D18.87
+chr1	transdecoder	exon	63896	64059	.	-	.	ID=Pruma.1G002000.t1.p1.exon5	Parent=Pruma.1G002000.t1.p1	
+chr1	transdecoder	CDS	63896	64059	.	-	2	ID=cds.Pruma.1G002000.t1.p1	Parent=Pruma.1G002000.t1.p1	
+chr1	transdecoder	CDS	64141	64225	.	-	0	ID=cds.Pruma.1G002000.t1.p1	Parent=Pruma.1G002000.t1.p1	
+chr1	transdecoder	exon	64141	64225	.	-	.	ID=Pruma.1G002000.t1.p1.exon4	Parent=Pruma.1G002000.t1.p1	
+chr1	transdecoder	exon	64321	64419	.	-	.	ID=Pruma.1G002000.t1.p1.exon3	Parent=Pruma.1G002000.t1.p1	
+chr1	transdecoder	CDS	64321	64419	.	-	0	ID=cds.Pruma.1G002000.t1.p1	Parent=Pruma.1G002000.t1.p1	
+chr1	transdecoder	CDS	64517	64735	.	-	0	ID=cds.Pruma.1G002000.t1.p1	Parent=Pruma.1G002000.t1.p1	
+chr1	transdecoder	exon	64517	64735	.	-	.	ID=Pruma.1G002000.t1.p1.exon2	Parent=Pruma.1G002000.t1.p1	
+chr1	transdecoder	exon	64818	64841	.	-	.	ID=Pruma.1G002000.t1.p1.exon1	Parent=Pruma.1G002000.t1.p1	
+chr1	transdecoder	CDS	64818	64841	.	-	0	ID=cds.Pruma.1G002000.t1.p1	Parent=Pruma.1G002000.t1.p1	
+chr1	transdecoder	gene	67561	71140	.	-	.	ID=Pruma.1G002100	Name=Pruma.1G002100%20type%3Acomplete%20len%3A676%20%28%2B%29%2Cscore%3D75.48	
+chr1	transdecoder	mRNA	67561	71140	.	-	.	ID=Pruma.1G002100.t1.p1	Parent=Pruma.1G002100	Name=Pruma.1G002100%20type%3Acomplete%20len%3A676%20%28%2B%29%2Cscore%3D75.48
+chr1	transdecoder	exon	67561	67719	.	-	.	ID=Pruma.1G002100.t1.p1.exon8	Parent=Pruma.1G002100.t1.p1	
+chr1	transdecoder	CDS	67561	67719	.	-	0	ID=cds.Pruma.1G002100.t1.p1	Parent=Pruma.1G002100.t1.p1	
+chr1	transdecoder	exon	68169	68354	.	-	.	ID=Pruma.1G002100.t1.p1.exon7	Parent=Pruma.1G002100.t1.p1	
+chr1	transdecoder	CDS	68169	68354	.	-	0	ID=cds.Pruma.1G002100.t1.p1	Parent=Pruma.1G002100.t1.p1	
+chr1	transdecoder	exon	68445	68840	.	-	.	ID=Pruma.1G002100.t1.p1.exon6	Parent=Pruma.1G002100.t1.p1	
+chr1	transdecoder	CDS	68445	68840	.	-	0	ID=cds.Pruma.1G002100.t1.p1	Parent=Pruma.1G002100.t1.p1	
+chr1	transdecoder	CDS	68919	69015	.	-	1	ID=cds.Pruma.1G002100.t1.p1	Parent=Pruma.1G002100.t1.p1	
+chr1	transdecoder	exon	68919	69015	.	-	.	ID=Pruma.1G002100.t1.p1.exon5	Parent=Pruma.1G002100.t1.p1	
+chr1	transdecoder	exon	69135	69769	.	-	.	ID=Pruma.1G002100.t1.p1.exon4	Parent=Pruma.1G002100.t1.p1	
+chr1	transdecoder	CDS	69135	69769	.	-	0	ID=cds.Pruma.1G002100.t1.p1	Parent=Pruma.1G002100.t1.p1	
+chr1	transdecoder	exon	69833	70022	.	-	.	ID=Pruma.1G002100.t1.p1.exon3	Parent=Pruma.1G002100.t1.p1	
+chr1	transdecoder	CDS	69833	70022	.	-	1	ID=cds.Pruma.1G002100.t1.p1	Parent=Pruma.1G002100.t1.p1	
+chr1	transdecoder	CDS	70632	70819	.	-	0	ID=cds.Pruma.1G002100.t1.p1	Parent=Pruma.1G002100.t1.p1	
+chr1	transdecoder	exon	70632	70819	.	-	.	ID=Pruma.1G002100.t1.p1.exon2	Parent=Pruma.1G002100.t1.p1	
+chr1	transdecoder	exon	70964	71140	.	-	.	ID=Pruma.1G002100.t1.p1.exon1	Parent=Pruma.1G002100.t1.p1	
+chr1	transdecoder	CDS	70964	71140	.	-	0	ID=cds.Pruma.1G002100.t1.p1	Parent=Pruma.1G002100.t1.p1	
+chr1	transdecoder	gene	71853	72462	.	-	.	ID=Pruma.1G002200	Name=Pruma.1G002200%20type%3Acomplete%20len%3A144%20%28%2B%29%2Cscore%3D24.46	
+chr1	transdecoder	mRNA	71853	72462	.	-	.	ID=Pruma.1G002200.t1.p1	Parent=Pruma.1G002200	Name=Pruma.1G002200%20type%3Acomplete%20len%3A144%20%28%2B%29%2Cscore%3D24.46
+chr1	transdecoder	CDS	71853	72194	.	-	0	ID=cds.Pruma.1G002200.t1.p1	Parent=Pruma.1G002200.t1.p1	
+chr1	transdecoder	exon	71853	72194	.	-	.	ID=Pruma.1G002200.t1.p1.exon2	Parent=Pruma.1G002200.t1.p1	
+chr1	transdecoder	CDS	72373	72462	.	-	0	ID=cds.Pruma.1G002200.t1.p1	Parent=Pruma.1G002200.t1.p1	
+chr1	transdecoder	exon	72373	72462	.	-	.	ID=Pruma.1G002200.t1.p1.exon1	Parent=Pruma.1G002200.t1.p1	
+chr1	transdecoder	gene	72721	73575	.	-	.	ID=Pruma.1G002300	Name=Pruma.1G002300%20type%3Acomplete%20len%3A222%20%28%2B%29%2Cscore%3D8.85	
+chr1	transdecoder	mRNA	72721	73575	.	-	.	ID=Pruma.1G002300.t1.p1	Parent=Pruma.1G002300	Name=Pruma.1G002300%20type%3Acomplete%20len%3A222%20%28%2B%29%2Cscore%3D8.85
+chr1	transdecoder	CDS	72721	73085	.	-	2	ID=cds.Pruma.1G002300.t1.p1	Parent=Pruma.1G002300.t1.p1	
+chr1	transdecoder	exon	72721	73085	.	-	.	ID=Pruma.1G002300.t1.p1.exon2	Parent=Pruma.1G002300.t1.p1	
+chr1	transdecoder	CDS	73275	73575	.	-	0	ID=cds.Pruma.1G002300.t1.p1	Parent=Pruma.1G002300.t1.p1	
+chr1	transdecoder	exon	73275	73575	.	-	.	ID=Pruma.1G002300.t1.p1.exon1	Parent=Pruma.1G002300.t1.p1	
+chr1	transdecoder	gene	84988	87277	.	-	.	ID=Pruma.1G002400	Name=Pruma.1G002400%20type%3Acomplete%20len%3A638%20%28%2B%29%2Cscore%3D74.13	
+chr1	transdecoder	mRNA	84988	87277	.	-	.	ID=Pruma.1G002400.t1.p1	Parent=Pruma.1G002400	Name=Pruma.1G002400%20type%3Acomplete%20len%3A638%20%28%2B%29%2Cscore%3D74.13
+chr1	transdecoder	exon	84988	85470	.	-	.	ID=Pruma.1G002400.t1.p1.exon5	Parent=Pruma.1G002400.t1.p1	
+chr1	transdecoder	CDS	84988	85470	.	-	0	ID=cds.Pruma.1G002400.t1.p1	Parent=Pruma.1G002400.t1.p1	
+chr1	transdecoder	exon	85587	85772	.	-	.	ID=Pruma.1G002400.t1.p1.exon4	Parent=Pruma.1G002400.t1.p1	
+chr1	transdecoder	CDS	85587	85772	.	-	0	ID=cds.Pruma.1G002400.t1.p1	Parent=Pruma.1G002400.t1.p1	
+chr1	transdecoder	exon	85861	86257	.	-	.	ID=Pruma.1G002400.t1.p1.exon3	Parent=Pruma.1G002400.t1.p1	
+chr1	transdecoder	CDS	85861	86257	.	-	1	ID=cds.Pruma.1G002400.t1.p1	Parent=Pruma.1G002400.t1.p1	
+chr1	transdecoder	exon	86350	86752	.	-	.	ID=Pruma.1G002400.t1.p1.exon2	Parent=Pruma.1G002400.t1.p1	
+chr1	transdecoder	CDS	86350	86752	.	-	2	ID=cds.Pruma.1G002400.t1.p1	Parent=Pruma.1G002400.t1.p1	
+chr1	transdecoder	CDS	86833	87277	.	-	0	ID=cds.Pruma.1G002400.t1.p1	Parent=Pruma.1G002400.t1.p1	
+chr1	transdecoder	exon	86833	87277	.	-	.	ID=Pruma.1G002400.t1.p1.exon1	Parent=Pruma.1G002400.t1.p1	
+chr1	transdecoder	gene	93850	100687	.	+	.	ID=Pruma.1G002500	Name=Pruma.1G002500%20type%3A5prime_partial%20len%3A728%20%28%2B%29%2Cscore%3D98.40	
+chr1	transdecoder	mRNA	93850	100687	.	+	.	ID=Pruma.1G002500.t1.p1	Parent=Pruma.1G002500	Name=Pruma.1G002500%20type%3A5prime_partial%20len%3A728%20%28%2B%29%2Cscore%3D98.40
+chr1	transdecoder	exon	93850	93926	.	+	.	ID=Pruma.1G002500.t1.p1.exon1	Parent=Pruma.1G002500.t1.p1	
+chr1	transdecoder	CDS	93850	93926	.	+	0	ID=cds.Pruma.1G002500.t1.p1	Parent=Pruma.1G002500.t1.p1	
+chr1	transdecoder	CDS	95082	95139	.	+	1	ID=cds.Pruma.1G002500.t1.p1	Parent=Pruma.1G002500.t1.p1	
+chr1	transdecoder	exon	95082	95139	.	+	.	ID=Pruma.1G002500.t1.p1.exon2	Parent=Pruma.1G002500.t1.p1	
+chr1	transdecoder	exon	95271	95946	.	+	.	ID=Pruma.1G002500.t1.p1.exon3	Parent=Pruma.1G002500.t1.p1	
+chr1	transdecoder	CDS	95271	95946	.	+	0	ID=cds.Pruma.1G002500.t1.p1	Parent=Pruma.1G002500.t1.p1	
+chr1	transdecoder	CDS	96859	97388	.	+	2	ID=cds.Pruma.1G002500.t1.p1	Parent=Pruma.1G002500.t1.p1	
+chr1	transdecoder	exon	96859	97388	.	+	.	ID=Pruma.1G002500.t1.p1.exon4	Parent=Pruma.1G002500.t1.p1	
+chr1	transdecoder	exon	99845	100687	.	+	.	ID=Pruma.1G002500.t1.p1.exon5	Parent=Pruma.1G002500.t1.p1	
+chr1	transdecoder	CDS	99845	100687	.	+	0	ID=cds.Pruma.1G002500.t1.p1	Parent=Pruma.1G002500.t1.p1	
+chr1	transdecoder	gene	102196	104985	.	+	.	ID=Pruma.1G002600	Name=Pruma.1G002600%20type%3Acomplete%20len%3A117%20%28%2B%29%2Cscore%3D3.91	
+chr1	transdecoder	mRNA	102196	104985	.	+	.	ID=Pruma.1G002600.t1.p1	Parent=Pruma.1G002600	Name=Pruma.1G002600%20type%3Acomplete%20len%3A117%20%28%2B%29%2Cscore%3D3.91
+chr1	transdecoder	exon	102196	102374	.	+	.	ID=Pruma.1G002600.t1.p1.exon1	Parent=Pruma.1G002600.t1.p1	
+chr1	transdecoder	CDS	102196	102374	.	+	0	ID=cds.Pruma.1G002600.t1.p1	Parent=Pruma.1G002600.t1.p1	
+chr1	transdecoder	CDS	104814	104985	.	+	1	ID=cds.Pruma.1G002600.t1.p1	Parent=Pruma.1G002600.t1.p1	
+chr1	transdecoder	exon	104814	104985	.	+	.	ID=Pruma.1G002600.t1.p1.exon2	Parent=Pruma.1G002600.t1.p1	
+chr1	transdecoder	gene	107127	107885	.	+	.	ID=Pruma.1G002700	Name=Pruma.1G002700%20type%3Acomplete%20len%3A198%20%28%2B%29%2Cscore%3D43.44	
+chr1	transdecoder	mRNA	107127	107885	.	+	.	ID=Pruma.1G002700.t1.p1	Parent=Pruma.1G002700	Name=Pruma.1G002700%20type%3Acomplete%20len%3A198%20%28%2B%29%2Cscore%3D43.44
+chr1	transdecoder	CDS	107127	107303	.	+	0	ID=cds.Pruma.1G002700.t1.p1	Parent=Pruma.1G002700.t1.p1	
+chr1	transdecoder	exon	107127	107303	.	+	.	ID=Pruma.1G002700.t1.p1.exon1	Parent=Pruma.1G002700.t1.p1	
+chr1	transdecoder	CDS	107469	107885	.	+	0	ID=cds.Pruma.1G002700.t1.p1	Parent=Pruma.1G002700.t1.p1	
+chr1	transdecoder	exon	107469	107885	.	+	.	ID=Pruma.1G002700.t1.p1.exon2	Parent=Pruma.1G002700.t1.p1	
+chr1	transdecoder	gene	109238	112009	.	-	.	ID=Pruma.1G002800	Name=Pruma.1G002800%20type%3Acomplete%20len%3A377%20%28%2B%29%2Cscore%3D39.96	
+chr1	transdecoder	mRNA	109238	112009	.	-	.	ID=Pruma.1G002800.t1.p1	Parent=Pruma.1G002800	Name=Pruma.1G002800%20type%3Acomplete%20len%3A377%20%28%2B%29%2Cscore%3D39.96
+chr1	transdecoder	exon	109238	109426	.	-	.	ID=Pruma.1G002800.t1.p1.exon5	Parent=Pruma.1G002800.t1.p1	
+chr1	transdecoder	CDS	109238	109426	.	-	0	ID=cds.Pruma.1G002800.t1.p1	Parent=Pruma.1G002800.t1.p1	
+chr1	transdecoder	CDS	109934	110106	.	-	2	ID=cds.Pruma.1G002800.t1.p1	Parent=Pruma.1G002800.t1.p1	
+chr1	transdecoder	exon	109934	110106	.	-	.	ID=Pruma.1G002800.t1.p1.exon4	Parent=Pruma.1G002800.t1.p1	
+chr1	transdecoder	CDS	110186	110354	.	-	0	ID=cds.Pruma.1G002800.t1.p1	Parent=Pruma.1G002800.t1.p1	
+chr1	transdecoder	exon	110186	110354	.	-	.	ID=Pruma.1G002800.t1.p1.exon3	Parent=Pruma.1G002800.t1.p1	
+chr1	transdecoder	exon	111151	111366	.	-	.	ID=Pruma.1G002800.t1.p1.exon2	Parent=Pruma.1G002800.t1.p1	
+chr1	transdecoder	CDS	111151	111366	.	-	0	ID=cds.Pruma.1G002800.t1.p1	Parent=Pruma.1G002800.t1.p1	
+chr1	transdecoder	CDS	111626	112009	.	-	0	ID=cds.Pruma.1G002800.t1.p1	Parent=Pruma.1G002800.t1.p1	
+chr1	transdecoder	exon	111626	112009	.	-	.	ID=Pruma.1G002800.t1.p1.exon1	Parent=Pruma.1G002800.t1.p1	
+chr1	transdecoder	gene	112291	112626	.	+	.	ID=Pruma.1G002900	Name=Pruma.1G002900%20type%3Acomplete%20len%3A112%20%28%2B%29%2Cscore%3D18.68	
+chr1	transdecoder	mRNA	112291	112626	.	+	.	ID=Pruma.1G002900.t1.p1	Parent=Pruma.1G002900	Name=Pruma.1G002900%20type%3Acomplete%20len%3A112%20%28%2B%29%2Cscore%3D18.68
+chr1	transdecoder	CDS	112291	112626	.	+	0	ID=cds.Pruma.1G002900.t1.p1	Parent=Pruma.1G002900.t1.p1	
+chr1	transdecoder	exon	112291	112626	.	+	.	ID=Pruma.1G002900.t1.p1.exon1	Parent=Pruma.1G002900.t1.p1	
+chr1	transdecoder	gene	112969	114831	.	-	.	ID=Pruma.1G003000	Name=Pruma.1G003000%20type%3Acomplete%20len%3A567%20%28%2B%29%2Cscore%3D83.41	
+chr1	transdecoder	mRNA	112969	114831	.	-	.	ID=Pruma.1G003000.t1.p1	Parent=Pruma.1G003000	Name=Pruma.1G003000%20type%3Acomplete%20len%3A567%20%28%2B%29%2Cscore%3D83.41
+chr1	transdecoder	exon	112969	113924	.	-	.	ID=Pruma.1G003000.t1.p1.exon2	Parent=Pruma.1G003000.t1.p1	
+chr1	transdecoder	CDS	112969	113924	.	-	2	ID=cds.Pruma.1G003000.t1.p1	Parent=Pruma.1G003000.t1.p1	
+chr1	transdecoder	exon	114087	114831	.	-	.	ID=Pruma.1G003000.t1.p1.exon1	Parent=Pruma.1G003000.t1.p1	
+chr1	transdecoder	CDS	114087	114831	.	-	0	ID=cds.Pruma.1G003000.t1.p1	Parent=Pruma.1G003000.t1.p1	
+chr1	transdecoder	gene	115092	116488	.	+	.	ID=Pruma.1G003100	Name=Pruma.1G003100%20type%3Acomplete%20len%3A214%20%28%2B%29%2Cscore%3D24.73	
+chr1	transdecoder	mRNA	115092	116488	.	+	.	ID=Pruma.1G003100.t1.p1	Parent=Pruma.1G003100	Name=Pruma.1G003100%20type%3Acomplete%20len%3A214%20%28%2B%29%2Cscore%3D24.73
+chr1	transdecoder	exon	115092	115358	.	+	.	ID=Pruma.1G003100.t1.p1.exon1	Parent=Pruma.1G003100.t1.p1	
+chr1	transdecoder	CDS	115092	115358	.	+	0	ID=cds.Pruma.1G003100.t1.p1	Parent=Pruma.1G003100.t1.p1	
+chr1	transdecoder	CDS	116114	116488	.	+	0	ID=cds.Pruma.1G003100.t1.p1	Parent=Pruma.1G003100.t1.p1	
+chr1	transdecoder	exon	116114	116488	.	+	.	ID=Pruma.1G003100.t1.p1.exon2	Parent=Pruma.1G003100.t1.p1	
+chr1	transdecoder	gene	122068	123606	.	-	.	ID=Pruma.1G003200	Name=Pruma.1G003200%20type%3Acomplete%20len%3A513%20%28%2B%29%2Cscore%3D127.98	
+chr1	transdecoder	mRNA	122068	123606	.	-	.	ID=Pruma.1G003200.t1.p1	Parent=Pruma.1G003200	Name=Pruma.1G003200%20type%3Acomplete%20len%3A513%20%28%2B%29%2Cscore%3D127.98
+chr1	transdecoder	exon	122068	123606	.	-	.	ID=Pruma.1G003200.t1.p1.exon1	Parent=Pruma.1G003200.t1.p1	
+chr1	transdecoder	CDS	122068	123606	.	-	0	ID=cds.Pruma.1G003200.t1.p1	Parent=Pruma.1G003200.t1.p1	
+chr1	transdecoder	gene	123643	125428	.	-	.	ID=Pruma.1G003300	Name=Pruma.1G003300%20type%3A5prime_partial%20len%3A524%20%28%2B%29%2Cscore%3D123.34	
+chr1	transdecoder	mRNA	123643	125428	.	-	.	ID=Pruma.1G003300.t1.p1	Parent=Pruma.1G003300	Name=Pruma.1G003300%20type%3A5prime_partial%20len%3A524%20%28%2B%29%2Cscore%3D123.34
+chr1	transdecoder	CDS	123643	123840	.	-	0	ID=cds.Pruma.1G003300.t1.p1	Parent=Pruma.1G003300.t1.p1	
+chr1	transdecoder	exon	123643	123840	.	-	.	ID=Pruma.1G003300.t1.p1.exon2	Parent=Pruma.1G003300.t1.p1	
+chr1	transdecoder	CDS	124055	125428	.	-	0	ID=cds.Pruma.1G003300.t1.p1	Parent=Pruma.1G003300.t1.p1	
+chr1	transdecoder	exon	124055	125428	.	-	.	ID=Pruma.1G003300.t1.p1.exon1	Parent=Pruma.1G003300.t1.p1	
+chr1	transdecoder	gene	129204	131317	.	+	.	ID=Pruma.1G003400	Name=Pruma.1G003400%20type%3Acomplete%20len%3A452%20%28%2B%29%2Cscore%3D34.77	
+chr1	transdecoder	mRNA	129204	131317	.	+	.	ID=Pruma.1G003400.t1.p1	Parent=Pruma.1G003400	Name=Pruma.1G003400%20type%3Acomplete%20len%3A452%20%28%2B%29%2Cscore%3D34.77
+chr1	transdecoder	exon	129204	129996	.	+	.	ID=Pruma.1G003400.t1.p1.exon1	Parent=Pruma.1G003400.t1.p1	
+chr1	transdecoder	CDS	129204	129996	.	+	0	ID=cds.Pruma.1G003400.t1.p1	Parent=Pruma.1G003400.t1.p1	
+chr1	transdecoder	CDS	130755	131317	.	+	2	ID=cds.Pruma.1G003400.t1.p1	Parent=Pruma.1G003400.t1.p1	
+chr1	transdecoder	exon	130755	131317	.	+	.	ID=Pruma.1G003400.t1.p1.exon2	Parent=Pruma.1G003400.t1.p1	
+chr1	transdecoder	gene	137486	141429	.	-	.	ID=Pruma.1G003500	Name=Pruma.1G003500%20type%3Acomplete%20len%3A1231%20%28%2B%29%2Cscore%3D286.62	
+chr1	transdecoder	mRNA	137486	141429	.	-	.	ID=Pruma.1G003500.t1.p1	Parent=Pruma.1G003500	Name=Pruma.1G003500%20type%3Acomplete%20len%3A1231%20%28%2B%29%2Cscore%3D286.62
+chr1	transdecoder	CDS	137486	138991	.	-	0	ID=cds.Pruma.1G003500.t1.p1	Parent=Pruma.1G003500.t1.p1	
+chr1	transdecoder	exon	137486	138991	.	-	.	ID=Pruma.1G003500.t1.p1.exon3	Parent=Pruma.1G003500.t1.p1	
+chr1	transdecoder	exon	139173	139847	.	-	.	ID=Pruma.1G003500.t1.p1.exon2	Parent=Pruma.1G003500.t1.p1	
+chr1	transdecoder	CDS	139173	139847	.	-	0	ID=cds.Pruma.1G003500.t1.p1	Parent=Pruma.1G003500.t1.p1	
+chr1	transdecoder	CDS	139918	141429	.	-	0	ID=cds.Pruma.1G003500.t1.p1	Parent=Pruma.1G003500.t1.p1	
+chr1	transdecoder	exon	139918	141429	.	-	.	ID=Pruma.1G003500.t1.p1.exon1	Parent=Pruma.1G003500.t1.p1	
+chr1	transdecoder	gene	150278	156212	.	+	.	ID=Pruma.1G003600	Name=Pruma.1G003600%20type%3Acomplete%20len%3A694%20%28%2B%29%2Cscore%3D95.11	
+chr1	transdecoder	mRNA	150278	156212	.	+	.	ID=Pruma.1G003600.t1.p1	Parent=Pruma.1G003600	Name=Pruma.1G003600%20type%3Acomplete%20len%3A694%20%28%2B%29%2Cscore%3D95.11
+chr1	transdecoder	exon	150278	150421	.	+	.	ID=Pruma.1G003600.t1.p1.exon1	Parent=Pruma.1G003600.t1.p1	
+chr1	transdecoder	CDS	150278	150421	.	+	0	ID=cds.Pruma.1G003600.t1.p1	Parent=Pruma.1G003600.t1.p1	
+chr1	transdecoder	CDS	152971	153222	.	+	0	ID=cds.Pruma.1G003600.t1.p1	Parent=Pruma.1G003600.t1.p1	
+chr1	transdecoder	exon	152971	153222	.	+	.	ID=Pruma.1G003600.t1.p1.exon2	Parent=Pruma.1G003600.t1.p1	
+chr1	transdecoder	exon	153464	153560	.	+	.	ID=Pruma.1G003600.t1.p1.exon3	Parent=Pruma.1G003600.t1.p1	
+chr1	transdecoder	CDS	153464	153560	.	+	0	ID=cds.Pruma.1G003600.t1.p1	Parent=Pruma.1G003600.t1.p1	
+chr1	transdecoder	exon	153633	153858	.	+	.	ID=Pruma.1G003600.t1.p1.exon4	Parent=Pruma.1G003600.t1.p1	
+chr1	transdecoder	CDS	153633	153858	.	+	2	ID=cds.Pruma.1G003600.t1.p1	Parent=Pruma.1G003600.t1.p1	
+chr1	transdecoder	exon	154023	154180	.	+	.	ID=Pruma.1G003600.t1.p1.exon5	Parent=Pruma.1G003600.t1.p1	
+chr1	transdecoder	CDS	154023	154180	.	+	1	ID=cds.Pruma.1G003600.t1.p1	Parent=Pruma.1G003600.t1.p1	
+chr1	transdecoder	exon	154396	154693	.	+	.	ID=Pruma.1G003600.t1.p1.exon6	Parent=Pruma.1G003600.t1.p1	
+chr1	transdecoder	CDS	154396	154693	.	+	2	ID=cds.Pruma.1G003600.t1.p1	Parent=Pruma.1G003600.t1.p1	
+chr1	transdecoder	CDS	155039	155381	.	+	1	ID=cds.Pruma.1G003600.t1.p1	Parent=Pruma.1G003600.t1.p1	
+chr1	transdecoder	exon	155039	155381	.	+	.	ID=Pruma.1G003600.t1.p1.exon7	Parent=Pruma.1G003600.t1.p1	
+chr1	transdecoder	exon	155502	155829	.	+	.	ID=Pruma.1G003600.t1.p1.exon8	Parent=Pruma.1G003600.t1.p1	
+chr1	transdecoder	CDS	155502	155829	.	+	0	ID=cds.Pruma.1G003600.t1.p1	Parent=Pruma.1G003600.t1.p1	
+chr1	transdecoder	CDS	155977	156212	.	+	2	ID=cds.Pruma.1G003600.t1.p1	Parent=Pruma.1G003600.t1.p1	
+chr1	transdecoder	exon	155977	156212	.	+	.	ID=Pruma.1G003600.t1.p1.exon9	Parent=Pruma.1G003600.t1.p1	
+chr1	transdecoder	gene	156768	157187	.	+	.	ID=Pruma.1G003700	Name=Pruma.1G003700%20type%3Acomplete%20len%3A140%20%28%2B%29%2Cscore%3D8.95	
+chr1	transdecoder	mRNA	156768	157187	.	+	.	ID=Pruma.1G003700.t1.p1	Parent=Pruma.1G003700	Name=Pruma.1G003700%20type%3Acomplete%20len%3A140%20%28%2B%29%2Cscore%3D8.95
+chr1	transdecoder	CDS	156768	157187	.	+	0	ID=cds.Pruma.1G003700.t1.p1	Parent=Pruma.1G003700.t1.p1	
+chr1	transdecoder	exon	156768	157187	.	+	.	ID=Pruma.1G003700.t1.p1.exon1	Parent=Pruma.1G003700.t1.p1	
+chr1	transdecoder	gene	157290	160628	.	+	.	ID=Pruma.1G003800	Name=Pruma.1G003800%20type%3Acomplete%20len%3A264%20%28%2B%29%2Cscore%3D40.91	
+chr1	transdecoder	mRNA	157290	160628	.	+	.	ID=Pruma.1G003800.t1.p1	Parent=Pruma.1G003800	Name=Pruma.1G003800%20type%3Acomplete%20len%3A264%20%28%2B%29%2Cscore%3D40.91
+chr1	transdecoder	exon	157290	157871	.	+	.	ID=Pruma.1G003800.t1.p1.exon1	Parent=Pruma.1G003800.t1.p1	
+chr1	transdecoder	CDS	157290	157871	.	+	0	ID=cds.Pruma.1G003800.t1.p1	Parent=Pruma.1G003800.t1.p1	
+chr1	transdecoder	exon	160258	160331	.	+	.	ID=Pruma.1G003800.t1.p1.exon2	Parent=Pruma.1G003800.t1.p1	
+chr1	transdecoder	CDS	160258	160331	.	+	0	ID=cds.Pruma.1G003800.t1.p1	Parent=Pruma.1G003800.t1.p1	
+chr1	transdecoder	exon	160493	160628	.	+	.	ID=Pruma.1G003800.t1.p1.exon3	Parent=Pruma.1G003800.t1.p1	
+chr1	transdecoder	CDS	160493	160628	.	+	1	ID=cds.Pruma.1G003800.t1.p1	Parent=Pruma.1G003800.t1.p1	
+chr1	transdecoder	gene	161855	162911	.	+	.	ID=Pruma.1G003900	Name=Pruma.1G003900%20type%3Acomplete%20len%3A159%20%28%2B%29%2Cscore%3D26.84	
+chr1	transdecoder	mRNA	161855	162911	.	+	.	ID=Pruma.1G003900.t1.p1	Parent=Pruma.1G003900	Name=Pruma.1G003900%20type%3Acomplete%20len%3A159%20%28%2B%29%2Cscore%3D26.84
+chr1	transdecoder	exon	161855	162098	.	+	.	ID=Pruma.1G003900.t1.p1.exon1	Parent=Pruma.1G003900.t1.p1	
+chr1	transdecoder	CDS	161855	162098	.	+	0	ID=cds.Pruma.1G003900.t1.p1	Parent=Pruma.1G003900.t1.p1	
+chr1	transdecoder	CDS	162679	162911	.	+	2	ID=cds.Pruma.1G003900.t1.p1	Parent=Pruma.1G003900.t1.p1	
+chr1	transdecoder	exon	162679	162911	.	+	.	ID=Pruma.1G003900.t1.p1.exon2	Parent=Pruma.1G003900.t1.p1	
+chr1	transdecoder	gene	163776	168948	.	+	.	ID=Pruma.1G004000	Name=Pruma.1G004000%20type%3Acomplete%20len%3A219%20%28%2B%29%2Cscore%3D33.19	
+chr1	transdecoder	mRNA	163776	168948	.	+	.	ID=Pruma.1G004000.t1.p1	Parent=Pruma.1G004000	Name=Pruma.1G004000%20type%3Acomplete%20len%3A219%20%28%2B%29%2Cscore%3D33.19
+chr1	transdecoder	exon	163776	163945	.	+	.	ID=Pruma.1G004000.t1.p1.exon1	Parent=Pruma.1G004000.t1.p1	
+chr1	transdecoder	CDS	163776	163945	.	+	0	ID=cds.Pruma.1G004000.t1.p1	Parent=Pruma.1G004000.t1.p1	
+chr1	transdecoder	CDS	165854	165953	.	+	1	ID=cds.Pruma.1G004000.t1.p1	Parent=Pruma.1G004000.t1.p1	
+chr1	transdecoder	exon	165854	165953	.	+	.	ID=Pruma.1G004000.t1.p1.exon2	Parent=Pruma.1G004000.t1.p1	
+chr1	transdecoder	exon	166067	166147	.	+	.	ID=Pruma.1G004000.t1.p1.exon3	Parent=Pruma.1G004000.t1.p1	
+chr1	transdecoder	CDS	166067	166147	.	+	0	ID=cds.Pruma.1G004000.t1.p1	Parent=Pruma.1G004000.t1.p1	
+chr1	transdecoder	exon	166261	166365	.	+	.	ID=Pruma.1G004000.t1.p1.exon4	Parent=Pruma.1G004000.t1.p1	
+chr1	transdecoder	CDS	166261	166365	.	+	0	ID=cds.Pruma.1G004000.t1.p1	Parent=Pruma.1G004000.t1.p1	
+chr1	transdecoder	exon	168355	168543	.	+	.	ID=Pruma.1G004000.t1.p1.exon5	Parent=Pruma.1G004000.t1.p1	
+chr1	transdecoder	CDS	168355	168543	.	+	0	ID=cds.Pruma.1G004000.t1.p1	Parent=Pruma.1G004000.t1.p1	
+chr1	transdecoder	exon	168937	168948	.	+	.	ID=Pruma.1G004000.t1.p1.exon6	Parent=Pruma.1G004000.t1.p1	
+chr1	transdecoder	CDS	168937	168948	.	+	0	ID=cds.Pruma.1G004000.t1.p1	Parent=Pruma.1G004000.t1.p1	
+chr1	transdecoder	gene	173519	175622	.	+	.	ID=Pruma.1G004100	Name=Pruma.1G004100%20type%3A5prime_partial%20len%3A256%20%28%2B%29%2Cscore%3D-7.82	
+chr1	transdecoder	mRNA	173519	175622	.	+	.	ID=Pruma.1G004100.t1.p1	Parent=Pruma.1G004100	Name=Pruma.1G004100%20type%3A5prime_partial%20len%3A256%20%28%2B%29%2Cscore%3D-7.82
+chr1	transdecoder	exon	173519	173759	.	+	.	ID=Pruma.1G004100.t1.p1.exon1	Parent=Pruma.1G004100.t1.p1	
+chr1	transdecoder	CDS	173519	173759	.	+	0	ID=cds.Pruma.1G004100.t1.p1	Parent=Pruma.1G004100.t1.p1	
+chr1	transdecoder	exon	174064	174364	.	+	.	ID=Pruma.1G004100.t1.p1.exon2	Parent=Pruma.1G004100.t1.p1	
+chr1	transdecoder	CDS	174064	174364	.	+	2	ID=cds.Pruma.1G004100.t1.p1	Parent=Pruma.1G004100.t1.p1	
+chr1	transdecoder	exon	174582	174711	.	+	.	ID=Pruma.1G004100.t1.p1.exon3	Parent=Pruma.1G004100.t1.p1	
+chr1	transdecoder	CDS	174582	174711	.	+	1	ID=cds.Pruma.1G004100.t1.p1	Parent=Pruma.1G004100.t1.p1	
+chr1	transdecoder	CDS	175349	175398	.	+	0	ID=cds.Pruma.1G004100.t1.p1	Parent=Pruma.1G004100.t1.p1	
