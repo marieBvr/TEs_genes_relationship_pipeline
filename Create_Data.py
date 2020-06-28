@@ -58,7 +58,7 @@ def GeneDico(list):
 def TEDico(list):
     i = 0
     chr_ = 'chr1'
-    ListOfDicoTE=[]
+    ListOfDicoTE=[[]]
     for element in list:
         #make a new list for each chromosome
         if(chr_ != element[0]):
@@ -82,7 +82,7 @@ def TEDico(list):
         'TE_name':element[13],
         'TE_status':element[14]
         }
-        ListOfDicoTE.append(dico_TE)
+        ListOfDicoTE[i].append(dico_TE)
     #print(ListOfDicoTE)
     return ListOfDicoTE
 
