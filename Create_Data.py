@@ -97,6 +97,7 @@ def check_superset_subset_genes(te,gene):
             te[ch][i]['superset_start'] = []
             te[ch][i]['superset_end'] = []
             te[ch][i]['superset_id'] = []
+            
             te[ch][i]['subset_strand'] = []
             te[ch][i]['subset_feature'] = []
             te[ch][i]['subset_start'] = []
@@ -285,7 +286,7 @@ def check_upstream_genes(te,gene):
                     te[ch][i]['before_end'] = np.NAN
                     te[ch][i]['before_id'] = np.NaN
 
-    print(te)
+    #print(te)
     return te
 
 def calcul_distance(te,gene):
@@ -353,7 +354,7 @@ def writeDataOnFile(list_te):
 
 gene=Extract_data('real_gene_data.tsv')
 te=Extract_data('real_TE_data.tsv')
-print(te)
+#print(te)
 list_gene = GeneDico(gene)
 list_te = TEDico(te)
 

@@ -99,6 +99,7 @@ def check_superset_subset_genes(te,gene):
             # loop to compare all the genes to the TE
             for j in range(len(gene[ch])): 
                 distances = calcul_distance(te[ch][i],gene[ch][j])
+                #print('this is j' , j)
 
                 #check if the TE is inside the gene
                 if(distances[0] < 0 and distances[1] < 0 and distances[2] > 0 and distances[3] < 0):
