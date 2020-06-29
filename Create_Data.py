@@ -97,7 +97,7 @@ def check_superset_subset_genes(te,gene):
             te[ch][i]['superset_start'] = []
             te[ch][i]['superset_end'] = []
             te[ch][i]['superset_id'] = []
-            
+
             te[ch][i]['subset_strand'] = []
             te[ch][i]['subset_feature'] = []
             te[ch][i]['subset_start'] = []
@@ -299,47 +299,74 @@ def calcul_distance(te,gene):
 
 
 def writeDataOnFile(list_te):
-    print(list_te)
-    '''csv_content = []
-    column_names = ["start","end","before_start","before_end","after_start","after_end",
-    "superset_start","superset_end","subset_start","subset_end","upstream_overlap","downstream_overlap",
-    "Down_TEstart-Geneend","Down_Genestart-TEend","Down_Geneend-TEend","Down_Genestart-TEstart",
-    "Up_TEstart-Geneend","Up_Genestart-TEend","Up_Geneend-TEend","Up_Genestart-TEstart"]
-    for n in range(len(list_te)):
+    csv_content = []
+    n=0
+    column_names = ["TE_name","classe""chr","type","start","end","frame","before_id",'before_feature',
+    'before_strand','before_start','before_end',"after_id",'after_feature','after_strand',
+    "after_start","after_end",'superset_id','superset_feature','superset_strand','superset_start',
+    'superset_end','subset_id','subset_feature','subset_strand','subset_start','subset_end',
+    'upstream_overlap',"downstream_overlap","Down_TEstart-Geneend","Down_Genestart-TEend",
+    "Down_Geneend-TEend","Down_Genestart-TEstart",'Up_TEstart-Geneend','Up_Genestart-TEend',
+    'Up_Geneend-TEend','Up_Genestart-TEstart']
+    
+    for c in range(len(list_te)):
+        for t in range(len(list_te[c])):
+            csv_content.append([])
+            csv_content[n].append(list_te[c][t]['TE_name'])
+            csv_content[n].append(list_te[c][t]['classe'])
+            csv_content[n].append(list_te[c][t]['chr'])
+            csv_content[n].append(list_te[c][t]['type'])
+            csv_content[n].append(list_te[c][t]['start'])
+            csv_content[n].append(list_te[c][t]['end'])
+            csv_content[n].append(list_te[c][t]['frame'])
 
-        csv_content.append([])
-        csv_content[n].append(list_te[n]['start'])
-        csv_content[n].append(list_te[n]['end'])
-        csv_content[n].append(list_te[n]['before_start'])
-        csv_content[n].append(list_te[n]['before_end'])
-        csv_content[n].append(list_te[n]['after_start'])
-        csv_content[n].append(list_te[n]['after_end'])
-        csv_content[n].append(list_te[n]['superset_start'])
-        csv_content[n].append(list_te[n]['superset_end'])
-        csv_content[n].append(list_te[n]['subset_start'])
-        csv_content[n].append(list_te[n]['subset_end'])
-        csv_content[n].append(list_te[n]['upstream_overlap'])
-        csv_content[n].append(list_te[n]['downstream_overlap'])
-
-        csv_content[n].append(list_te[n]['Down_TEstart-Geneend'])
-        csv_content[n].append(list_te[n]['Down_Genestart-TEend'])
-        csv_content[n].append(list_te[n]['Down_Geneend-TEend'])
-        csv_content[n].append(list_te[n]['Down_Genestart-TEstart'])
-
-        csv_content[n].append(list_te[n]['Up_TEstart-Geneend'])
-        csv_content[n].append(list_te[n]['Up_Genestart-TEend'])
-        csv_content[n].append(list_te[n]['Up_Geneend-TEend'])
-        csv_content[n].append(list_te[n]['Up_Genestart-TEstart'])'''
+            csv_content[n].append(list_te[c][t]['before_id'])
+            csv_content[n].append(list_te[c][t]['before_feature'])
+            csv_content[n].append(list_te[c][t]['before_strand'])
+            csv_content[n].append(list_te[c][t]['before_start'])
+            csv_content[n].append(list_te[c][t]['before_end'])
 
 
-    with open('ResultFile_TE.tsv', 'w') as csvfile:
+            csv_content[n].append(list_te[c][t]['after_id'])
+            csv_content[n].append(list_te[c][t]['after_feature'])
+            csv_content[n].append(list_te[c][t]['after_strand'])
+            csv_content[n].append(list_te[c][t]['after_start'])
+            csv_content[n].append(list_te[c][t]['after_end'])
+
+            csv_content[n].append(list_te[c][t]['superset_id'])
+            csv_content[n].append(list_te[c][t]['superset_feature'])
+            csv_content[n].append(list_te[c][t]['superset_strand'])
+            csv_content[n].append(list_te[c][t]['superset_start'])
+            csv_content[n].append(list_te[c][t]['superset_end'])
+
+            csv_content[n].append(list_te[c][t]['subset_id'])
+            csv_content[n].append(list_te[c][t]['subset_feature'])
+            csv_content[n].append(list_te[c][t]['subset_strand'])
+            csv_content[n].append(list_te[c][t]['subset_start'])
+            csv_content[n].append(list_te[c][t]['subset_end'])
+            
+            csv_content[n].append(list_te[c][t]['upstream_overlap'])
+            csv_content[n].append(list_te[c][t]['downstream_overlap'])
+
+            csv_content[n].append(list_te[c][t]['Down_TEstart-Geneend'])
+            csv_content[n].append(list_te[c][t]['Down_Genestart-TEend'])
+            csv_content[n].append(list_te[c][t]['Down_Geneend-TEend'])
+            csv_content[n].append(list_te[c][t]['Down_Genestart-TEstart'])
+
+            csv_content[n].append(list_te[c][t]['Up_TEstart-Geneend'])
+            csv_content[n].append(list_te[c][t]['Up_Genestart-TEend'])
+            csv_content[n].append(list_te[c][t]['Up_Geneend-TEend'])
+            csv_content[n].append(list_te[c][t]['Up_Genestart-TEstart'])
+
+            n = n + 1
+
+    with open('ResultFile.tsv', 'w') as csvfile:
         filewriter = csv.writer(csvfile, delimiter='\t')
-        #filewriter.writerow(column_names)
-        #for i in range(len(csv_content)):
-        #    filewriter.writerow(csv_content[i])
-        for i in range(len(list_te)):
-            filewriter.writerow(list_te[i])
+        filewriter.writerow(column_names)
+        for i in range(len(csv_content)):
+            filewriter.writerow(csv_content[i])
     csvfile.close()
+
 
 
 
@@ -361,7 +388,7 @@ list_te = TEDico(te)
 #print("liste gene ", list_gene)
 #print("liste te ", list_te)
 
-liste_te1= check_superset_subset_genes(list_te, list_gene)
-liste_te2=check_downstream_genes(liste_te1, list_gene)
-liste_te3=check_upstream_genes(liste_te2, list_gene)
-writeDataOnFile(liste_te3)
+check_superset_subset_genes(list_te, list_gene)
+check_downstream_genes(list_te, list_gene)
+check_upstream_genes(list_te, list_gene)
+writeDataOnFile(list_te)
