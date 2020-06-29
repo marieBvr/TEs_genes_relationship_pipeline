@@ -48,8 +48,9 @@ def GeneDico(list):
         'end': int(element[4]),
         'score':element[5],
         'strand':element[6],
-        'frame':element[7],
-        'attribute':element[8]
+        'phase':element[7],
+        'id':element[8],
+        'attribute':element[9]
         }
         ListOfDicoGene[i].append(dico_gene)
     #print(ListOfDicoGene)
