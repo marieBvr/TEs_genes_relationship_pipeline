@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # Ayse Ergun & Caroline Meguerditchian
@@ -9,12 +8,15 @@
 #==============================================================================
 import sys
 import csv
+import time
 import numpy as np
 #==============================================================================
 #                            functions
 #==============================================================================
 #This function will allow to read the given file and extract the data in liste
 def Extract_data(file):
+    start_time = time.time()
+
     listForLine=[] # liste for a ligne containing the element for the whole line 
     wholeListes=[] # liste containing all the smaller lists
     with open(file, 'r') as fil: 
@@ -28,9 +30,15 @@ def Extract_data(file):
             #select line that doesn't start with # or space to delet de comment of the gff/tsv file
             if ("#" and " " not in listForLine[i][0]):
                  wholeListes.append(listForLine[i])
-        return  wholeListes 
+
+    elapsed_time = round((time.time() - start_time), 2)
+    print("Extract_data time : ",elapsed_time)
+
+    return  wholeListes 
 
 def GeneDico(list):
+    start_time = time.time()
+
     i = 0
     chr_ = 'chr1'
     ListOfDicoGene=[[]]
@@ -52,9 +60,15 @@ def GeneDico(list):
         }
         ListOfDicoGene[i].append(dico_gene)
     #print(ListOfDicoGene)
+
+    elapsed_time = round((time.time() - start_time), 2)
+    print("GeneDico time : ",elapsed_time)
+
     return ListOfDicoGene
 
 def TEDico(list):
+    start_time = time.time()
+
     i = 0
     chr_ = 'chr1'
     ListOfDicoTE=[[]]
@@ -76,20 +90,27 @@ def TEDico(list):
         }
         ListOfDicoTE[i].append(dico_TE)
     #print(ListOfDicoTE)
+
+    elapsed_time = round((time.time() - start_time), 2)
+    print("TEDico time : ",elapsed_time)
+
     return ListOfDicoTE
 
 def check_superset_subset_genes(te,gene):
+    start_time = time.time()
+
     #loop to look through each chromosome
     for ch in range(len(te)):
 
         #loop to look through each TE
         for i in range(len(te[ch])):
             #add a new column in the dictionnary 
-            te[ch][i]['superset_feature'] = np.NAN
-            te[ch][i]['superset_strand'] = np.NAN
-            te[ch][i]['superset_start'] = np.NAN
-            te[ch][i]['superset_end'] = np.NAN
-            te[ch][i]['superset_id'] = np.NAN
+            te[ch][i]['superset_feature'] = []
+            te[ch][i]['superset_strand'] = []
+            te[ch][i]['superset_start'] = []
+            te[ch][i]['superset_end'] = []
+            te[ch][i]['superset_id'] = []
+
             te[ch][i]['subset_strand'] = []
             te[ch][i]['subset_feature'] = []
             te[ch][i]['subset_start'] = []
@@ -99,19 +120,22 @@ def check_superset_subset_genes(te,gene):
             # loop to compare all the genes to the TE
             for j in range(len(gene[ch])): 
                 distances = calcul_distance(te[ch][i],gene[ch][j])
-                #print('this is j' , j)
 
                 #check if the TE is inside the gene
+                # ---------|    %%%%%%% gene %%%%%%%   |------------
+                # ---------------|** TE ** | ------------------
                 if(distances[0] < 0 and distances[1] < 0 and distances[2] > 0 and distances[3] < 0):
-                    #print(te[i]['name'], "is in", gene[j]['name'])
-                    te[ch][i]['superset_feature'] = gene[ch][j]['feature']
-                    te[ch][i]['superset_strand'] = gene[ch][j]['strand']
-                    te[ch][i]['superset_start'] = gene[ch][j]['start']
-                    te[ch][i]['superset_end'] = gene[ch][j]['end']
-                    te[ch][i]['superset_id'] = gene[ch][j]['attribute']
+                    #print(te[ch][i]['name'], "is in", gene[ch][j]['name'])
+                    te[ch][i]['superset_feature'].append(gene[ch][j]['feature'])##-> list
+                    te[ch][i]['superset_strand'].append(gene[ch][j]['strand'])##-> list
+                    te[ch][i]['superset_start'].append(gene[ch][j]['start'])##-> list
+                    te[ch][i]['superset_end'].append(gene[ch][j]['end'])##-> list
+                    te[ch][i]['superset_id'].append(gene[ch][j]['attribute'])##-> list
                     
                 
                 #check if the TE is over the gene
+                # ---------|    ****** TE *****     |------------
+                # ---------------| %% gene %% | ------------------
                 if(distances[0] < 0 and distances[1] < 0 and distances[2] < 0 and distances[3] > 0):
                     #print(te[i]['name'], "is over", gene[j]['name'])
                     te[ch][i]['subset_strand'].append(gene[ch][j]['strand'])
@@ -120,15 +144,27 @@ def check_superset_subset_genes(te,gene):
                     te[ch][i]['subset_end'].append(gene[ch][j]['end'])
                     te[ch][i]['subset_id'].append(gene[ch][j]['attribute'])
             
+            #replace empty lists with NaN
             if(te[ch][i]['subset_start'] == []):
                 te[ch][i]['subset_start'] = np.NAN
                 te[ch][i]['subset_end'] = np.NAN
                 te[ch][i]['subset_id'] = np.NAN
                 te[ch][i]['subset_strand'] = np.NAN
                 te[ch][i]['subset_feature'] = np.NAN
+            if(te[ch][i]['superset_start'] == []):
+                te[ch][i]['superset_feature'] = np.NAN
+                te[ch][i]['superset_strand'] = np.NAN
+                te[ch][i]['superset_start'] = np.NAN
+                te[ch][i]['superset_end'] = np.NAN
+                te[ch][i]['superset_id'] = np.NAN
+        
+    elapsed_time = round((time.time() - start_time), 2)
+    print("check_superset_subset_genes time : ",elapsed_time)
 
 
 def check_downstream_genes(te,gene):
+    start_time = time.time()
+
     closest_gene = None
 
     #loop to look through each chromosome
@@ -141,8 +177,6 @@ def check_downstream_genes(te,gene):
             te[ch][i]['after_start'] = np.NAN
             te[ch][i]['after_end'] = np.NAN
             te[ch][i]['after_id'] = np.NAN
-            te[ch][i]['downstream_overlap'] = np.NAN
-
 
             for j in range(len(gene[ch])): # loop to compare all the genes to the TE
                 distances = calcul_distance(te[ch][i],gene[ch][j])
@@ -151,19 +185,10 @@ def check_downstream_genes(te,gene):
                 te[ch][i]['Down_Geneend-TEend'] = distances[2] ######################################################## pour ajouter sur la distance sur le fichier
                 te[ch][i]['Down_Genestart-TEstart'] = distances[3] ######################################################## pour ajouter sur la distance sur le fichier
 
-                #find downstream genes with overlap
-                if(distances[0] < 0 and distances[1] < 0 and distances[2] > 0 and distances[3] > 0): 
-                    closest_gene = gene[ch][j]
-                    te[ch][i]['after_feature'] = gene[ch][j]['feature']
-                    te[ch][i]['after_strand'] = gene[ch][j]['strand']
-                    te[ch][i]['after_id'] = gene[ch][j]['attribute']
-                    te[ch][i]['after_start'] = gene[ch][j]['start']
-                    te[ch][i]['after_end'] = gene[ch][j]['end']
-                    te[ch][i]['downstream_overlap'] = abs(distances[1])
-                    break
-
                 #find genes downstream
-                if(distances[0] < 0 and distances[1] > 0 and distances[2] > 0 and distances[3] > 0):
+                # ---------|    ****** TE *****     |----------------------------
+                # -------------------------------------------- | %% gene %% | -----
+                if(distances[0] < 0 and distances[1] > 0 and distances[2] > 0 and distances[3] > 0 or distances[0] < 0 and distances[1] < 0 and distances[2] > 0 and distances[3] > 0):
                     closest_gene = gene[ch][j]
                     te[ch][i]['after_feature'] = gene[ch][j]['feature']
                     te[ch][i]['after_strand'] = gene[ch][j]['strand']
@@ -175,14 +200,24 @@ def check_downstream_genes(te,gene):
             #make sure that if the TE is followed by another TE there is no downstream gene
             for k in range(len(te[ch])):
                 start_value = te[ch][k]['start']
-                if(start_value > te[ch][i]['end'] and start_value < closest_gene['start']):
-                    te[ch][i]['after_feature'] = np.NAN
-                    te[ch][i]['after_strand'] = np.NAN
-                    te[ch][i]['after_id'] = np.NAN
-                    te[ch][i]['after_start'] = np.NAN
-                    te[ch][i]['after_end'] = np.NAN
+                if(closest_gene != None):
+                    if(start_value > te[ch][i]['end'] and start_value < closest_gene['start']):
+                        te[ch][i]['after_feature'] = np.NAN
+                        te[ch][i]['after_strand'] = np.NAN
+                        te[ch][i]['after_id'] = np.NAN
+                        te[ch][i]['after_start'] = np.NAN
+                        te[ch][i]['after_end'] = np.NAN
+                        te[ch][i]['Down_TEstart-Geneend'] = np.NAN
+                        te[ch][i]['Down_Genestart-TEend'] = np.NAN
+                        te[ch][i]['Down_Geneend-TEend'] = np.NAN
+                        te[ch][i]['Down_Genestart-TEstart'] = np.NAN
+    
+    elapsed_time = round((time.time() - start_time), 2)
+    print("check_downstream_genes time : ",elapsed_time)
 
 def check_upstream_genes(te,gene):
+    start_time = time.time()
+
     closest_gene = None
 
     for ch in range(len(gene)): 
@@ -198,7 +233,6 @@ def check_upstream_genes(te,gene):
             te[ch][i]['before_start'] = np.NAN
             te[ch][i]['before_end'] = np.NAN
             te[ch][i]['before_id'] = np.NAN
-            te[ch][i]['upstream_overlap'] = np.NAN
 
             for j in range(len(gene[ch])): # loop to compare all the genes to the TE
                 distances = calcul_distance(te[ch][i],gene[ch][j])
@@ -206,20 +240,12 @@ def check_upstream_genes(te,gene):
                 te[ch][i]['Up_Genestart-TEend'] = distances[1] ######################################################## pour ajouter sur la distance sur le fichier
                 te[ch][i]['Up_Geneend-TEend'] = distances[2] ######################################################## pour ajouter sur la distance sur le fichier
                 te[ch][i]['Up_Genestart-TEstart'] = distances[3] ######################################################## pour ajouter sur la distance sur le fichier
-
-                #find overlap with gene upstream 
-                if(distances[0] < 0 and distances[1] < 0 and distances[2] < 0 and distances[3] < 0): 
-                    closest_gene = gene[ch][j]
-                    te[ch][i]['before_feature'] = gene[ch][j]['feature']
-                    te[ch][i]['before_strand'] = gene[ch][j]['strand']
-                    te[ch][i]['before_start'] = gene[ch][j]['start']
-                    te[ch][i]['before_end'] = gene[ch][j]['end']
-                    te[ch][i]['before_id'] = gene[ch][j]['attribute']
-                    te[ch][i]['upstream_overlap'] = abs(distances[0])
-                    break
+                    
 
                 #find genes upstream
-                if(distances[0] > 0 and distances[1] < 0 and distances[2] < 0 and distances[3] < 0):
+                # ----------------------------|    ****** TE *****     |------------
+                # --- | %% gene %% | -----------------------------------------------
+                if(distances[0] > 0 and distances[1] < 0 and distances[2] < 0 and distances[3] < 0 or distances[0] < 0 and distances[1] < 0 and distances[2] < 0 and distances[3] < 0):
                     closest_gene = gene[ch][j]
                     te[ch][i]['before_feature'] = gene[ch][j]['feature']
                     te[ch][i]['before_strand'] = gene[ch][j]['strand']
@@ -236,6 +262,82 @@ def check_upstream_genes(te,gene):
                     te[ch][i]['before_start'] = np.NAN
                     te[ch][i]['before_end'] = np.NAN
                     te[ch][i]['before_id'] = np.NAN
+                    te[ch][i]['Up_TEstart-Geneend'] = np.NAN
+                    te[ch][i]['Up_Genestart-TEend'] = np.NAN
+                    te[ch][i]['Up_Geneend-TEend'] = np.NAN
+                    te[ch][i]['Up_Genestart-TEstart'] = np.NAN
+
+    elapsed_time = round((time.time() - start_time), 2)
+    print("check_upstream_genes time : ",elapsed_time)
+
+def check_upstream_overlap(te,gene):
+    start_time = time.time()
+
+    #reverse the genes order
+    for ch in range(len(gene)): 
+        gene[ch] = gene[ch][::-1]
+
+    #loop to look through each chromosome
+    for ch in range(len(te)):
+
+        #loop to look through each TE
+        for i in range(len(te[ch])):
+            te[ch][i]['upstream_overlap'] = []
+            te[ch][i]['upstream_overlap_ID']=[]
+            te[ch][i]['upstream_overlap_strand']=[]
+            te[ch][i]['upstream_overlap_feature']=[]
+            te[ch][i]['upstream_overlap_start']=[]
+            te[ch][i]['upstream_overlap_end']=[]
+
+            for j in range(len(gene[ch])): # loop to compare all the genes to the TE
+                distances = calcul_distance(te[ch][i],gene[ch][j])
+
+            #find overlap with gene upstream 
+                # ---------|    ****** TE *****     |------------
+                # --- | %% gene %% | ----------------------------
+                if(distances[0] < 0 and distances[1] < 0 and distances[2] < 0 and distances[3] < 0): 
+                    te[ch][i]['upstream_overlap'].append(abs(distances[0]))                 
+                    te[ch][i]['upstream_overlap_ID'].append(gene[ch][j]['attribute'])
+                    te[ch][i]['upstream_overlap_strand'].append(gene[ch][j]['strand'])
+                    te[ch][i]['upstream_overlap_feature'].append(gene[ch][j]['feature'])
+                    te[ch][i]['upstream_overlap_start'].append(gene[ch][j]['start'])
+                    te[ch][i]['upstream_overlap_end'].append(gene[ch][j]['end'])
+
+    elapsed_time = round((time.time() - start_time), 2)
+    print("check_upstream_overlap time : ",elapsed_time)
+
+def check_downstream_overlap(te,gene):
+    start_time = time.time()
+
+    #loop to look through each chromosome
+    for ch in range(len(te)):
+
+        #loop to look through each TE
+        for i in range(len(te[ch])):
+            te[ch][i]['downstream_overlap'] = []
+            te[ch][i]['downstream_overlap_ID']=[]
+            te[ch][i]['downstream_overlap_strand']=[]
+            te[ch][i]['downstream_overlap_feature']=[]
+            te[ch][i]['downstream_overlap_start']=[]
+            te[ch][i]['downstream_overlap_end']=[]
+
+
+            for j in range(len(gene[ch])): # loop to compare all the genes to the TE
+                distances = calcul_distance(te[ch][i],gene[ch][j])
+
+                #find downstream genes with overlap
+                # ---------|    ****** TE *****     |------------
+                # --------------------------- | %% gene %% | -----
+                if(distances[0] < 0 and distances[1] < 0 and distances[2] > 0 and distances[3] > 0):                     
+                    te[ch][i]['downstream_overlap'].append(abs(distances[1]))
+                    te[ch][i]['downstream_overlap_ID'].append(gene[ch][j]['attribute'])
+                    te[ch][i]['downstream_overlap_strand'].append(gene[ch][j]['strand'])
+                    te[ch][i]['downstream_overlap_feature'].append(gene[ch][j]['feature'])
+                    te[ch][i]['downstream_overlap_start'].append(gene[ch][j]['start'])
+                    te[ch][i]['downstream_overlap_end'].append(gene[ch][j]['end'])
+
+    elapsed_time = round((time.time() - start_time), 2)
+    print("check_downstream_overlap time : ",elapsed_time)
 
 def calcul_distance(te,gene):
     distance1 = te['start'] - gene['end']
@@ -247,13 +349,18 @@ def calcul_distance(te,gene):
 
 
 def writeDataOnFile(list_te):
+    start_time = time.time()
+
     csv_content = []
     n = 0
     column_names = ["TE_Type","TE_id","chromosome","TE_strand","start","end","before_id",'before_feature',
     'before_strand','before_start','before_end',"after_id",'after_feature','after_strand',
     "after_start","after_end",'superset_id','superset_feature','superset_strand','superset_start',
     'superset_end','subset_id','subset_feature','subset_strand','subset_start','subset_end',
-    'upstream_overlap',"downstream_overlap","Down_TEstart-Geneend","Down_Genestart-TEend",
+    'upstream_overlap','upstream_overlap_ID','upstream_overlap_strand','upstream_overlap_feature',
+    'upstream_overlap_start','upstream_overlap_end',"downstream_overlap",
+    'downstream_overlap_ID','downstream_overlap_strand','downstream_overlap_feature',
+    'downstream_overlap_start','downstream_overlap_end',"Down_TEstart-Geneend","Down_Genestart-TEend",
     "Down_Geneend-TEend","Down_Genestart-TEstart",'Up_TEstart-Geneend','Up_Genestart-TEend',
     'Up_Geneend-TEend','Up_Genestart-TEstart']
     for c in range(len(list_te)):
@@ -293,7 +400,18 @@ def writeDataOnFile(list_te):
             csv_content[n].append(list_te[c][t]['subset_end'])
             
             csv_content[n].append(list_te[c][t]['upstream_overlap'])
+            csv_content[n].append(list_te[c][t]['upstream_overlap_ID'])
+            csv_content[n].append(list_te[c][t]['upstream_overlap_strand'])
+            csv_content[n].append(list_te[c][t]['upstream_overlap_feature'])
+            csv_content[n].append(list_te[c][t]['upstream_overlap_start'])
+            csv_content[n].append(list_te[c][t]['upstream_overlap_end'])
+
             csv_content[n].append(list_te[c][t]['downstream_overlap'])
+            csv_content[n].append(list_te[c][t]['downstream_overlap_ID'])
+            csv_content[n].append(list_te[c][t]['downstream_overlap_strand'])
+            csv_content[n].append(list_te[c][t]['downstream_overlap_feature'])
+            csv_content[n].append(list_te[c][t]['downstream_overlap_start'])
+            csv_content[n].append(list_te[c][t]['downstream_overlap_end'])
 
             csv_content[n].append(list_te[c][t]['Down_TEstart-Geneend'])
             csv_content[n].append(list_te[c][t]['Down_Genestart-TEend'])
@@ -307,15 +425,15 @@ def writeDataOnFile(list_te):
 
             n = n + 1
 
-    with open('ResultFile.tsv', 'w') as csvfile:
+    with open('ResultFile_LTR.tsv', 'w') as csvfile:
         filewriter = csv.writer(csvfile, delimiter='\t')
         filewriter.writerow(column_names)
         for i in range(len(csv_content)):
             filewriter.writerow(csv_content[i])
     csvfile.close()
 
-
-
+    elapsed_time = round((time.time() - start_time), 2)
+    print("writeDataOnFile time : ",elapsed_time)
 
 #==============================================================================
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -323,10 +441,9 @@ def writeDataOnFile(list_te):
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #==============================================================================
 
-gene=Extract_data(sys.argv[1])
-te=Extract_data(sys.argv[2])
-#gene=Extract_data('real_gene_data.tsv')
-#te=Extract_data('real_LTR_data.tsv')
+gene=Extract_data('Exemple_file/Mandshurica_1.0_braker214_Pruma_full.tsv')
+te=Extract_data('Exemple_file/Mands_v1_LTRpred_DataSheet_full.tsv')
+
 #print(te)
 
 list_gene = GeneDico(gene)
@@ -338,4 +455,6 @@ list_te = TEDico(te)
 check_superset_subset_genes(list_te, list_gene)
 check_downstream_genes(list_te, list_gene)
 check_upstream_genes(list_te, list_gene)
+check_upstream_overlap(list_te, list_gene)
+check_downstream_overlap(list_te, list_gene)
 writeDataOnFile(list_te)
