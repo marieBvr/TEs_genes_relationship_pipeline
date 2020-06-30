@@ -354,13 +354,12 @@ def check_downstream_overlap(te,gene):
 
 
 def calcul_distance(te,gene):
-    start_time = time.time()
+   
     distance1 = te['start'] - gene['end']
     distance2 = gene['start'] - te['end']
     distance3 = gene['end'] - te['end']
     distance4 = gene['start'] - te['start']
-    elapsed_time = round((time.time() - start_time), 2)
-    print("calcul_distance time : ",elapsed_time)
+
     return [distance1, distance2, distance3, distance4]
 
 
