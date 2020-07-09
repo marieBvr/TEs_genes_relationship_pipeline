@@ -11,22 +11,7 @@ You can learn more about this subject in the Contribution Section.
 ```bash
 pip3 install numpy
 ```
-
-## Requirement
-
-## Usage
-```python
-print("hello world")
-```
-
-## Example 
-
 ## Contribution
 You can find our reports on clicking on the following links.
 Ayse's report :  https://fr.overleaf.com/read/qwygcwcjmxdd
 Caroline's report :  https://www.overleaf.com/5677149684vhkkmwryfwjp
-
-
-
-
-
