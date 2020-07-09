@@ -5,7 +5,7 @@
 # Script For TE project
 
 #==============================================================================
-#                           importations
+#                               imports
 #==============================================================================
 import sys
 import csv
@@ -14,14 +14,14 @@ import time
 
 
 #==============================================================================
-#                            functions
+#                               functions
 #==============================================================================
-#This function will allow to read the given file and extract the data in liste
+#This function will allow to read the given file and extract the data in list
 def Extract_data(file):
     start_time = time.time()
 
-    listForLine=[] # liste for a ligne containing the element for the whole line 
-    wholeListes=[] # liste containing all the smaller lists
+    listForLine=[] # list for a line containing the element for the whole line 
+    wholeLists=[] # list containing all the smaller lists
     with open(file, 'r') as fil: 
         lines = fil.readlines()
         for line in lines:
@@ -30,14 +30,14 @@ def Extract_data(file):
             listForLine.append(element)
 
         for i in range (1,len(listForLine)):
-            #select line that doesn't start with # or space to delet de comment of the gff/tsv file
+            #select line that doesn't start with # or space to delete the comment of the gff/tsv file
             if ("#" or " " not in listForLine[i][0]):
-                 wholeListes.append(listForLine[i])
+                 wholeLists.append(listForLine[i])
 
     elapsed_time = round((time.time() - start_time), 2)
     print("Extract_data time : ",elapsed_time)
 
-    return  wholeListes 
+    return  wholeLists 
 
 def GeneDico(list):
     start_time = time.time()
@@ -128,7 +128,7 @@ def check_superset_subset_genes(te,gene):
 
         # loop to compare all the genes to the TE
             for j in range(len(gene[ch])): 
-                distances = calcul_distance(te[ch][i],gene[ch][j])
+                distances = calculateDistance(te[ch][i],gene[ch][j])
 
                 #check if the TE is inside the gene
                 # ---------|    %%%%%%% gene %%%%%%%   |------------
@@ -188,7 +188,7 @@ def check_downstream_genes(te,gene):
             te[ch][i]['after_id'] = np.NAN
 
             for j in range(len(gene[ch])): # loop to compare all the genes to the TE
-                distances = calcul_distance(te[ch][i],gene[ch][j])
+                distances = calculateDistance(te[ch][i],gene[ch][j])
                 te[ch][i]['Down_TEstart-Geneend'] = distances[0] ######################################################## pour ajouter sur la distance sur le fichier
                 te[ch][i]['Down_Genestart-TEend'] = distances[1] ######################################################## pour ajouter sur la distance sur le fichier
                 te[ch][i]['Down_Geneend-TEend'] = distances[2] ######################################################## pour ajouter sur la distance sur le fichier
@@ -245,7 +245,7 @@ def check_upstream_genes(te,gene):
             te[ch][i]['before_id'] = np.NAN
           
             for j in range(len(gene[ch])): # loop to compare all the genes to the TE
-                distances = calcul_distance(te[ch][i],gene[ch][j])
+                distances = calculateDistance(te[ch][i],gene[ch][j])
                 te[ch][i]['Up_TEstart-Geneend'] = distances[0] ######################################################## pour ajouter sur la distance sur le fichier
                 te[ch][i]['Up_Genestart-TEend'] = distances[1] ######################################################## pour ajouter sur la distance sur le fichier
                 te[ch][i]['Up_Geneend-TEend'] = distances[2] ######################################################## pour ajouter sur la distance sur le fichier
@@ -300,7 +300,7 @@ def check_upstream_overlap(te,gene):
             te[ch][i]['upstream_overlap_end']=[]
 
             for j in range(len(gene[ch])): # loop to compare all the genes to the TE
-                distances = calcul_distance(te[ch][i],gene[ch][j])
+                distances = calculateDistance(te[ch][i],gene[ch][j])
 
             #find overlap with gene upstream 
                 # ---------|    ****** TE *****     |------------
@@ -335,7 +335,7 @@ def check_downstream_overlap(te,gene):
 
 
             for j in range(len(gene[ch])): # loop to compare all the genes to the TE
-                distances = calcul_distance(te[ch][i],gene[ch][j])
+                distances = calculateDistance(te[ch][i],gene[ch][j])
 
                 #find downstream genes with overlap
                 # ---------|    ****** TE *****     |------------
@@ -353,7 +353,7 @@ def check_downstream_overlap(te,gene):
     return te
 
 
-def calcul_distance(te,gene):
+def calculateDistance(te,gene):
    
     distance1 = te['start'] - gene['end']
     distance2 = gene['start'] - te['end']
@@ -465,8 +465,8 @@ te=Extract_data('real_TE_data.tsv')
 list_gene = GeneDico(gene)
 list_te = TEDico(te)
 
-#print("liste gene ", list_gene)
-#print("liste te ", list_te)
+#print("list gene ", list_gene)
+#print("list te ", list_te)
 
 a= check_superset_subset_genes(list_te, list_gene)
 b= check_downstream_genes(a, list_gene)
