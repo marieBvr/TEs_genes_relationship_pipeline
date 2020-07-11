@@ -8,10 +8,22 @@ The main goal of this project is to find the relationship between Transposable E
 You can learn more about this subject in the Contribution Section.
 
 ## Installation 
-```bash
-pip3 install numpy
+
+## Requirement
+
+## Usage
+```python
+print("hello world")
 ```
+
+## Exemple 
+
 ## Contribution
 You can find our reports on clicking on the following links.
 Ayse's report :  https://fr.overleaf.com/read/qwygcwcjmxdd
 Caroline's report :  https://www.overleaf.com/5677149684vhkkmwryfwjp
+
+
+
+
+
