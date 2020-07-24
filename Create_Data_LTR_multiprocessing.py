@@ -177,6 +177,8 @@ def check_downstream_genes(queue,gene):
     #loop to look through each chromosome
     for ch in range(len(te)):
 
+        gene[ch] = sorted(gene[ch], key = lambda i: i['start'])
+
         #loop to look through each TE
         for i in range(len(te[ch])):
             te[ch][i]['after_feature'] = np.NAN
@@ -195,7 +197,7 @@ def check_downstream_genes(queue,gene):
                 #find genes downstream
                 # ---------|    ****** TE *****     |----------------------------
                 # -------------------------------------------- | %% gene %% | -----
-                if(distances[0] < 0 and distances[1] > 0 and distances[2] > 0 and distances[3] > 0 or distances[0] < 0 and distances[1] < 0 and distances[2] > 0 and distances[3] > 0):
+                if(distances[1] == 0 or distances[0] < 0 and distances[1] > 0 and distances[2] > 0 and distances[3] > 0 or distances[0] < 0 and distances[1] < 0 and distances[2] > 0 and distances[3] > 0):
                     closest_gene = gene[ch][j]
                     te[ch][i]['after_feature'] = gene[ch][j]['feature']
                     te[ch][i]['after_strand'] = gene[ch][j]['strand']
@@ -232,7 +234,8 @@ def check_upstream_genes(queue,gene):
     closest_gene = None
 
     for ch in range(len(gene)): 
-        gene[ch] = gene[ch][::-1]
+        a = sorted(gene[ch], key = lambda i: i['end'])
+        gene[ch] = a[::-1]
 
     #loop to look through each chromosome
     for ch in range(len(te)):
@@ -256,7 +259,7 @@ def check_upstream_genes(queue,gene):
                 #find genes upstream
                 # ----------------------------|    ****** TE *****     |------------
                 # --- | %% gene %% | -----------------------------------------------
-                if(distances[0] > 0 and distances[1] < 0 and distances[2] < 0 and distances[3] < 0 or distances[0] < 0 and distances[1] < 0 and distances[2] < 0 and distances[3] < 0):
+                if(distances[0] == 0 or distances[0] > 0 and distances[1] < 0 and distances[2] < 0 and distances[3] < 0 or distances[0] < 0 and distances[1] < 0 and distances[2] < 0 and distances[3] < 0):
                     closest_gene = gene[ch][j]
                     te[ch][i]['before_feature'] = gene[ch][j]['feature']
                     te[ch][i]['before_strand'] = gene[ch][j]['strand']
@@ -468,8 +471,8 @@ def writeDataOnFile(list_te):
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #==============================================================================
 
-gene=Extract_data('Exemple_file/Gene_testfile.tsv')
-te=Extract_data('Exemple_file/TE_testfile.tsv')
+gene=Extract_data(sys.argv[1])
+te=Extract_data(sys.argv[2])
 
 #print(te)
 list_gene = GeneDico(gene)
