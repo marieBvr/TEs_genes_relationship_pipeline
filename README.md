@@ -8,7 +8,8 @@ The main goal of this project is to find the relationship between Transposable E
 You can learn more about this subject in the Contribution Section.
 
 ## Installation 
-
+### Python 
+### R 
 ## Requirement
 
 ## Usage
