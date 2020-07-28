@@ -67,3 +67,7 @@ data = data.frame(sens,value)
 plot = ggplot(data, aes(fill=strand, y=value, x=sens )) + geom_bar(position="dodge", stat="identity") + ggtitle("Sibirica") + ylab("number of TE with an overlapping gene") + xlab("") + theme(plot.title = element_text(hjust = 0.5))
 print(plot)
 
+#write result of counting in file
+df = data.frame(col1 = c1[1], col2 = c2[1], col3 = c1[2], col4 = c2[2])
+colnames(df) = c("Upstream overlap(+)","Upstream overlap(-)","Downstream_overlap(+)","Downstream_overlap(+)")
+write.table(df,"overlap_count_result.csv",row.names = FALSE, sep="\t")
