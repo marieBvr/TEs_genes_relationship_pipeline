@@ -7,24 +7,34 @@ The main goal of this project is to find the relationship between Transposable E
 
 You can learn more about this subject in the Contribution Section.
 ## Requirement
+## sofware and version
+- install python 3
+- Rstudio 
 
+# Installation 
 
-## Installation 
-### Python 
-#### Input files
-#### Output file
-### R 
-#### Input files
-#### Output files
+## Python 
+### Input files
 
-## Usage
-```python
-print("hello world")
+-> précisé les colonnes qu'il faut avoire pour les 3 fichiers (tableau)
+Attempt | #1 | #2 | #3 | #4 | #5 | #6 | #7 | #8 | #9 | #10 | #11
+--- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |---
+Seconds | 301 | 283 | 290 | 286 | 289 | 285 | 287 | 287 | 272 | 276 | 269
+
+### Output file
+## R 
+### Input files
+### Output files
+
+## Basic statistic ? (maybe ) 
+
+# Usage
 ```
+$ python Noms_du_script gene_data te/ltr_data 
+```
+# Example 
 
-## Example 
-
-## Contribution
+# Contribution
 You can find our reports on clicking on the following links.
 Ayse's report :  https://fr.overleaf.com/read/qwygcwcjmxdd
 Caroline's report :  https://www.overleaf.com/5677149684vhkkmwryfwjp
