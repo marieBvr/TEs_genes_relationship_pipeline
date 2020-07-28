@@ -6,18 +6,23 @@ This is the repository of our summer internship 2020. We are two students from U
 The main goal of this project is to find the relationship between Transposable Element (TE) and the apricot gene. Then focus on the Long Terminal Repeat (LTR) that are type of TE. And finally compare those element for 4 species of apricot.
 
 You can learn more about this subject in the Contribution Section.
+## Requirement
+
 
 ## Installation 
 ### Python 
+#### Input files
+#### Output file
 ### R 
-## Requirement
+#### Input files
+#### Output files
 
 ## Usage
 ```python
 print("hello world")
 ```
 
-## Exemple 
+## Example 
 
 ## Contribution
 You can find our reports on clicking on the following links.
