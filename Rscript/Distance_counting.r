@@ -65,3 +65,9 @@ value_down = c(c1[2],c9[2],c2[2],c10[2],c3[2],c11[2],c4[2],c12[2])
 data = data.frame(distance,strand,value_down)
 plot2 = ggplot(data, aes(fill=strand, y=value_down, x=distance )) + geom_bar(position="dodge", stat="identity") + ggtitle("Mandshurica") + ylab("number of LTR") + xlab("distance to the gene") + theme(plot.title = element_text(hjust = 0.5))
 print(plot2)
+
+#write result of counting in file
+df = data.frame(col1 = c(c1[1],c2[1],c3[1],c4[1]), col2 = c(c9[1],c10[1],c11[1],c12[1]), col3 = c(c9[2],c10[2],c11[2],c12[2]), col4 = c(c1[2],c2[2],c3[2],c4[2]))
+colnames(df) = c("Upstream overlap(+)","Upstream overlap(-)","Downstream_overlap(+)","Downstream_overlap(+)")
+row.names(df) = c("0-500bp","501-1000bp","1001-2000bp","2000+bp")
+write.table(df,"distance_count_result.csv",row.names = TRUE, sep="\t",col.names=NA)
