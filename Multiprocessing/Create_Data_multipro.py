@@ -105,9 +105,11 @@ def TEDico(list):
 
     return ListOfDicoTE
 
-def check_superset_subset_genes(te,gene):
+def check_superset_subset_genes(queue,gene):
     start_time = time.time()
+
     te = queue.get()
+    
     for ch in range(len(te)):
         #loop to look through each TE
         for i in range(len(te[ch])):
@@ -162,7 +164,7 @@ def check_superset_subset_genes(te,gene):
     elapsed_time = round((time.time() - start_time), 2)
     print("check_superset_subset_genes time : ",elapsed_time)
 
-def check_downstream_genes(te,gene):
+def check_downstream_genes(queue,gene):
     start_time = time.time()
     te = queue.get()
     closest_gene = None
@@ -212,7 +214,7 @@ def check_downstream_genes(te,gene):
     print("check_downstream_genes time : ",elapsed_time)
 
 
-def check_upstream_genes(te,gene):
+def check_upstream_genes(queue,gene):
     start_time = time.time()
     te=queue.get()
     closest_gene = None
@@ -263,7 +265,7 @@ def check_upstream_genes(te,gene):
     
 
 
-def check_upstream_overlap(te,gene):
+def check_upstream_overlap(queue,gene):
     start_time = time.time()
     te=queue.get()
     #reverse the genes order
@@ -295,7 +297,7 @@ def check_upstream_overlap(te,gene):
     elapsed_time = round((time.time() - start_time), 2)
     print("check_upstream_overlap time : ",elapsed_time)
 
-def check_downstream_overlap(te,gene):
+def check_downstream_overlap(queue,gene):
     start_time = time.time()
     te=queue.get()
     #loop to look through each chromosome
