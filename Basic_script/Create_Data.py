@@ -459,8 +459,8 @@ def writeDataOnFile(list_te):
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #==============================================================================
 
-gene=Extract_data('real_gene_data.tsv')
-te=Extract_data('real_TE_data.tsv')
+gene=Extract_data(sys.argv[1])
+te=Extract_data(sys.argv[2])
 #print(te)
 list_gene = GeneDico(gene)
 list_te = TEDico(te)

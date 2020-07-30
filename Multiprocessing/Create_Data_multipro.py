@@ -147,17 +147,17 @@ def check_superset_subset_genes(te,gene):
                     te[ch][i]['subset_id'].append(gene[ch][j]['attribute'])
             #rempty list to NAN
             if(te[ch][i]['subset_start'] == []):
-                te[ch][i]['subset_start'] = []
-                te[ch][i]['subset_end'] = []
-                te[ch][i]['subset_id'] = []
-                te[ch][i]['subset_strand'] = []
-                te[ch][i]['subset_feature'] = []
+                te[ch][i]['subset_start'] = np.NAN
+                te[ch][i]['subset_end'] = np.NAN
+                te[ch][i]['subset_id'] = np.NAN
+                te[ch][i]['subset_strand'] = np.NAN
+                te[ch][i]['subset_feature'] = np.NAN
             if(te[ch][i]['superset_start'] == []):
-                te[ch][i]['superset_feature'] = []
-                te[ch][i]['superset_strand'] = []
-                te[ch][i]['superset_start'] = []
-                te[ch][i]['superset_end'] = []
-                te[ch][i]['superset_id'] = []
+                te[ch][i]['superset_feature'] = np.NAN
+                te[ch][i]['superset_strand'] = np.NAN
+                te[ch][i]['superset_start'] = np.NAN
+                te[ch][i]['superset_end'] = np.NAN
+                te[ch][i]['superset_id'] = np.NAN
     queue.put(te)
     elapsed_time = round((time.time() - start_time), 2)
     print("check_superset_subset_genes time : ",elapsed_time)
@@ -171,11 +171,11 @@ def check_downstream_genes(te,gene):
         #loop to look through each TE
         gene[ch] = sorted(gene[ch], key = lambda i: i['start'])
         for i in range(len(te[ch])):
-            te[ch][i]['after_feature'] = []
-            te[ch][i]['after_strand'] = []
-            te[ch][i]['after_start'] = []
-            te[ch][i]['after_end'] = []
-            te[ch][i]['after_id'] = []
+            te[ch][i]['after_feature'] = np.NAN
+            te[ch][i]['after_strand'] = np.NAN
+            te[ch][i]['after_start'] = np.NAN
+            te[ch][i]['after_end'] = np.NAN
+            te[ch][i]['after_id'] = np.NAN
             for j in range(len(gene[ch])): # loop to compare all the genes to the TE
                 distances = calcul_distance(te[ch][i],gene[ch][j])
                 te[ch][i]['Down_TEstart-Geneend'] = distances[0] ######################################################## pour ajouter sur la distance sur le fichier
@@ -198,15 +198,15 @@ def check_downstream_genes(te,gene):
                 start_value = te[ch][k]['start']
                 if(closest_gene != None):
                     if(start_value > te[ch][i]['end'] and start_value < closest_gene['start']):
-                        te[ch][i]['after_feature'] = []
-                        te[ch][i]['after_strand'] = []
-                        te[ch][i]['after_id'] = []
-                        te[ch][i]['after_start'] = []
-                        te[ch][i]['after_end'] = []
-                        te[ch][i]['Down_TEstart-Geneend'] = []
-                        te[ch][i]['Down_Genestart-TEend'] = []
-                        te[ch][i]['Down_Geneend-TEend'] = []
-                        te[ch][i]['Down_Genestart-TEstart'] = []
+                        te[ch][i]['after_feature'] = np.NAN
+                        te[ch][i]['after_strand'] = np.NAN
+                        te[ch][i]['after_id'] = np.NAN
+                        te[ch][i]['after_start'] = np.NAN
+                        te[ch][i]['after_end'] = np.NAN
+                        te[ch][i]['Down_TEstart-Geneend'] = np.NAN
+                        te[ch][i]['Down_Genestart-TEend'] = np.NAN
+                        te[ch][i]['Down_Geneend-TEend'] = np.NAN
+                        te[ch][i]['Down_Genestart-TEstart'] = np.NAN
     queue.put(te)
     elapsed_time = round((time.time() - start_time), 2)
     print("check_downstream_genes time : ",elapsed_time)
@@ -223,11 +223,11 @@ def check_upstream_genes(te,gene):
     for ch in range(len(te)):
         #loop to look through each TE
         for i in range(len(te[ch])):
-            te[ch][i]['before_feature'] = []
-            te[ch][i]['before_strand'] = []
-            te[ch][i]['before_start'] = []
-            te[ch][i]['before_end'] = []
-            te[ch][i]['before_id'] = []
+            te[ch][i]['before_feature'] = np.NAN
+            te[ch][i]['before_strand'] = np.NAN
+            te[ch][i]['before_start'] = np.NAN
+            te[ch][i]['before_end'] = np.NAN
+            te[ch][i]['before_id'] = np.NAN
             for j in range(len(gene[ch])): # loop to compare all the genes to the TE
                 distances = calcul_distance(te[ch][i],gene[ch][j])
                 te[ch][i]['Up_TEstart-Geneend'] = distances[0] ######################################################## pour ajouter sur la distance sur le fichier
@@ -248,15 +248,15 @@ def check_upstream_genes(te,gene):
             #make sure that if the TE is preceded by another TE there is no upstream gene
             for k in range(len(te[ch])):
                 if(te[ch][i]['start'] > te[ch][k]['end'] and closest_gene['end'] < te[ch][k]['end']):
-                    te[ch][i]['before_feature'] = []
-                    te[ch][i]['before_strand'] = []
-                    te[ch][i]['before_start'] = []
-                    te[ch][i]['before_end'] = []
-                    te[ch][i]['before_id'] = []
-                    te[ch][i]['Up_TEstart-Geneend'] = []
-                    te[ch][i]['Up_Genestart-TEend'] = []
-                    te[ch][i]['Up_Geneend-TEend'] = []
-                    te[ch][i]['Up_Genestart-TEstart'] = []
+                    te[ch][i]['before_feature'] = np.NAN
+                    te[ch][i]['before_strand'] = np.NAN
+                    te[ch][i]['before_start'] = np.NAN
+                    te[ch][i]['before_end'] = np.NAN
+                    te[ch][i]['before_id'] = np.NAN
+                    te[ch][i]['Up_TEstart-Geneend'] = np.NAN
+                    te[ch][i]['Up_Genestart-TEend'] = np.NAN
+                    te[ch][i]['Up_Geneend-TEend'] = np.NAN
+                    te[ch][i]['Up_Genestart-TEstart'] = np.NAN
     queue.put(te)
     elapsed_time = round((time.time() - start_time), 2)
     print("check_upstream_genes time : ",elapsed_time)
@@ -337,15 +337,15 @@ def writeDataOnFile(list_te):
     start_time=time.time()
     csv_content = []
     n=0
-    column_names = ["TE_name","classe""chr","type","start","end","frame","before_id",'before_feature',
-    'before_strand','before_start','before_end',"after_id",'after_feature','after_strand',
-    "after_start","after_end",'superset_id','superset_feature','superset_strand','superset_start',
+    column_names = ['TE_name','classe','chr','type','start','end','frame','before_id','before_feature',
+    'before_strand','before_start','before_end','after_id','after_feature','after_strand',
+    'after_start','after_end','superset_id','superset_feature','superset_strand','superset_start',
     'superset_end','subset_id','subset_feature','subset_strand','subset_start','subset_end',
     'upstream_overlap','upstream_overlap_ID','upstream_overlap_strand','upstream_overlap_feature',
     'upstream_overlap_start','upstream_overlap_end',"downstream_overlap",
     'downstream_overlap_ID','downstream_overlap_strand','downstream_overlap_feature',
-    'downstream_overlap_start','downstream_overlap_end',"Down_TEstart-Geneend","Down_Genestart-TEend",
-    "Down_Geneend-TEend","Down_Genestart-TEstart",'Up_TEstart-Geneend','Up_Genestart-TEend',
+    'downstream_overlap_start','downstream_overlap_end','Down_TEstart-Geneend','Down_Genestart-TEend',
+    'Down_Geneend-TEend','Down_Genestart-TEstart','Up_TEstart-Geneend','Up_Genestart-TEend',
     'Up_Geneend-TEend','Up_Genestart-TEstart']
     for c in range(len(list_te)):
         for t in range(len(list_te[c])):
