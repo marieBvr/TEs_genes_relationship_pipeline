@@ -24,15 +24,16 @@ In order to you these script you will have to download  our repository.
 
 The scripts takes in consideration the columns name so before using them you should verify that each files haves thise columns : 
 
-* Genome files
+* Genome files\
+
 chromosome | source | feature | start | end | score | strand | phase | ID | Attributes | 
 --- | --- | --- | --- |--- |--- |--- |--- |--- |--- 
 
-* TE files 
+* TE files\
 Chromosome | Length_Chr | Type | match/match_part_part | Start | End | Length | Frame | Attribute | Code | Class | TE_name | TE_Status |
 --- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- 
 
-* LTR files 
+* LTR files\
 Attempt | #1 | #2 | #3 | #4 | #5 | #6 | #7 | #8 | #9 | #10 | #11
 --- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |---
 
