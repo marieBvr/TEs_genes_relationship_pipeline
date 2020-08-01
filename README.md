@@ -37,12 +37,12 @@ chromosome | source | feature | start | end | score | strand | phase | ID | Attr
 
 * TE files
 
-Chromosome | Length_Chr | Type | match/match_part_part | Start | End | Length | Frame | Attribute | Code | Class | TE_name | TE_Status |
+Chromosome | Length_Chr | Type | X | Start | End | X | X | Attribute | X | Class | TE_name | X |
 --- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- 
 
 * LTR files
 
-species | ID | dfam_target_name | ltr_similarity | similarity | protein_domain | orfs | chromosome | start | end | strand | width | annotation | pred_tool | frame | score |
+species | ID | dfam_target_name | X | X | X | X | chromosome | start | end | strand | X | annotation | X | X | score |
 --- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |--- | --- | --- | --- |---
 
 ### Pipeline
@@ -69,6 +69,8 @@ After opening the .r files with Rstudio, make sure to verify and modify the foll
 result_file = read.csv(file = '[file_path]/result.tsv', sep = '\t', header = TRUE)
 ```
 Each .r script will give you a new output file(counter) as well as a graph. The title and small explication in the file  will help to understand better.
+
+Please note that, the graph's legend will also need to be change according to the file and abricot species.
 
 # Contribution
 You can find our reports on clicking on the following links.
