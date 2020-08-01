@@ -13,14 +13,14 @@ There are different category/class of transposon. In this project we are going t
 
 ## Requirement
 In order to you these script you will have to download  our repository.
-## sofware and version
-- install python 3
-- Rstudio 
+# Example 
+![alt text](https://raw.githubusercontent.com/Ayse1006/TE_abricot/master/Testing_data/diagram_gene_te.jpg)
 
-# Installation 
-
-## Python 
-### Input files
+# Usage
+```
+$ python Noms_du_script gene_data te/ltr_data 
+```
+## Input files
 
 The scripts takes in consideration the columns name so before using them you should verify that each files haves thise columns : 
 
@@ -36,21 +36,16 @@ Chromosome | Length_Chr | Type | match/match_part_part | Start | End | Length | 
 
 * LTR files
 
-Attempt | #1 | #2 | #3 | #4 | #5 | #6 | #7 | #8 | #9 | #10 | #11
---- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |---
+species | ID | dfam_target_name | ltr_similarity | similarity | protein_domain | orfs | chromosome | start | end | strand | width | annotation | pred_tool | frame | score |
+--- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |--- | --- | --- | --- |---
 
-### Output file
+## Output file
 ## R 
 ### Input files
 ### Output files
 
 ## Basic statistic ? (maybe ) 
 
-# Usage
-```
-$ python Noms_du_script gene_data te/ltr_data 
-```
-# Example 
 
 # Contribution
 You can find our reports on clicking on the following links.
