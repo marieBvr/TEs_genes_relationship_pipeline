@@ -139,7 +139,7 @@ def check_superset_subset_genes(te,gene):
                     te[ch][i]['superset_strand'].append(gene[ch][j]['strand'])##-> list
                     te[ch][i]['superset_start'].append(gene[ch][j]['start'])##-> list
                     te[ch][i]['superset_end'].append(gene[ch][j]['end'])##-> list
-                    te[ch][i]['superset_id'].append(gene[ch][j]['attribute'])##-> list
+                    te[ch][i]['superset_id'].append(gene[ch][j]['id'])##-> list
                     
                 
                 #check if the gene is inside the TE
@@ -147,11 +147,11 @@ def check_superset_subset_genes(te,gene):
                 # ---------------| %% gene %% | ------------------
                 if(distances[0] < 0 and distances[1] < 0 and distances[2] < 0 and distances[3] > 0):
                     #print(te[ch][i]['name'], "is over", gene[ch][j]['name'])
-                    te[ch][i]['subset_strand'].append(gene[ch][j]['strand'])
+                    te[ch][i]['subset_strand'].append(gene[ch][j][s])
                     te[ch][i]['subset_feature'].append(gene[ch][j]['feature'])
                     te[ch][i]['subset_start'].append(gene[ch][j]['start'])
                     te[ch][i]['subset_end'].append(gene[ch][j]['end'])
-                    te[ch][i]['subset_id'].append(gene[ch][j]['attribute'])
+                    te[ch][i]['subset_id'].append(gene[ch][j]['id'])
             #rempty list to NAN
             if(te[ch][i]['subset_start'] == []):
                 te[ch][i]['subset_start'] = np.NAN
