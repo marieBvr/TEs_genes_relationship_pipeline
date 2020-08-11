@@ -206,11 +206,11 @@ def check_downstream_genes(queue,gene):
                     te[ch][i]['after_end'] = gene[ch][j]['end']
                     break
 
-            #make sure that if the TE is followed by another TE there is no downstream gene
+            #make sure that if the TE is followed or overlapped by another TE there is no downstream gene
             for k in range(len(te[ch])):
                 start_value = te[ch][k]['start']
                 if(closest_gene != None):
-                    if(start_value > te[ch][i]['end'] and start_value < closest_gene['start']):
+                    if(start_value > te[ch][i]['end'] and start_value < closest_gene['start'] or te[ch][i]['end'] > te[ch][k]['start'] and te[ch][k]['start'] > te[ch][i]['start'] and te[ch][k]['end'] > te[ch][i]['end']):
                         te[ch][i]['after_feature'] = np.NAN
                         te[ch][i]['after_strand'] = np.NAN
                         te[ch][i]['after_id'] = np.NAN
@@ -268,9 +268,9 @@ def check_upstream_genes(queue,gene):
                     te[ch][i]['before_id'] = gene[ch][j]['attribute']
                     break
 
-            #make sure that if the TE is preceded by another TE there is no upstream gene
+            #make sure that if the TE is preceded or overlapped by another TE there is no upstream gene
             for k in range(len(te[ch])):
-                if(te[ch][i]['start'] > te[ch][k]['end'] and closest_gene['end'] < te[ch][k]['end']):
+                if(te[ch][i]['start'] > te[ch][k]['end'] and closest_gene['end'] < te[ch][k]['end'] or te[ch][i]['start'] < te[ch][k]['end'] and te[ch][k]['end'] < te[ch][i]['end'] and te[ch][k]['start'] < te[ch][i]['start']):
                     te[ch][i]['before_feature'] = np.NAN
                     te[ch][i]['before_strand'] = np.NAN
                     te[ch][i]['before_start'] = np.NAN
