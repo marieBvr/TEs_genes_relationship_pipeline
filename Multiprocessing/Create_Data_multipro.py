@@ -435,7 +435,7 @@ def _set_options():
     parser = argparse.ArgumentParser()
     parser.add_argument('-g', '--gene',help='Genes position file as GFF.', action='store',required=True, type=str,dest='geneFile')
     parser.add_argument('-te', '--transposable_element', help='TEs position file as GFF.', action='store',required=True, type=str,dest='teFile')
-    parser.add_argument('-o', '--out', help='The output file.', action='store', type=str, default='Resting_result', dest='output')
+    parser.add_argument('-o', '--out', help='The output file.', action='store', type=str, default='Resting_result.tsv', dest='output')
     args = parser.parse_args()
     return args
 
