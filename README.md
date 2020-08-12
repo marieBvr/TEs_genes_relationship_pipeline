@@ -47,19 +47,29 @@ species | ID | dfam_target_name | X | X | X | X | chromosome | start | end | str
 
 ### Pipeline
 
+Scripts are time optimized using multiprocessing. Multiprocessing is a system that use multiple central processing units (CPUs) making the scripts run faster.
+
 To run the script just type the following line by replacing each file name by the real name.
 
-Please use the Creat_Data_multipro.py if working with general TE and Create_Data_LTR_multiprocessing.py if working with LTR from the Multiprocessing folder. Multiprocessing is a system that use multiple central processing units (CPUs) making the scripts run faster.
+To analyze general TE:
 
 ```
-$ python3 [script_path]/script.py  [file_path]/gene.tsv  [file_path]/transposon.tsv
+$ python3 Multiprocessing/Creat_Data_multipro.py  [file_path]/gene.tsv  [file_path]/transposon.tsv
 
 ```
+
+To analyze LTR:
+
+```
+$ python3 Multiprocessing/Create_Data_LTR_multiprocessing.py  [file_path]/gene.tsv  [file_path]/transposon.tsv
+
+```
+
 The script will take each file and extract all the data and put them in lists of dictionaries. Then for each TE, it will check the nearest gene whether it's subset,superset, upstream/downstream or whether it's an upstream/downstream overlap.
 
 ### Output file
 
-The script will creat a new output file(Testing_result folder) which will be used to make graphs.
+The script will create a new output file(Testing_result folder) which will be used to make graphs.
 
 -----------------------
 ## R scripts
