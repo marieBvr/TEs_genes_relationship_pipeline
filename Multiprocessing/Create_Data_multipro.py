@@ -1,8 +1,7 @@
-
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # Ayse Ergun & Caroline Meguerditchian
-# Script For TE project
+# Script for TE project
 
 #==============================================================================
 #                           importations
@@ -16,8 +15,10 @@ import argparse
 #==============================================================================
 #                            functions
 #==============================================================================
-#This function will allow to read the given file and extract the data in liste
 def Extract_data(file):
+    """
+    This function will allow to read the given file and extract the data in list
+    """
     start_time = time.time()
 
     listForLine=[] # liste for a ligne containing the element for the whole line 
@@ -40,8 +41,10 @@ def Extract_data(file):
     return  wholeListes 
 
 def GeneDico(list):
+    """
+    Generate a list of dict with specific column names
+    """
     start_time = time.time()
-
     i = 0
     chr_ = 'chr1'
     ListOfDicoGene=[[]]
@@ -71,8 +74,10 @@ def GeneDico(list):
     return ListOfDicoGene
 
 def TEDico(list):
+    """
+    Generate a list of dict with specific column names
+    """
     start_time = time.time()
-
     i = 0
     chr_ = 'chr1'
     ListOfDicoTE=[[]]
@@ -106,9 +111,11 @@ def TEDico(list):
 
     return ListOfDicoTE
 
-def check_superset_subset_genes(queue,gene):
+def check_superset_subset_genes(queue, gene):
+    """
+    Compares the distance between genes and TEs
+    """
     start_time = time.time()
-
     te = queue.get()
     
     for ch in range(len(te)):
@@ -165,7 +172,10 @@ def check_superset_subset_genes(queue,gene):
     elapsed_time = round((time.time() - start_time), 2)
     print("check_superset_subset_genes time : ",elapsed_time)
 
-def check_downstream_genes(queue,gene):
+def check_downstream_genes(queue, gene):
+    """
+    Look for the closest gene for each TE
+    """
     start_time = time.time()
     te = queue.get()
     closest_gene = None
@@ -215,7 +225,10 @@ def check_downstream_genes(queue,gene):
     print("check_downstream_genes time : ",elapsed_time)
 
 
-def check_upstream_genes(queue,gene):
+def check_upstream_genes(queue, gene):
+    """
+    Look for the closest gene for each TE
+    """
     start_time = time.time()
     te=queue.get()
     closest_gene = None
@@ -266,7 +279,7 @@ def check_upstream_genes(queue,gene):
     
 
 
-def check_upstream_overlap(queue,gene):
+def check_upstream_overlap(queue, gene):
     start_time = time.time()
     te=queue.get()
     #reverse the genes order
@@ -284,7 +297,7 @@ def check_upstream_overlap(queue,gene):
             te[ch][i]['upstream_overlap_end']=[]
             for j in range(len(gene[ch])): # loop to compare all the genes to the TE
                 distances = calcul_distance(te[ch][i],gene[ch][j])
-            #find overlap with gene upstream 
+                #find overlap with gene upstream 
                 # ---------|    ****** TE *****     |------------
                 # --- | %% gene %% | ----------------------------
                 if(distances[0] < 0 and distances[1] < 0 and distances[2] < 0 and distances[3] < 0): 
@@ -298,7 +311,8 @@ def check_upstream_overlap(queue,gene):
     elapsed_time = round((time.time() - start_time), 2)
     print("check_upstream_overlap time : ",elapsed_time)
 
-def check_downstream_overlap(queue,gene):
+
+def check_downstream_overlap(queue, gene):
     start_time = time.time()
     te=queue.get()
     #loop to look through each chromosome
@@ -328,7 +342,7 @@ def check_downstream_overlap(queue,gene):
     print("check_downstream_overlap time : ",elapsed_time)
 
 
-def calcul_distance(te,gene):
+def calcul_distance(te, gene):
     distance1 = te['start'] - gene['end']
     distance2 = gene['start'] - te['end']
     distance3 = gene['end'] - te['end']
@@ -337,6 +351,9 @@ def calcul_distance(te,gene):
 
 
 def writeDataOnFile(list_te):
+    """
+    Write the output file
+    """
     start_time=time.time()
     csv_content = []
     n=0
@@ -410,12 +427,11 @@ def writeDataOnFile(list_te):
     elapsed_time = round((time.time() - start_time), 2)
     print("writeDataOnFile time : ",elapsed_time)
 
-#==============================================================================
-#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#                                MAIN PROGRAM
-#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#==============================================================================
+
 def _set_options():
+    """
+    Define program options
+    """
     parser = argparse.ArgumentParser()
     parser.add_argument('-g', '--gene',help='Genes position file as GFF.', action='store',required=True, type=str,dest='geneFile')
     parser.add_argument('-te', '--transposable_element', help='TEs position file as GFF.', action='store',required=True, type=str,dest='teFile')
@@ -423,17 +439,19 @@ def _set_options():
     args = parser.parse_args()
     return args
 
-options = _set_options()
-gene=Extract_data(options.geneFile)
-te=Extract_data(options.teFile)
-#print(te)
-list_gene = GeneDico(gene)
-list_te = TEDico(te)
-
-#print("liste gene ", list_gene)
-#print("liste te ", list_te)
-
+#==============================================================================
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#                                MAIN PROGRAM
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#==============================================================================
 if __name__ == '__main__':
+    # Retrieve program options
+    options = _set_options()
+    gene=Extract_data(options.geneFile)
+    te=Extract_data(options.teFile)
+    #print(te)
+    list_gene = GeneDico(gene)
+    list_te = TEDico(te)
     #creating the queues to give the data to the functions and get the returned data
     queue1 = mp.Queue()
     queue2 = mp.Queue()
