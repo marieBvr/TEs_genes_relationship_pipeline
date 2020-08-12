@@ -39,8 +39,8 @@ chromosome | source | feature | start | end | score | strand | phase | ID | Attr
 
 * TE files
 
-Chromosome | Length_Chr | Type | X | Start | End | X | X | Attribute | X | Class | TE_name | X |
---- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- 
+Chromosome | Length_Chr | Type | X | Start | End | X | X | Strand | X | Attribute | X | Class | TE_name | X |
+--- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- 
 
 * LTR files
 
