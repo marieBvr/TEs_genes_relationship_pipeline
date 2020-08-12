@@ -12,6 +12,7 @@ import csv
 import numpy as np
 import time
 import multiprocessing as mp
+import argparse
 #==============================================================================
 #                            functions
 #==============================================================================
@@ -400,7 +401,7 @@ def writeDataOnFile(list_te):
             csv_content[n].append(list_te[c][t]['Up_Geneend-TEend'])
             csv_content[n].append(list_te[c][t]['Up_Genestart-TEstart'])
             n = n + 1
-    with open('ResultFile_TE.tsv', 'w') as csvfile:
+    with open(options.output, 'w') as csvfile:
         filewriter = csv.writer(csvfile, delimiter='\t')
         filewriter.writerow(column_names)
         for i in range(len(csv_content)):
@@ -414,9 +415,17 @@ def writeDataOnFile(list_te):
 #                                MAIN PROGRAM
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #==============================================================================
+def _set_options():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-g', '--gene',help='Genes position file as GFF.', action='store',required=True, type=str,dest='geneFile')
+    parser.add_argument('-te', '--transposable_element', help='TEs position file as GFF.', action='store',required=True, type=str,dest='teFile')
+    parser.add_argument('-o', '--out', help='The output file.', action='store', type=str, default='Resting_result', dest='output')
+    args = parser.parse_args()
+    return args
 
-gene=Extract_data(sys.argv[1])
-te=Extract_data(sys.argv[2])
+options = _set_options()
+gene=Extract_data(options.geneFile)
+te=Extract_data(options.teFile)
 #print(te)
 list_gene = GeneDico(gene)
 list_te = TEDico(te)
