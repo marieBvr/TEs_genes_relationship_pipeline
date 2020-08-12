@@ -56,14 +56,14 @@ To run the script type the following line by replacing each file name by the rea
 To analyze general TE:
 
 ```
-$ python3 Multiprocessing/Creat_Data_multipro.py  [file_path]/gene.tsv  [file_path]/transposon.tsv
+$ python3 Multiprocessing/Create_Data_multipro.py -g Testing_data/Gene_testing_data.tsv -te Testing_data/Transposon_testing_data.tsv -o Resting_result/ResultFile_TE.tsv
 
 ```
 
 To analyze LTR:
 
 ```
-$ python3 Multiprocessing/Create_Data_LTR_multiprocessing.py  [file_path]/gene.tsv  [file_path]/transposon.tsv
+$ python3 Multiprocessing/Create_Data_LTR_multiprocessing.py  -g [file_path]/gene.tsv  -te [file_path]/transposon.tsv -o [file_path]/output_LTR.tsv
 
 ```
 
