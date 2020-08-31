@@ -71,7 +71,7 @@ The script will take each file and extract all the data and put them in lists of
 
 ### Output file
 
-The script will create a new output file (`Testing_result` folder) which will be used to make graphs.
+The script create a new output file (.tsv) which will be used to make the statistical analysis.
 
 -----------------------
 ## R scripts
@@ -80,7 +80,7 @@ After opening the .r files with Rstudio, make sure to verify and modify the foll
 ```
 result_file = read.csv(file = '[file_path]/result.tsv', sep = '\t', header = TRUE)
 ```
-Each .r script will give you a new output file(counter) as well as a graph. The title and small explication in the file will help to understand better.
+Each .r script will give you a new output file (counter) as well as a graph. The title and small explication in the file will help to understand better.
 
 Please note that, the graph's legend will also need to be change according to the file and abricot species.
 
