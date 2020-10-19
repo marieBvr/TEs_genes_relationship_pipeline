@@ -20,7 +20,7 @@ To use these scripts please clone the repository. Make sure that Python3 and Rst
 An access to a terminal is also required.
 
 # Example 
-![alt text](https://raw.githubusercontent.com/Ayse1006/TE_abricot/master/Testing_data/diagram_gene_te.jpg)
+
 
 Before running the scripts for your own data, please use the testing data to check that everything works.
 
