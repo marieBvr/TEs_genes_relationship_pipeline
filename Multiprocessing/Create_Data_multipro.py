@@ -20,7 +20,6 @@ def Extract_data(file):
     This function will allow to read the given file and extract the data in list
     """
     start_time = time.time()
-
     listForLine=[] # liste for a ligne containing the element for the whole line 
     wholeListes=[] # liste containing all the smaller lists
     with open(file, 'r') as fil: 
