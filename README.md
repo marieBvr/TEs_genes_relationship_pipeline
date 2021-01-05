@@ -2,8 +2,10 @@
 
 ## Context
 
-The main goal of this project is to find the relationship between Transposable Elements (TEs) and the apricot genes. 
-Then focus on the Long Terminal Repeat (LTR) that are type of TE. And finally compare those elements for 4 species of apricot.
+The main goal of this project is to find the relationship between Transposable Elements (TEs) and genes along genome. 
+Then focus on the Long Terminal Repeat (LTR) that are type of TE. 
+
+As an example we used the Apricot genome and compare TEs for 4 different species of Apricot.
 
 You can learn more about this subject in the Contribution Section.
 
@@ -33,7 +35,7 @@ The result file of this test data is located in the `Testing_result` folder.
 -----------------------
 ## Python Scripts 
 ### Input files
-The scripts takes in consideration the columns name so before using them please verify that each files haves thise columns : 
+The programme takes in consideration the columns name so before using them please verify that each files have those columns : 
 
 * Genome files
 
@@ -88,7 +90,7 @@ result_file = read.csv(file = '[file_path]/result.tsv', sep = '\t', header = TRU
 ```
 Each .r script will give you a new output file (counter) as well as a graph. The title and small explication in the file will help to understand better.
 
-Please note that, the graph's legend will also need to be change according to the file and abricot species.
+Please note that the graph's legend will also need to be change according to the file and abricot species.
 
 # Contribution
 This programme has been developped by [Caroline Meguerditchian](caroline.meguerditchian@etu.u-bordeaux.fr) and [Ayse Ergun](aergun@u-bordeaux.fr) 
