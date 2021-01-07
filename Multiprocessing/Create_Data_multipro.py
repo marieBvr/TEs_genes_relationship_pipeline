@@ -197,7 +197,7 @@ def check_downstream_genes(queue, gene):
                 #find genes downstream
                 # ---------|    ****** TE *****     |----------------------------
                 # -------------------------------------------- | %% gene %% | -----
-                if(distances[1] == 0 or distances[0] < 0 and distances[1] > 0 and distances[2] > 0 and distances[3] > 0):
+                if(distances[1] == 0 or distances[0] < 0 and distances[1] > 0 and distances[2] > 0 and distances[3] > 0 or distances[0] < 0 and distances[1] < 0 and distances[2] > 0 and distances[3] > 0):
                     closest_gene = gene[ch][j]
                     te[ch][i]['after_feature'] = gene[ch][j]['feature']
                     te[ch][i]['after_strand'] = gene[ch][j]['strand']
@@ -209,7 +209,7 @@ def check_downstream_genes(queue, gene):
             for k in range(len(te[ch])):
                 start_value = te[ch][k]['start']
                 if(closest_gene != None):
-                    if(start_value > te[ch][i]['end'] and start_value < closest_gene['start']):
+                    if(start_value > te[ch][i]['end'] and start_value < closest_gene['start'] or te[ch][i]['end'] > te[ch][k]['start'] and te[ch][k]['start'] > te[ch][i]['start'] and te[ch][k]['end'] > te[ch][i]['end']):
                         te[ch][i]['after_feature'] = np.NAN
                         te[ch][i]['after_strand'] = np.NAN
                         te[ch][i]['after_id'] = np.NAN
@@ -262,7 +262,7 @@ def check_upstream_genes(queue, gene):
                     break
             #make sure that if the TE is preceded by another TE there is no upstream gene
             for k in range(len(te[ch])):
-                if(te[ch][i]['start'] > te[ch][k]['end'] and closest_gene['end'] < te[ch][k]['end']):
+                if(te[ch][i]['start'] > te[ch][k]['end'] and closest_gene['end'] < te[ch][k]['end'] or te[ch][i]['start'] < te[ch][k]['end'] and te[ch][k]['end'] < te[ch][i]['end'] and te[ch][k]['start'] < te[ch][i]['start']):
                     te[ch][i]['before_feature'] = np.NAN
                     te[ch][i]['before_strand'] = np.NAN
                     te[ch][i]['before_start'] = np.NAN
@@ -356,7 +356,7 @@ def writeDataOnFile(list_te):
     start_time=time.time()
     csv_content = []
     n=0
-    column_names = ['TE_name','classe','chr','type','start','end','frame','before_id','before_feature',
+    column_names = ['TE_Type','TE_id','chromosome','TE_strand','start','end','before_id','before_feature',
     'before_strand','before_start','before_end','after_id','after_feature','after_strand',
     'after_start','after_end','superset_id','superset_feature','superset_strand','superset_start',
     'superset_end','subset_id','subset_feature','subset_strand','subset_start','subset_end',
@@ -369,13 +369,12 @@ def writeDataOnFile(list_te):
     for c in range(len(list_te)):
         for t in range(len(list_te[c])):
             csv_content.append([])
-            csv_content[n].append(list_te[c][t]['TE_name'])
-            csv_content[n].append(list_te[c][t]['class'])
-            csv_content[n].append(list_te[c][t]['chr'])
             csv_content[n].append(list_te[c][t]['type'])
+            csv_content[n].append(list_te[c][t]['attribute'])
+            csv_content[n].append(list_te[c][t]['chr'])
+            csv_content[n].append(list_te[c][t]['strand'])
             csv_content[n].append(list_te[c][t]['start'])
             csv_content[n].append(list_te[c][t]['end'])
-            csv_content[n].append(list_te[c][t]['frame'])
             csv_content[n].append(list_te[c][t]['before_id'])
             csv_content[n].append(list_te[c][t]['before_feature'])
             csv_content[n].append(list_te[c][t]['before_strand'])
