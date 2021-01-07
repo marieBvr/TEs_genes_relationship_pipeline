@@ -252,7 +252,7 @@ def check_upstream_genes(queue, gene):
                 #find genes upstream
                 # ----------------------------|    ****** TE *****     |------------
                 # --- | %% gene %% | -----------------------------------------------
-                if(distances[0] == 0 or distances[0] > 0 and distances[1] < 0 and distances[2] < 0 and distances[3] < 0):
+                if(distances[0] == 0 or distances[0] > 0 and distances[1] < 0 and distances[2] < 0 and distances[3] < 0 or distances[0] < 0 and distances[1] < 0 and distances[2] < 0 and distances[3] < 0):
                     closest_gene = gene[ch][j]
                     te[ch][i]['before_feature'] = gene[ch][j]['feature']
                     te[ch][i]['before_strand'] = gene[ch][j]['strand']
