@@ -69,7 +69,7 @@ $ python3 Multiprocessing/Create_Data_multipro.py -g Testing_data/Gene_testing_d
 To analyze LTR:
 
 ```
-$ python3 Multiprocessing/Create_Data_LTR_multiprocessing.py  -g Testing_data/Gene_testing_data.tsv  -te Testing_data/LTR_testing_data.tsv -o Testing_data/output_LTR.tsv
+$ python3 Multiprocessing/Create_Data_LTR_multiprocessing.py  -g Testing_data/Gene_testing_data.tsv  -te Testing_data/LTR_testing_data.tsv -o Resting_result/output_LTR.tsv
 
 ```
 
