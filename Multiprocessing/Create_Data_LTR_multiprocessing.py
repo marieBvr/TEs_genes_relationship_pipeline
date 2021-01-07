@@ -479,6 +479,9 @@ if __name__ == '__main__':
     options = _set_options()
     gene=Extract_data(options.geneFile)
     te=Extract_data(options.teFile)
+    
+    list_gene = GeneDico(gene)
+    list_te = TEDico(te)
 
     # creating the queues to give the data to the functions and get the returned data
     queue1 = mp.Queue()
