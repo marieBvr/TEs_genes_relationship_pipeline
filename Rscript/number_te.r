@@ -7,11 +7,15 @@ if(!require("optparse")){
     library(optparse)
 }
 
+if(!require("RColorBrewer")){
+  install.packages("RColorBrewer")
+  library(RColorBrewer)
+}
 # script options
 option_list = list(
   make_option(c("-f", "--file"), type="character", default=NULL, 
               help="dataset file name i.e. 'Resting_result/output_LTR.tsv'", metavar="character"),
-  make_option(c("-o", "--out"), type="character", default="Resting_result/count_TE_transposons.pdf", 
+  make_option(c("-o", "--out"), type="character", default="count_TE_transposons.pdf", 
               help="output filename name (PDF) [default= %default]", metavar="character")
 )
 opt_parser = OptionParser(option_list=option_list);
@@ -63,8 +67,11 @@ for( i in list_of_element){
   a = number_of_element(df, i)
   number <- c(number,a)
 }
-#print(number)
+print(number)
 
+# Define the number of colors you want
+nb.cols <- number
+mycolors <- colorRampPalette(brewer.pal(8, "Set2"))(nb.cols)
 #graph 
 dat <- data.frame(x=list_of_element, y=number)
 # Open a pdf file
@@ -73,6 +80,6 @@ barplot(dat$y, names.arg=dat$x,
         main = "Number of transposon for each type of TE ",
         ylab="number", 
         xlab="type",
-        col=list_of_element)
+        col=mycolors)
 invisible(dev.off())
 print("Number of elements calculated, plot generated.")
