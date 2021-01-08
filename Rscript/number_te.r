@@ -65,11 +65,11 @@ for( i in list_of_element){
 }
 #print(number)
 
-
 #graph 
 dat <- data.frame(x=list_of_element, y=number)
 # Open a pdf file
-pdf("count_TE_transposons.pdf")
+outputFile = paste(opt$out, "count_TE_transposons.pdf", sep="")
+pdf(outputFile)
 barplot(dat$y, names.arg=dat$x,
         main = "Number of transposon for each type of TE ",
         ylab="number", 
