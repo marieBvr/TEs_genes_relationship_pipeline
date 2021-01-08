@@ -31,17 +31,19 @@ if (is.null(opt$file)){
 filename = opt$file
 data = read.table(file = filename, sep = '\t', header = TRUE)
 df = data[with(data, order(data$TE_Type)), ]
+#print(df)
 
 find_element = function(df){
   elements = c()
   element = df$TE_Type[1] #print the first row of the TE_Type column
-  print(element)
+  #print(element)
   elements <- c(elements,element)
-  
+  #print(elements)
   for(i in 1:length(df$TE_Type)){
     if(df$TE_Type[i]!=element){
       element = df$TE_Type[i]
       elements <- c(elements,element)
+      #print(elements)
     }
   } 
   #print(elements)
@@ -53,6 +55,8 @@ number_of_element = function(df, element){
   compter = 0
   for(i in 1:length(df$TE_Type)){
       if(df$TE_Type[i]==element){
+        print(df$TE_Type[i])
+        print(element)
         compter = compter + 1
       }
     }
@@ -62,16 +66,19 @@ number_of_element = function(df, element){
 
 #main 
 list_of_element = find_element(df)
+print(list_of_element)
 number = c()
 for( i in list_of_element){
   a = number_of_element(df, i)
+  print(a)
   number <- c(number,a)
 }
 print(number)
 
 # Define the number of colors you want
-nb.cols <- number
+nb.cols <- length(list_of_element)
 mycolors <- colorRampPalette(brewer.pal(8, "Set2"))(nb.cols)
+print(mycolors)
 #graph 
 dat <- data.frame(x=list_of_element, y=number)
 # Open a pdf file
