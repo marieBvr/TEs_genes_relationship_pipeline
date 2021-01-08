@@ -62,15 +62,13 @@ To run the script type the following line by replacing each file name by the rea
 To analyze general TE:
 
 ```
-$ python3 Multiprocessing/Create_Data_multipro.py -g Testing_data/Gene_testing_data.tsv -te Testing_data/Transposon_testing_data.tsv -o Resting_result/ResultFile_TE.tsv
-
+python3 Multiprocessing/Create_Data_multipro.py -g data/Gene_testing_data.tsv -te data/Transposon_testing_data.tsv -o result/result_TE.tsv
 ```
 
 To analyze LTR:
 
 ```
-$ python3 Multiprocessing/Create_Data_LTR_multiprocessing.py  -g Testing_data/Gene_testing_data.tsv  -te Testing_data/LTR_testing_data.tsv -o Resting_result/output_LTR.tsv
-
+python3 Multiprocessing/Create_Data_LTR_multiprocessing.py -g data/Gene_testing_data.tsv  -te data/LTR_testing_data.tsv -o result/output_LTR.tsv
 ```
 
 The script will take each file and extract all the data and put them in lists of dictionaries. 
