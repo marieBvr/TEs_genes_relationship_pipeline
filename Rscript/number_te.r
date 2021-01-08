@@ -11,8 +11,8 @@ if(!require("optparse")){
 option_list = list(
   make_option(c("-f", "--file"), type="character", default=NULL, 
               help="dataset file name i.e. 'Resting_result/output_LTR.tsv'", metavar="character"),
-  make_option(c("-o", "--out"), type="character", default="Resting_result/", 
-              help="output directory name [default= %default]", metavar="character")
+  make_option(c("-o", "--out"), type="character", default="Resting_result/count_TE_transposons.pdf", 
+              help="output filename name (PDF) [default= %default]", metavar="character")
 )
 opt_parser = OptionParser(option_list=option_list);
 opt = parse_args(opt_parser);
@@ -68,12 +68,11 @@ for( i in list_of_element){
 #graph 
 dat <- data.frame(x=list_of_element, y=number)
 # Open a pdf file
-outputFile = paste(opt$out, "count_TE_transposons.pdf", sep="")
-pdf(outputFile)
+pdf(opt$out)
 barplot(dat$y, names.arg=dat$x,
         main = "Number of transposon for each type of TE ",
         ylab="number", 
         xlab="type",
         col=list_of_element)
-dev.off()
+invisible(dev.off())
 print("Number of elements calculated, plot generated.")
