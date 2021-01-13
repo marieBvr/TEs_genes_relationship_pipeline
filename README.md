@@ -19,7 +19,7 @@ There are different category/class of transposon. In this project we are going t
 To use this programme please clone the repository. Make sure that Python3 and Rstudio are installed on your machine. 
 If it's not the case, check out the following links :
 - python 3 : [link](https://www.python.org/downloads/)
-- Rstudio/R : [link](https://rstudio.com/products/rstudio/download/)
+- Rstudio/R >= 4.0.2 : [link](https://rstudio.com/products/rstudio/download/)
 
 An access to a terminal is also required.
 
