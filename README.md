@@ -61,7 +61,7 @@ To run the script type the following line by replacing each file name by the rea
 
 To analyze general TE:
 
-```
+```bash
 python3 Multiprocessing/Create_Data_multipro.py \
 	-g data/Gene_testing_data.tsv \
 	-te data/Transposon_testing_data.tsv \
@@ -70,7 +70,7 @@ python3 Multiprocessing/Create_Data_multipro.py \
 
 To analyze LTR:
 
-```
+```bash
 python3 Multiprocessing/Create_Data_LTR_multiprocessing.py \
 	-g data/Gene_testing_data.tsv \
 	-te data/LTR_testing_data.tsv \
@@ -91,9 +91,9 @@ There are three R scripts allowing to report different kinds of information:
  - Count the number of TEs
  - Overlap statistics, which show how many TEs have an overlap with gene, both upstream and downstream.
  - Distance  statistics,  which  show  the  number  of  TE  with  an  upstream  or  downstream  gene  within  0-500  bp,500-1000 bp, 1000-2000 bp and more than 2000 bp.
-The input file is the result file obtained with the python script.
+The input file is the result file obtained with the Python script.
 
-```
+```bash
 Rscript Rscript/number_te.r \
 	-f result/output_TE.tsv \
 	-o result/count_TE_transposons.pdf
@@ -109,11 +109,11 @@ Rscript Rscript/Distance_counting.r \
 	-o result/distance_TE_results.csv
 ```
 
-Please note that the graph's legend will also need to be change according to the file and abricot species.
+Please note that the graph's legend will also need to be change according to the file and apricot species.
 
 # Contribution
 This programme has been developped by [Caroline Meguerditchian](caroline.meguerditchian@etu.u-bordeaux.fr) and [Ayse Ergun](aergun@u-bordeaux.fr) 
-under the supervision of [Marie Lefebvre](marie.lefebvre@inrae.fr) and [Quynh Trang-Bui](quynh-trang.bui@inrae.fr).. 
+under the supervision of [Marie Lefebvre](marie.lefebvre@inrae.fr) and [Quynh Trang-Bui](quynh-trang.bui@inrae.fr).
 
 
 
