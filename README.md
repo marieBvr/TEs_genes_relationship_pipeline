@@ -27,9 +27,9 @@ An access to a terminal is also required.
 
 Before running the programme for your own data, please use the testing data to check that everything works.
 
-In the `Testing_data` folder, there are 2 files, one with the data regarding each gene and one regarding each transposon displayed in the diagram above. 
+In the `data` folder, there are 2 files, one with the data regarding each gene and one regarding each transposon displayed in the diagram above. 
 The python scripts are going to find for each transposable element the nearest gene before and after it. The script will also look for overlapping. 
-The result file of this test data is located in the `Testing_result` folder. 
+The result file of this test data is located in the `result` folder. 
 
 # Usage
 -----------------------
@@ -62,13 +62,19 @@ To run the script type the following line by replacing each file name by the rea
 To analyze general TE:
 
 ```
-python3 Multiprocessing/Create_Data_multipro.py -g data/Gene_testing_data.tsv -te data/Transposon_testing_data.tsv -o result/result_TE.tsv
+python3 Multiprocessing/Create_Data_multipro.py \
+	-g data/Gene_testing_data.tsv \
+	-te data/Transposon_testing_data.tsv \
+	-o result/output_TE.tsv
 ```
 
 To analyze LTR:
 
 ```
-python3 Multiprocessing/Create_Data_LTR_multiprocessing.py -g data/Gene_testing_data.tsv  -te data/LTR_testing_data.tsv -o result/output_LTR.tsv
+python3 Multiprocessing/Create_Data_LTR_multiprocessing.py \
+	-g data/Gene_testing_data.tsv \
+	-te data/LTR_testing_data.tsv \
+	-o result/output_LTR.tsv
 ```
 
 The script will take each file and extract all the data and put them in lists of dictionaries. 
@@ -80,13 +86,28 @@ The script create a new output file (.tsv) which will be used to make the statis
 
 -----------------------
 ## R scripts
-After opening the .r files with Rstudio, make sure to verify and modify the following line with the right file. 
-The Input file is the result file obtained with the python script.
+
+There are three R scripts allowing to report different kinds of information:
+ - Count the number of TEs
+ - Overlap statistics, which show how many TEs have an overlap with gene, both upstream and downstream.
+ - Distance  statistics,  which  show  the  number  of  TE  with  an  upstream  or  downstream  gene  within  0-500  bp,500-1000 bp, 1000-2000 bp and more than 2000 bp.
+The input file is the result file obtained with the python script.
 
 ```
-result_file = read.csv(file = '[file_path]/result.tsv', sep = '\t', header = TRUE)
+Rscript Rscript/number_te.r \
+	-f result/output_TE.tsv \
+	-o result/count_TE_transposons.pdf
+
+Rscript Rscript/Overlap_counting.r \
+	-f result/output_TE.tsv \
+	-p result/overlap_TE_results.pdf \
+	-o result/overlap_TE_results.csv
+
+Rscript Rscript/Distance_counting.r \
+	-f result/output_TE.tsv \
+	-p result/distance_TE_results.pdf \
+	-o result/distance_TE_results.csv
 ```
-Each .r script will give you a new output file (counter) as well as a graph. The title and small explication in the file will help to understand better.
 
 Please note that the graph's legend will also need to be change according to the file and abricot species.
 
