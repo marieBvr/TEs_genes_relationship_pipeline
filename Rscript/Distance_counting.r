@@ -10,10 +10,10 @@ if(!require("optparse")){
 # script options
 option_list = list(
   make_option(c("-f", "--file"), type="character", default=NULL,
-              help="dataset file name i.e. 'Resting_result/output_LTR.tsv'", metavar="character"),
-  make_option(c("-p", "--pdf"), type="character", default="Resting_result/distance_TE_results.pdf",
+              help="dataset file name i.e. 'result/result_TE.tsv'", metavar="character"),
+  make_option(c("-p", "--pdf"), type="character", default="result/distance_TE_results.pdf",
               help="output filename name (PDF) [default= %default]", metavar="character"),
-  make_option(c("-o", "--out"), type="character", default="Resting_result/distance_TE_results.csv",
+  make_option(c("-o", "--out"), type="character", default="result/distance_TE_results.csv",
               help="output filename name (CSV) [default= %default]", metavar="character")
 )
 opt_parser = OptionParser(option_list=option_list);
