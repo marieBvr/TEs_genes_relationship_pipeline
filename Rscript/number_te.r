@@ -14,7 +14,7 @@ if(!require("RColorBrewer")){
 # script options
 option_list = list(
   make_option(c("-f", "--file"), type="character", default=NULL, 
-              help="dataset file name i.e. 'result/result_TE.tsv'", metavar="character"),
+              help="dataset file name i.e. 'result/output_TE.tsv'", metavar="character"),
   make_option(c("-o", "--out"), type="character", default="result/count_TE_transposons.pdf", 
               help="output filename name (PDF) [default= %default]", metavar="character")
 )
