@@ -86,7 +86,7 @@ distance = c(rep("0-0.5kbp" , 2), rep("0.5-1kbp" , 2), rep("1-2kbp", 2), rep("2k
 strand = rep(c("+","-"),4)
 value_down = c(c1[2],c9[2],c2[2],c10[2],c3[2],c11[2],c4[2],c12[2])
 data = data.frame(distance,strand,value_down)
-plot2 = ggplot(data, aes(fill=strand, y=value_down, x=distance )) + geom_bar(position="dodge", stat="identity") + ggtitle("Mandshurica") + ylab("number of LTR") + xlab("distance to the gene") + theme(plot.title = element_text(hjust = 0.5))
+plot2 = ggplot(data, aes(fill=strand, y=value_down, x=distance )) + geom_bar(position="dodge", stat="identity") + ggtitle("Number of LTR with an adjacent downstream gene") + ylab("number of LTR") + xlab("distance to the gene") + theme(plot.title = element_text(hjust = 0.5))
 print(plot2)
 invisible(dev.off())
 print("Plots generated")
