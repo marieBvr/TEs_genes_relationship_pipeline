@@ -1,4 +1,4 @@
-# TE_abricot
+# The TEGRiP: Transposable elements genes relationship pipeline
 
 ## Context
 
