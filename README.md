@@ -112,8 +112,8 @@ Rscript Rscript/Distance_counting.r \
 Please note that the graph's legend will also need to be change according to the file and apricot species.
 
 # Contribution
-This programme has been developped by [Caroline Meguerditchian](caroline.meguerditchian@etu.u-bordeaux.fr) and [Ayse Ergun](aergun@u-bordeaux.fr) 
-under the supervision of [Marie Lefebvre](marie.lefebvre@inrae.fr) and [Quynh Trang-Bui](quynh-trang.bui@inrae.fr).
+This programme has been developped by [Caroline Meguerditchian](mailto:caroline.meguerditchian@etu.u-bordeaux.fr) and [Ayse Ergun](mailto:aergun@u-bordeaux.fr) 
+under the supervision of [Marie Lefebvre](mailto:marie.lefebvre@inrae.fr) and [Quynh Trang-Bui](mailto:quynh-trang.bui@inrae.fr).
 
 
 
