@@ -62,10 +62,13 @@ def GeneDico(list):
         'end': int(element[4]),
         'score':element[5],
         'strand':element[6],
-        'frame':element[7],
-        'attribute':element[8]
+        'phase':element[7],
+        'id':element[8],
+        'attribute':element[9]
         }
         ListOfDicoGene[i].append(dico_gene)
+    #print(ListOfDicoGene)
+
     elapsed_time = round((time.time() - start_time), 2)
     print("GeneDico time : ",elapsed_time)
 
@@ -88,7 +91,7 @@ def TEDico(list):
             i = i + 1
         dico_TE = {
         'type':element[12],
-        'chromosome':element[7],
+        'chr':element[7],
         'name':element[1],
         'start': int(element[8]),
         'end': int(element[9]),
@@ -138,7 +141,7 @@ def check_superset_subset_genes(queue,gene):
                     te[ch][i]['superset_strand'].append(gene[ch][j]['strand'])##-> list
                     te[ch][i]['superset_start'].append(gene[ch][j]['start'])##-> list
                     te[ch][i]['superset_end'].append(gene[ch][j]['end'])##-> list
-                    te[ch][i]['superset_id'].append(gene[ch][j]['attribute'])##-> list
+                    te[ch][i]['superset_id'].append(gene[ch][j]['id'])##-> list
                 #check if the TE is over the gene
                 # ---------|    ****** TE *****     |------------
                 # ---------------| %% gene %% | ------------------
@@ -148,7 +151,7 @@ def check_superset_subset_genes(queue,gene):
                     te[ch][i]['subset_feature'].append(gene[ch][j]['feature'])
                     te[ch][i]['subset_start'].append(gene[ch][j]['start'])
                     te[ch][i]['subset_end'].append(gene[ch][j]['end'])
-                    te[ch][i]['subset_id'].append(gene[ch][j]['attribute'])
+                    te[ch][i]['subset_id'].append(gene[ch][j]['id'])
             #replace empty lists with NaN
             if(te[ch][i]['subset_start'] == []):
                 te[ch][i]['subset_start'] = np.NAN
@@ -264,7 +267,7 @@ def check_upstream_genes(queue,gene):
                     te[ch][i]['before_strand'] = gene[ch][j]['strand']
                     te[ch][i]['before_start'] = gene[ch][j]['start']
                     te[ch][i]['before_end'] = gene[ch][j]['end']
-                    te[ch][i]['before_id'] = gene[ch][j]['attribute']
+                    te[ch][i]['before_id'] = gene[ch][j]['id']
                     break
 
             #make sure that if the TE is preceded or overlapped by another TE there is no upstream gene
@@ -313,7 +316,7 @@ def check_upstream_overlap(queue,gene):
                 # --- | %% gene %% | ----------------------------
                 if(distances[0] < 0 and distances[1] < 0 and distances[2] < 0 and distances[3] < 0):
                     te[ch][i]['upstream_overlap'].append(abs(distances[0]))
-                    te[ch][i]['upstream_overlap_ID'].append(gene[ch][j]['attribute'])
+                    te[ch][i]['upstream_overlap_ID'].append(gene[ch][j]['id'])
                     te[ch][i]['upstream_overlap_strand'].append(gene[ch][j]['strand'])
                     te[ch][i]['upstream_overlap_feature'].append(gene[ch][j]['feature'])
                     te[ch][i]['upstream_overlap_start'].append(gene[ch][j]['start'])
@@ -348,7 +351,7 @@ def check_downstream_overlap(queue,gene):
                 # --------------------------- | %% gene %% | -----
                 if(distances[0] < 0 and distances[1] < 0 and distances[2] > 0 and distances[3] > 0):
                     te[ch][i]['downstream_overlap'].append(abs(distances[1]))
-                    te[ch][i]['downstream_overlap_ID'].append(gene[ch][j]['attribute'])
+                    te[ch][i]['downstream_overlap_ID'].append(gene[ch][j]['id'])
                     te[ch][i]['downstream_overlap_strand'].append(gene[ch][j]['strand'])
                     te[ch][i]['downstream_overlap_feature'].append(gene[ch][j]['feature'])
                     te[ch][i]['downstream_overlap_start'].append(gene[ch][j]['start'])
@@ -392,7 +395,7 @@ def writeDataOnFile(list_te):
             csv_content.append([])
             csv_content[n].append(list_te[c][t]['type'])
             csv_content[n].append(list_te[c][t]['name'])
-            csv_content[n].append(list_te[c][t]['chromosome'])
+            csv_content[n].append(list_te[c][t]['chr'])
             csv_content[n].append(list_te[c][t]['strand'])
             csv_content[n].append(list_te[c][t]['start'])
             csv_content[n].append(list_te[c][t]['end'])
