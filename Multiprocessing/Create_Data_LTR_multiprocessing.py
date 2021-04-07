@@ -272,16 +272,17 @@ def check_upstream_genes(queue,gene):
 
             #make sure that if the TE is preceded or overlapped by another TE there is no upstream gene
             for k in range(len(te[ch])):
-                if(te[ch][i]['start'] > te[ch][k]['end'] and closest_gene['end'] < te[ch][k]['end'] or te[ch][i]['start'] < te[ch][k]['end'] and te[ch][k]['end'] < te[ch][i]['end'] and te[ch][k]['start'] < te[ch][i]['start']):
-                    te[ch][i]['before_feature'] = np.NAN
-                    te[ch][i]['before_strand'] = np.NAN
-                    te[ch][i]['before_start'] = np.NAN
-                    te[ch][i]['before_end'] = np.NAN
-                    te[ch][i]['before_id'] = np.NAN
-                    te[ch][i]['Up_TEstart-Geneend'] = np.NAN
-                    te[ch][i]['Up_Genestart-TEend'] = np.NAN
-                    te[ch][i]['Up_Geneend-TEend'] = np.NAN
-                    te[ch][i]['Up_Genestart-TEstart'] = np.NAN
+                if(closest_gene != None):
+                    if(te[ch][i]['start'] > te[ch][k]['end'] and closest_gene['end'] < te[ch][k]['end'] or te[ch][i]['start'] < te[ch][k]['end'] and te[ch][k]['end'] < te[ch][i]['end'] and te[ch][k]['start'] < te[ch][i]['start']):
+                        te[ch][i]['before_feature'] = np.NAN
+                        te[ch][i]['before_strand'] = np.NAN
+                        te[ch][i]['before_start'] = np.NAN
+                        te[ch][i]['before_end'] = np.NAN
+                        te[ch][i]['before_id'] = np.NAN
+                        te[ch][i]['Up_TEstart-Geneend'] = np.NAN
+                        te[ch][i]['Up_Genestart-TEend'] = np.NAN
+                        te[ch][i]['Up_Geneend-TEend'] = np.NAN
+                        te[ch][i]['Up_Genestart-TEstart'] = np.NAN
 
     queue.put(te)
     elapsed_time = round((time.time() - start_time), 2)
