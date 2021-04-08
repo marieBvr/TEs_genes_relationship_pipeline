@@ -89,7 +89,7 @@ def TEDico(list):
         dico_TE = {
         'chr':element[0],
         'length_chromo':int(element[1]),
-        'type':element[2],
+        'type':element[13],
         'match':element[3],
         'start': int(element[4]),
         'end': int(element[5]),
@@ -100,7 +100,7 @@ def TEDico(list):
         'attribute':element[10],
         'code':element[11],
         'class':element[12],
-        'TE_name':element[13],
+        'TE_name':element[2],
         'TE_status':element[14]
         }
         ListOfDicoTE[i].append(dico_TE)
