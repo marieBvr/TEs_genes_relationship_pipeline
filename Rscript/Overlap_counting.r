@@ -42,11 +42,11 @@ for(i in 1:length(result$TE_id)){
     TE_strand = result$TE_strand
     if(result$upstream_overlap[i] != '[]'){
         for(j in 1:length(features)){
-            if(features[j] == 'exon' & TE_strand[i] == '+'){
+            if((features[j] == 'exon' || features[j] == 'mRNA') & TE_strand[i] == '+'){
                 count_up_plus_strand = count_up_plus_strand + 1
                 break
                 }
-            if(features[j] == 'exon' & TE_strand[i] == '-'){
+            if((features[j] == 'exon' || features[j] == 'mRNA') & TE_strand[i] == '-'){
                 count_down_minus_strand = count_down_minus_strand + 1
                 break
                 }
