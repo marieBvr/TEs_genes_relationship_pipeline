@@ -83,10 +83,14 @@ print(mycolors)
 dat <- data.frame(x=list_of_element, y=number)
 # Open a pdf file
 pdf(opt$out)
+
+par(mar=c(11,4,4,4))
 barplot(dat$y, names.arg=dat$x,
         main = "Number of transposon for each type of TE ",
         ylab="number", 
-        xlab="type",
-        col=mycolors)
+        col=mycolors,
+        las=2)
+title(xlab = "Type", line = 6)
+
 invisible(dev.off())
 print("Number of elements calculated, plot generated.")
