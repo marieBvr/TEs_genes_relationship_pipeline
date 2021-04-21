@@ -201,7 +201,7 @@ def check_downstream_genes(queue, gene):
                     closest_gene = gene[ch][j]
                     te[ch][i]['after_feature'] = gene[ch][j]['feature']
                     te[ch][i]['after_strand'] = gene[ch][j]['strand']
-                    te[ch][i]['after_id'] = gene[ch][j]['attribute']
+                    te[ch][i]['after_id'] = gene[ch][j]['id']
                     te[ch][i]['after_start'] = gene[ch][j]['start']
                     te[ch][i]['after_end'] = gene[ch][j]['end']
                     break
