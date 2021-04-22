@@ -87,8 +87,9 @@ The script create a new output file (.tsv) which will be used to make the statis
 -----------------------
 ## R scripts
 
-There are three R scripts allowing to report different kinds of information:
+There are four R scripts allowing to report different kinds of information:
  - Count the number of TEs
+ - Count the number of TEs with associated genes within a certain distance
  - Overlap statistics, which show how many TEs have an overlap with gene, both upstream and downstream.
  - Distance  statistics,  which  show  the  number  of  TE  with  an  upstream  or  downstream  gene  within  0-500  bp,500-1000 bp, 1000-2000 bp and more than 2000 bp.
 The input file is the result file obtained with the Python script.
@@ -97,6 +98,12 @@ The input file is the result file obtained with the Python script.
 Rscript Rscript/number_te.r \
 	-f result/output_TE.tsv \
 	-o result/count_TE_transposons.pdf
+
+Rscript Rscript/count_gene_associated_te.r \
+	-f result/output_TE.tsv \
+	-o result/count_TE_transposons.pdf
+	-i 0
+	-x 2000
 
 Rscript Rscript/Overlap_counting.r \
 	-f result/output_TE.tsv \
