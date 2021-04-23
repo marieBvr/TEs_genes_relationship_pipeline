@@ -1,4 +1,4 @@
-# The TEGRiP: Transposable elements genes relationship pipeline
+# TEGRiP: Transposable Elements Genes RelationshIp Pipeline
 
 ## Context
 
@@ -20,8 +20,6 @@ To use this programme please clone the repository. Make sure that Python3 and Rs
 If it's not the case, check out the following links :
 - python 3 : [link](https://www.python.org/downloads/)
 - Rstudio/R >= 4.0.2 : [link](https://rstudio.com/products/rstudio/download/)
-
-An access to a terminal is also required.
 
 # Example 
 
@@ -84,6 +82,20 @@ Then for each TE, it will check the nearest gene whether it's subset,superset, u
 
 The script create a new output file (.tsv) which will be used to make the statistical analysis.
 
+A prettier and easy reading table can be generated with:
+
+```bash
+python3 Multiprocessing/Create_Data_multipro_reformatted.py \
+	-g data/Gene_testing_data.tsv \
+	-te data/Transposon_testing_data.tsv \
+	-o result/output_TE.tsv
+
+python3 Multiprocessing/Create_Data_LTR_multiprocessing_reformatted.py \
+	-g data/Gene_testing_data.tsv \
+	-te data/LTR_testing_data.tsv \
+	-o result/output_LTR.tsv
+```
+
 -----------------------
 ## R scripts
 
@@ -101,8 +113,8 @@ Rscript Rscript/number_te.r \
 
 Rscript Rscript/count_gene_associated_te.r \
 	-f result/output_TE.tsv \
-	-o result/count_TE_transposons.pdf
-	-i 0
+	-o result/count_TE_transposons.pdf \
+	-i 0 \
 	-x 2000
 
 Rscript Rscript/Overlap_counting.r \
@@ -116,7 +128,7 @@ Rscript Rscript/Distance_counting.r \
 	-o result/distance_TE_results.csv
 ```
 
-Please note that the graph's legend will also need to be change according to the file and apricot species.
+Please note that the **graph's legend will also need to be change** according to the file and species.
 
 # Contribution
 This programme has been developped by [Caroline Meguerditchian](mailto:caroline.meguerditchian@etu.u-bordeaux.fr) and [Ayse Ergun](mailto:aergun@u-bordeaux.fr) 
