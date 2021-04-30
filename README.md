@@ -1,11 +1,10 @@
-# TEGRiP: Transposable Elements Genes RelationshIp Pipeline
+# TEGRiP: Transposable Elements Genes RelationshIps Pipeline
 
 ## Context
 
-The main goal of this project is to find the relationship between Transposable Elements (TEs) and genes along genome. 
-Then focus on the Long Terminal Repeat (LTR) that are type of TE. 
+The main goal of this project is to find the positional relationships between Transposable Elements (TEs) and genes along genome. 
 
-As an example we used the Apricot genome and compare TEs for 4 different species of Apricot.
+The Apricot genome annotation has been used to validate our strategy (raw data available on ENA [PRJEB42606](https://www.ebi.ac.uk/ena/browser/view/PRJEB42606)). This pipeline can be used with custom TE annotation as well as de novo assembled genome of any kind of species.
 
 You can learn more about this subject in the Contribution Section.
 
