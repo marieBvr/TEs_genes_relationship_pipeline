@@ -15,7 +15,7 @@ if(!require("RColorBrewer")){
 option_list = list(
   make_option(c("-f", "--file"), type="character", default=NULL, 
               help="dataset file name i.e. 'result/output_TE.tsv'", metavar="character"),
-  make_option(c("-o", "--out"), type="character", default="result/count_TE_transposons.pdf", 
+  make_option(c("-o", "--out"), type="character", default="result/count_gene_associated_TE_transposons.pdf", 
               help="output filename name (PDF) [default= %default]", metavar="character"),
   make_option(c("-i", "--minimum"), type="double", default=0.0, 
               help="minimal distance [default= %default]", metavar="double"),
