@@ -66,7 +66,7 @@ number_of_element = function(df, element, distance_min, distance_max){
           if(df$before_id[i] != "nan" && df$Up_TEstart.Geneend[i] > distance_min && df$Up_TEstart.Geneend[i] < distance_max){
             compter = compter + 1
           } else{
-            if(df$after_id[i] != "nan" && df$Down_Genestart.TEend[i] > distance_min && df$Down_Genestart.TEend[i] < distance_max){
+            if(is.nan(df$after_id[i]) == FALSE && df$Down_Genestart.TEend[i] > distance_min && df$Down_Genestart.TEend[i] < distance_max){
               compter = compter + 1
               }
             }
@@ -75,7 +75,7 @@ number_of_element = function(df, element, distance_min, distance_max){
           if(df$before_id[i] != "nan" && df$Up_TEstart.Geneend[i] > distance_min && df$Up_TEstart.Geneend[i] < distance_max){
           compter = compter + 1
           } else {
-          if(df$after_id[i] != "nan" && df$Down_Genestart.TEend[i] > distance_min && df$Down_Genestart.TEend[i] < distance_max){
+          if(is.nan(df$after_id[i]) == FALSE && df$Down_Genestart.TEend[i] > distance_min && df$Down_Genestart.TEend[i] < distance_max){
             compter = compter + 1
             }
           }
