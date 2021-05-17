@@ -113,7 +113,8 @@ barplot(dat$y, names.arg=dat$x,
         main = "Number of gene-associated transposon for each type of TE ",
         ylab="number", 
         col=mycolors,
-        las=2)
+        las=2,
+        ylim=range(pretty(c(0, dat$y))))
 title(xlab = "Type", line = 6)
 
 invisible(dev.off())
