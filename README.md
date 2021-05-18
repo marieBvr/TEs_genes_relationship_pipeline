@@ -102,7 +102,7 @@ There are four R scripts allowing to report different kinds of information:
  - Count the number of TEs
  - Count the number of TEs with associated genes within a certain distance
  - Overlap statistics, which show how many TEs have an overlap with gene, both upstream and downstream.
- - Distance  statistics,  which  show  the  number  of  TE  with  an  upstream  or  downstream  gene  within  0-500  bp,500-1000 bp, 1000-2000 bp and more than 2000 bp.
+ - Distance statistics, which show the number of each TE superfamily overlap with the closest gene (-i -1 -x 0) or within the distance of 0-500 bp (-i 0 -x 500), 500-1000 bp (-i 501 -x 1000), 1000-2000 bp (-i 1001 -x 2000) and more than 2000 bp. The subsets and supersets are not included in these counts. The input file is the result file obtained from the Python script.
 The input file is the result file obtained with the Python script.
 
 ```bash
