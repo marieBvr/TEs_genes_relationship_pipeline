@@ -1,5 +1,7 @@
 # TEGRiP: Transposable Elements Genes RelationshIps Pipeline
 
+TEGRiP is recommended by PCI Genomics [10.24072/pci.genomics.100010](https://doi.org/10.24072/pci.genomics.100010) so please cite [10.1101/2021.02.25.432867](https://doi.org/10.1101/2021.02.25.432867) if you use it.
+
 ## Context
 
 The main goal of this project is to find the positional relationships between Transposable Elements (TEs) and genes along genome. 
