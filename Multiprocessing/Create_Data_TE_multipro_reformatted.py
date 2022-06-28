@@ -31,20 +31,21 @@ def Extract_gene_data(file):
                 continue
             else:
                 element = line.split("\t")
-                item_gene = {
-                    'chr':element[0],
-                    'source':element[1],
-                    'feature':element[2],
-                    'start': int(element[3]),
-                    'end': int(element[4]),
-                    'score':element[5],
-                    'strand':element[6],
-                    'phase':element[7],
-                    'id':element[8],
-                    'attribute':element[9]
-                    }
-                genes_list.append(item_gene)
-                i += 1
+                if element[2] == "gene":
+                    item_gene = {
+                        'chr':element[0],
+                        'source':element[1],
+                        'feature':element[2],
+                        'start': int(element[3]),
+                        'end': int(element[4]),
+                        'score':element[5],
+                        'strand':element[6],
+                        'phase':element[7],
+                        'id':element[8],
+                        'attribute':element[9]
+                        }
+                    genes_list.append(item_gene)
+                    i += 1
 
     elapsed_time = round((time.time() - start_time), 2)
     print("Extract_data time : ", elapsed_time)
