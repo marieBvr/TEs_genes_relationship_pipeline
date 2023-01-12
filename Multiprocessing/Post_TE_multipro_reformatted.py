@@ -17,7 +17,9 @@ dict_relationship = {
     "downstream": "upstream",
     "downstream_overlap": "upstream_overlap",
     "upstream": "downstream",
-    "upstream_overlap": "downstream_overlap"
+    "upstream_overlap": "downstream_overlap",
+    "superset": "superset",
+    "subset": "subset"
 }
 
 def strand_correction(inputFile, outputFile):
