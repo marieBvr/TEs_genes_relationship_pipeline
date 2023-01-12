@@ -61,7 +61,7 @@ To run the script type the following line by replacing each file name by the rea
 To analyze general TE:
 
 ```bash
-python3 Multiprocessing/Create_Data_multipro.py \
+python3 Multiprocessing/Create_Data_TE_multipro_reformatted.py \
 	-g data/Gene_testing_data.tsv \
 	-te data/Transposon_testing_data.tsv \
 	-o result/output_TE.tsv
@@ -70,7 +70,7 @@ python3 Multiprocessing/Create_Data_multipro.py \
 To analyze LTR:
 
 ```bash
-python3 Multiprocessing/Create_Data_LTR_multiprocessing.py \
+python3 Multiprocessing/Create_Data_LTR_multiprocessing_reformatted.py \
 	-g data/Gene_testing_data.tsv \
 	-te data/LTR_testing_data.tsv \
 	-o result/output_LTR.tsv
@@ -83,18 +83,11 @@ Then for each TE, it will check the nearest gene whether it's subset,superset, u
 
 The script create a new output file (.tsv) which will be used to make the statistical analysis.
 
-A prettier and easy reading table can be generated with:
-
+### Post analysis
+In the first analysis, the strand (+ or -) of genes and TEs are considered.
+It is possible to take it into accompt by running:
 ```bash
-python3 Multiprocessing/Create_Data_multipro_reformatted.py \
-	-g data/Gene_testing_data.tsv \
-	-te data/Transposon_testing_data.tsv \
-	-o result/output_TE.tsv
-
-python3 Multiprocessing/Create_Data_LTR_multiprocessing_reformatted.py \
-	-g data/Gene_testing_data.tsv \
-	-te data/LTR_testing_data.tsv \
-	-o result/output_LTR.tsv
+python3 Multiprocessing/Post_TE_multipro_reformatted.py -i result/output_TE.tsv -o result/output_post_TE.tsv
 ```
 
 -----------------------
