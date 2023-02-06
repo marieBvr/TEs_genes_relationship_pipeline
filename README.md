@@ -129,6 +129,7 @@ Please note that the **graph's legend will also need to be change** according to
 This programme has been developped by [Caroline Meguerditchian](mailto:caroline.meguerditchian@etu.u-bordeaux.fr) and [Ayse Ergun](mailto:aergun@u-bordeaux.fr) 
 under the supervision of [Marie Lefebvre](mailto:marie.lefebvre@inrae.fr) and [Quynh Trang-Bui](mailto:quynh-trang.bui@inrae.fr).
 
-
+# Licence
+GNU GENERAL PUBLIC LICENSE
 
 
