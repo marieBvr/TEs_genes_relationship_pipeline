@@ -29,19 +29,18 @@ if (is.null(opt$file)){
 
 #load result file
 filename = opt$file
-data = read.table(file = filename, sep = '\t', header = TRUE)
-df = data[with(data, order(data$TE_Type)), ]
+data = read.table(file = filename, sep = '\t', header = TRUE, stringsAsFactors = FALSE)
+df = data[with(data, order(data$Type)), ]
 #print(df)
 
 find_element = function(df){
   elements = c()
-  element = df$TE_Type[1] #print the first row of the TE_Type column
+  element = df$Type[1] #print the first row of the Type column
   #print(element)
   elements <- c(elements,element)
-  #print(elements)
-  for(i in 1:length(df$TE_Type)){
-    if(df$TE_Type[i]!=element){
-      element = df$TE_Type[i]
+  for(i in 1:length(df$Type)){
+    if(df$Type[i]!=element){
+      element = df$Type[i]
       elements <- c(elements,element)
       #print(elements)
     }
@@ -52,11 +51,12 @@ find_element = function(df){
 
 
 number_of_element = function(df, element){
+  print(paste0("Counting elements for ", element))
   compter = 0
-  for(i in 1:length(df$TE_Type)){
-      if(df$TE_Type[i]==element){
-        print(df$TE_Type[i])
-        print(element)
+  for(i in 1:length(df$Type)){
+      if(df$Type[i]==element){
+        # print(df$Type[i])
+        # print(element)
         compter = compter + 1
       }
     }
@@ -66,24 +66,22 @@ number_of_element = function(df, element){
 
 #main 
 list_of_element = find_element(df)
-print(list_of_element)
+# print(list_of_element)
 number = c()
 for( i in list_of_element){
   a = number_of_element(df, i)
-  print(a)
+  # print(a)
   number <- c(number,a)
 }
-print(number)
 
 # Define the number of colors you want
 nb.cols <- length(list_of_element)
 mycolors <- colorRampPalette(brewer.pal(8, "Set2"))(nb.cols)
-print(mycolors)
 #graph 
 dat <- data.frame(x=list_of_element, y=number)
 # Open a pdf file
+print("Creating pdf...")
 pdf(opt$out)
-
 par(mar=c(11,4,4,4))
 barplot(dat$y, names.arg=dat$x,
         main = "Number of transposon for each type of TE ",
@@ -93,4 +91,4 @@ barplot(dat$y, names.arg=dat$x,
 title(xlab = "Type", line = 6)
 
 invisible(dev.off())
-print("Number of elements calculated, plot generated.")
+print("Done.")
