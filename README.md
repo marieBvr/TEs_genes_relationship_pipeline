@@ -22,6 +22,13 @@ If it's not the case, check out the following links :
 - python 3 : [link](https://www.python.org/downloads/)
 - Rstudio/R >= 4.0.2 : [link](https://rstudio.com/products/rstudio/download/)
 
+You can create a conda env:
+
+```
+conda create -n tegrip -c "conda-forge/label/cf201901" python==3.7 numpy r-base r-ggplot2 r-optparse
+conda activate tegrip
+```
+
 # Example 
 
 Before running the programme for your own data, please use the testing data to check that everything works.
