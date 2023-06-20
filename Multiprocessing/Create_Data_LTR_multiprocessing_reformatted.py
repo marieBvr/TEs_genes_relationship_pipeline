@@ -421,7 +421,7 @@ def writeDataOnFile(list_te):
     csv_content_tot = []
 
     n = 0
-    column_names = ['TE_Type','TE_id','chromosome','TE_strand','TE_start','TE_end','Gene_id',
+    column_names = ['Chr', 'Type','TE_id','TE_strand','TE_start','TE_end','Gene_id',
     'Gene_strand','Gene_start','Gene_end','TEstart-Geneend','Genestart-TEend',
     'Geneend-TEend','Genestart-TEstart','relationship']
     for c in range(len(list_te)):
@@ -429,10 +429,9 @@ def writeDataOnFile(list_te):
             csv_content_temp = []
             if(type(list_te[c][t]['before_id']) == str):
                 csv_content_temp.append([])
-
+                csv_content_temp[n].append(list_te[c][t]['chr'])
                 csv_content_temp[n].append(list_te[c][t]['type'])
                 csv_content_temp[n].append(list_te[c][t]['name'])
-                csv_content_temp[n].append(list_te[c][t]['chr'])
                 csv_content_temp[n].append(list_te[c][t]['strand'])
                 csv_content_temp[n].append(list_te[c][t]['start'])
                 csv_content_temp[n].append(list_te[c][t]['end'])
@@ -449,10 +448,9 @@ def writeDataOnFile(list_te):
 
             if(type(list_te[c][t]['after_id']) == str):
                 csv_content_temp.append([])
-                
+                csv_content_temp[n].append(list_te[c][t]['chr'])
                 csv_content_temp[n].append(list_te[c][t]['type'])
                 csv_content_temp[n].append(list_te[c][t]['name'])
-                csv_content_temp[n].append(list_te[c][t]['chr'])
                 csv_content_temp[n].append(list_te[c][t]['strand'])
                 csv_content_temp[n].append(list_te[c][t]['start'])
                 csv_content_temp[n].append(list_te[c][t]['end'])
@@ -472,9 +470,9 @@ def writeDataOnFile(list_te):
                 for i in range(len(list_te[c][t]['subset_id'])):
 
                     csv_content_temp.append([])
+                    csv_content_temp[n].append(list_te[c][t]['chr'])
                     csv_content_temp[n].append(list_te[c][t]['type'])
                     csv_content_temp[n].append(list_te[c][t]['name'])
-                    csv_content_temp[n].append(list_te[c][t]['chr'])
                     csv_content_temp[n].append(list_te[c][t]['strand'])
                     csv_content_temp[n].append(list_te[c][t]['start'])
                     csv_content_temp[n].append(list_te[c][t]['end'])
@@ -493,9 +491,9 @@ def writeDataOnFile(list_te):
                 for i in range(len(list_te[c][t]['superset_id'])):
 
                     csv_content_temp.append([])
+                    csv_content_temp[n].append(list_te[c][t]['chr'])
                     csv_content_temp[n].append(list_te[c][t]['type'])
                     csv_content_temp[n].append(list_te[c][t]['name'])
-                    csv_content_temp[n].append(list_te[c][t]['chr'])
                     csv_content_temp[n].append(list_te[c][t]['strand'])
                     csv_content_temp[n].append(list_te[c][t]['start'])
                     csv_content_temp[n].append(list_te[c][t]['end'])
@@ -514,9 +512,9 @@ def writeDataOnFile(list_te):
                 for i in range(len(list_te[c][t]['upstream_overlap_ID'])):
                 
                     csv_content_temp.append([])
+                    csv_content_temp[n].append(list_te[c][t]['chr'])
                     csv_content_temp[n].append(list_te[c][t]['type'])
                     csv_content_temp[n].append(list_te[c][t]['name'])
-                    csv_content_temp[n].append(list_te[c][t]['chr'])
                     csv_content_temp[n].append(list_te[c][t]['strand'])
                     csv_content_temp[n].append(list_te[c][t]['start'])
                     csv_content_temp[n].append(list_te[c][t]['end'])
@@ -534,9 +532,9 @@ def writeDataOnFile(list_te):
             if(list_te[c][t]['downstream_overlap_ID'] != []):
                 for i in range(len(list_te[c][t]['downstream_overlap_ID'])):
                     csv_content_temp.append([])
+                    csv_content_temp[n].append(list_te[c][t]['chr'])
                     csv_content_temp[n].append(list_te[c][t]['type'])
                     csv_content_temp[n].append(list_te[c][t]['name'])
-                    csv_content_temp[n].append(list_te[c][t]['chr'])
                     csv_content_temp[n].append(list_te[c][t]['strand'])
                     csv_content_temp[n].append(list_te[c][t]['start'])
                     csv_content_temp[n].append(list_te[c][t]['end'])
