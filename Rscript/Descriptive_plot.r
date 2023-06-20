@@ -6,19 +6,13 @@ if(!require("ggplot2")){
     install.packages("ggplot2")
     library(ggplot2)
 }
-if(!require("stringr")){
-    install.packages("stringr")
-    library(stringr)
-}
 
 # script options
 option_list = list(
   make_option(c("-f", "--file"), type="character", default=NULL,
               help="dataset file name i.e. 'result/output_TE.tsv'", metavar="character"),
-  make_option(c("-p", "--pdf"), type="character", default="result/overlap_TE_results.pdf",
-              help="output filename name (PDF) [default= %default]", metavar="character"),
-  make_option(c("-o", "--out"), type="character", default="result/overlap_TE_results.csv",
-              help="output filename name (CSV) [default= %default]", metavar="character")
+  make_option(c("-o", "--out"), type="character", default="result/",
+              help="output path [default= %default]", metavar="character")
 )
 opt_parser = OptionParser(option_list=option_list);
 opt = parse_args(opt_parser);
@@ -30,76 +24,58 @@ if (is.null(opt$file)){
 }
 
 #load result file
-result_file = read.csv(file = opt$file, sep = '\t', header = TRUE)
+file = read.csv(file = opt$file, sep = '\t', header = TRUE)
 
-#count genes in the upstream overlap column
-count_overlap_upstream = function(result){
-count_up_plus_strand = 0
-count_down_minus_strand = 0
-for(i in 1:length(result$TE_id)){
-    a = str_remove_all(result$upstream_overlap_feature[i], "[\"',\\[\\]]")
-    features = strsplit(a, "\\s+")[[1]]
-    TE_strand = result$TE_strand
-    if(result$upstream_overlap[i] != '[]'){
-        for(j in 1:length(features)){
-            if((features[j] == 'exon' || features[j] == 'mRNA') & TE_strand[i] == '+'){
-                count_up_plus_strand = count_up_plus_strand + 1
-                break
-                }
-            if((features[j] == 'exon' || features[j] == 'mRNA') & TE_strand[i] == '-'){
-                count_down_minus_strand = count_down_minus_strand + 1
-                break
-                }
-            
-            }
-        }
-    }
-    count = c(count_up_plus_strand,count_down_minus_strand)
-    return(count)
-}
+# Create plots
+print("Create 'Relationships' plot.")
+g1 <- ggplot(data = file)+
+  geom_bar(aes(x = relationship, fill = relationship))+
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))+
+  labs(title = "Relationships")+
+  guides(fill="none")
 
-#count genes in the downstream overlap column
-count_overlap_downstream = function(result,sens){
-count_up_minus_strand = 0
-count_down_plus_strand = 0
-for(i in 1:length(result$TE_id)){
-    a = str_remove_all(result$downstream_overlap_feature[i], "[\"',\\[\\]]")
-    features = strsplit(a, "\\s+")[[1]]
-    TE_strand = result$TE_strand
-    if(result$downstream_overlap[i] != '[]'){
-        for(j in 1:length(features)){
-            if(features[j] == 'exon' & TE_strand[i] == '+'){
-                count_down_plus_strand = count_down_plus_strand + 1
-                break
-                }
-            if(features[j] == 'exon' & TE_strand[i] == '-'){
-                count_up_minus_strand = count_up_minus_strand + 1
-                break
-                }
-            
-            }
-        }
-    }
-    count = c(count_up_minus_strand,count_down_plus_strand)
-    return(count)
-}
+ggsave(paste0(opt$out, "boxplot_relationships.png"), plot = g1, width = 8, height = 8)
 
-c1 = count_overlap_upstream(result_file)
-c2 = count_overlap_downstream(result_file)
+print("Create 'Amount of TEs by gene' plot.")
+g2 <- ggplot(data = file, aes(x = Gene_id, fill = Type)) +
+    geom_bar(position = "fill") + ylab("proportion") +
+    stat_count(geom = "text", 
+             aes(label = stat(count)),
+             position=position_fill(vjust=0.5), colour="white")+
+    theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))+
+    labs(title = "Amount of TEs by gene")
 
-#create graph
-sens = c(rep("Upstream Overlap", 2), rep("Downstream Overlap", 2))
-strand = rep(c("+","-"),2)
-value = c(c1[1],c2[1],c1[2],c2[2])
-data = data.frame(sens,value)
-pdf(opt$pdf)
-plot = ggplot(data, aes(fill=strand, y=value, x=sens )) + geom_bar(position="dodge", stat="identity") + ggtitle("Dataset") + ylab("Number of TE with an overlapping gene") + xlab("") + theme(plot.title = element_text(hjust = 0.5))
-print(plot)
-invisible(dev.off())
-print("INFO - Plot created")
+ggsave(paste0(opt$out, "boxplot_TE_by_Gene.png"), plot = g2, width = 8, height = 8)
 
-#write result of counting in file
-df = data.frame(col1 = c1[1], col2 = c2[1], col3 = c1[2], col4 = c2[2])
-colnames(df) = c("Upstream overlap(+)","Upstream overlap(-)","Downstream_overlap(+)","Downstream_overlap(+)")
-write.table(df, opt$out,row.names = FALSE, sep="\t")
-print("INFO - Table written")
+print("Create 'Amount of TEs by Chr' plot.")
+g3 <- ggplot(data = file, aes(x = Chr, fill = Type)) +
+    geom_bar(position = "fill") + ylab("proportion") +
+    stat_count(geom = "text", 
+             aes(label = stat(count)),
+             position=position_fill(vjust=0.5), colour="white")+
+    theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))+
+    labs(title = "Amount of TEs by Chr")
+
+ggsave(paste0(opt$out, "boxplot_TE_by_Chr.png"), plot = g3, width = 8, height = 8)
+
+print("Create 'Relationships type of TEs' plot.")
+g4 <- ggplot(data = file, aes(x = Type, fill = relationship)) +
+    geom_bar(position = "fill") + ylab("proportion") +
+    stat_count(geom = "text", 
+             aes(label = stat(count)),
+             position=position_fill(vjust=0.5), colour="white")+
+    theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))+
+    labs(title = "Relationships type of TEs")
+
+ggsave(paste0(opt$out, "boxplot_relationships_by_TEs.png"), plot = g4, width = 8, height = 8)
+
+print("Create 'Frequency of TEs' plot.")
+g5 <- ggplot(data = file)+
+  geom_bar(aes(x = Type, fill = Type))+
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))+
+  labs(title = "Frequency of each TEs")+
+  guides(fill="none")
+
+ggsave(paste0(opt$out, "boxplot_frequency_TEs.png"), plot = g5, width = 8, height = 8)
+
+print("Done.")

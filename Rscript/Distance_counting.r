@@ -11,10 +11,8 @@ if(!require("optparse")){
 option_list = list(
   make_option(c("-f", "--file"), type="character", default=NULL,
               help="dataset file name i.e. 'result/output_TE.tsv'", metavar="character"),
-  make_option(c("-p", "--pdf"), type="character", default="result/distance_TE_results.pdf",
-              help="output filename name (PDF) [default= %default]", metavar="character"),
-  make_option(c("-o", "--out"), type="character", default="result/distance_TE_results.csv",
-              help="output filename name (CSV) [default= %default]", metavar="character")
+  make_option(c("-o", "--out"), type="character", default="result/",
+              help="Path to output [default= %default]", metavar="character")
 )
 opt_parser = OptionParser(option_list=option_list);
 opt = parse_args(opt_parser);
@@ -26,74 +24,110 @@ if (is.null(opt$file)){
 }
 
 #load result file
-result_file = read.csv(file = opt$file, sep = '\t', header = TRUE)
+result_file = read.csv(file = opt$file, sep = '\t', header = TRUE, stringsAsFactors = FALSE)
 
 #count genes in the before gene column
-count_gene_upstream = function(result,distance_min,distance_max){
-  count_up_plus_strand = 0
-  count_down_minus_strand = 0
+count_gene_upstream = function(result, distance_min, distance_max){
+  count = 0
   for(i in 1:length(result$TE_id)){
-    upstream_gene_end = result$before_end[i]
-    if(is.nan(upstream_gene_end) == FALSE & result$TE_strand[i] == '+' & result$Up_TEstart.Geneend[i] > distance_min & result$Up_TEstart.Geneend[i] < distance_max){
-      count_up_plus_strand = count_up_plus_strand + 1
-    }
-    if(is.nan(upstream_gene_end) == FALSE & result$TE_strand[i] == '-' & result$Up_TEstart.Geneend[i] > distance_min & result$Up_TEstart.Geneend[i] < distance_max){
-      count_down_minus_strand = count_down_minus_strand + 1
+    if (result$relationship[i] == "upstream"){
+      if (result$TE_strand[i] == "+" & result$Gene_strand[i] == "+"){
+        distance = abs(result$Gene_start[i] - result$TE_end[i])
+        if ( distance_min <= distance & distance <= distance_max){
+          count = count + 1
+        }
+      }else if (result$TE_strand[i] == "-" & result$Gene_strand[i] == "+"){
+        distance = abs(result$TE_start[i] - result$Gene_start[i])
+        if ( distance_min <= distance & distance <= distance_max){
+          count = count + 1
+        }
+      }else if (result$TE_strand[i] == "-" & result$Gene_strand[i] == "-"){
+        distance = abs(result$Gene_start[i] - result$TE_end[i])
+        if ( distance_min <= distance & distance <= distance_max){
+          count = count + 1
+        }
+      }else if (result$TE_strand[i] == "+" & result$Gene_strand[i] == "-"){
+        distance = abs(result$Gene_start[i] - result$TE_start[i])
+        if ( distance_min <= distance & distance <= distance_max){
+          count = count + 1
+        }
+      }
     }
   }
-  count = c(count_up_plus_strand,count_down_minus_strand)
   return(count)
 }
 
 #count genes in the after gene column
 count_gene_downstream = function(result,distance_min,distance_max){
-  count_up_minus_strand = 0
-  count_down_plus_strand = 0
+  count = 0
   for(i in 1:length(result$TE_id)){
-    downstream_gene_end = result$after_end[i]
-    if(is.nan(downstream_gene_end) == FALSE & result$TE_strand[i] == '+' & result$Down_Genestart.TEend[i] > distance_min & result$Down_Genestart.TEend[i] < distance_max){
-      count_down_plus_strand = count_down_plus_strand + 1
-    }
-    if(is.nan(downstream_gene_end) == FALSE & result$TE_strand[i] == '-' & result$Down_Genestart.TEend[i] > distance_min & result$Down_Genestart.TEend[i] < distance_max){
-      count_up_minus_strand = count_up_minus_strand + 1
+    if (result$relationship[i] == "downstream"){
+      if (result$TE_strand[i] == "+" & result$Gene_strand[i] == "+"){
+        distance = abs(result$Gene_end[i] - result$TE_start[i])
+        if ( distance_min <= distance & distance <= distance_max){
+          count = count + 1
+        }
+      }else if (result$TE_strand[i] == "-" & result$Gene_strand[i] == "+"){
+        distance = abs(result$Gene_end[i] - result$TE_end[i])
+        if ( distance_min <= distance & distance <= distance_max){
+          count = count + 1
+        }
+      }else if (result$TE_strand[i] == "-" & result$Gene_strand[i] == "-"){
+        distance = abs(result$TE_start[i] - result$Gene_end[i])
+        if ( distance_min <= distance & distance <= distance_max){
+          count = count + 1
+        }
+      }else if (result$TE_strand[i] == "+" & result$Gene_strand[i] == "-"){
+        distance = abs(result$TE_end[i] - result$Gene_end[i])
+        if ( distance_min <= distance & distance <= distance_max){
+          count = count + 1
+        }
+      }
     }
   }
-  count = c(count_up_minus_strand,count_down_plus_strand)
   return(count)
 }
 
 c1 = count_gene_upstream(result_file,0,500)
 c2 = count_gene_upstream(result_file,501,1000)
 c3 = count_gene_upstream(result_file,1001,2000)
-c4 = count_gene_upstream(result_file,2001,max(result_file$end))
+c4 = count_gene_upstream(result_file,2001,max(result_file$Gene_end))
 
 c9 = count_gene_downstream(result_file,0,500)
 c10 = count_gene_downstream(result_file,501,1000)
 c11 = count_gene_downstream(result_file,1001,2000)
-c12 = count_gene_downstream(result_file,2001,max(result_file$end))
+c12 = count_gene_downstream(result_file,2001,max(result_file$Gene_end))
 
-pdf(opt$pdf)
-#ggplot graph : "Number of LTR with an adjacent upstream gene"
-distance = c(rep("0-0.5kbp" , 2), rep("0.5-1kbp" , 2), rep("1-2kbp", 2), rep("2kbp+", 2))
-strand = rep(c("+","-"),4)
-value_up = c(c1[1],c9[1],c2[1],c10[1],c3[1],c11[1],c4[1],c12[1])
-data = data.frame(distance,strand,value_up)
-plot1 = ggplot(data, aes(fill=strand, y=value_up, x=distance )) + geom_bar(position="dodge", stat="identity") + ylab("number of TE") + xlab("distance to the gene") + ggtitle("Number of TE with an adjacent upstream gene") + theme(plot.title = element_text(hjust = 0.5))
-print(plot1)
+print("Create distance plots.")
+#ggplot graph : "Number of TE with an adjacent upstream gene"
+distance = c("0-0.5kbp", "0.5-1kbp", "1-2kbp", "2kbp+")
+value_up = c(c1, c2, c3, c4)
+data = data.frame(distance,value_up)
+g1 = ggplot(data, aes(y=value_up, x=distance )) + 
+  geom_bar(position="dodge", stat="identity") + 
+  ylab("number of TE") + 
+  xlab("distance to the gene") + 
+  ggtitle("Number of TE with an adjacent upstream gene") + 
+  theme(plot.title = element_text(hjust = 0.5))
+ggsave(paste0(opt$out, "TEs_upstream.png"), plot = g1, width = 8, height = 8)
 
-#ggplot graph : "Number of LTR with an adjacent downstream gene"
-distance = c(rep("0-0.5kbp" , 2), rep("0.5-1kbp" , 2), rep("1-2kbp", 2), rep("2kbp+", 2))
-strand = rep(c("+","-"),4)
-value_down = c(c1[2],c9[2],c2[2],c10[2],c3[2],c11[2],c4[2],c12[2])
-data = data.frame(distance,strand,value_down)
-plot2 = ggplot(data, aes(fill=strand, y=value_down, x=distance )) + geom_bar(position="dodge", stat="identity") + ggtitle("Number of TE with an adjacent downstream gene") + ylab("number of TE") + xlab("distance to the gene") + theme(plot.title = element_text(hjust = 0.5))
-print(plot2)
-invisible(dev.off())
-print("Plots generated")
+
+#ggplot graph : "Number of TE with an adjacent downstream gene"
+distance = c("0-0.5kbp", "0.5-1kbp", "1-2kbp", "2kbp+")
+value_down = c(c9, c10, c11, c12)
+data = data.frame(distance,value_down)
+g2 = ggplot(data, aes(y=value_down, x=distance )) + 
+  geom_bar(position="dodge", stat="identity") + 
+  ggtitle("Number of TE with an adjacent downstream gene") + 
+  ylab("number of TE") + 
+  xlab("distance to the gene") + 
+  theme(plot.title = element_text(hjust = 0.5))
+
+ggsave(paste0(opt$out, "TEs_downstream.png"), plot = g2, width = 8, height = 8)
 
 #write result of counting in file
-df = data.frame(col1 = c(c1[1],c2[1],c3[1],c4[1]), col2 = c(c9[1],c10[1],c11[1],c12[1]), col3 = c(c9[2],c10[2],c11[2],c12[2]), col4 = c(c1[2],c2[2],c3[2],c4[2]))
-colnames(df) = c("Upstream overlap(+)","Upstream overlap(-)","Downstream_overlap(+)","Downstream_overlap(+)")
+df = data.frame(col1 = c(c1,c2,c3,c4), col2 = c(c9,c10,c11,c12))
+colnames(df) = c("Upstream", "Downstream")
 row.names(df) = c("0-500bp","501-1000bp","1001-2000bp","2000+bp")
-write.table(df, opt$out, row.names = TRUE, sep="\t", col.names=NA)
+write.table(df, paste0(opt$out, "distance_TE_results.csv"), row.names = TRUE, sep=",", col.names=NA)
 print("Table written")
